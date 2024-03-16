@@ -118,6 +118,7 @@ else:
         final_student_answers = []
         number = 0
         a_number = 0
+        join_counter = 0
         query1_clause_list = []
         query2_clause_list = []
         query3_clause_list = []
@@ -130,119 +131,121 @@ else:
         for command in sqlCommands:
             a_number += 1
             
-            # print(f"{a_number}. {command}")
+            print(f"{a_number}. {command}")
             if a_number == 1 and not command.lower().__contains__('use'):
-                answer.write(f"USE bike; Statement NOT FOUND\n")
+                answer.write(f"USE v_art; Statement NOT FOUND\n")
 
 
             if a_number == 2: # Query 1
                 if command.lower().__contains__('select'):
-                    if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
-                        alias_counter += 1
-                    if not command.lower().__contains__(' as '):
-                        query6_clause_list.append(f"Alias NOT used")
+                   
                     if not command.lower().__contains__('from'):
                         query1_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('count'):
-                        query1_function_list.append(f"COUNT Function NOT used")
+                    if not command.lower().__contains__('join'):
+                        query1_clause_list.append(f"JOIN Clause NOT used")
+                    if not command.lower().__contains__('join'):
+                        query1_clause_list.append(f"JOIN Clause NOT used")
+                    if not command.lower().__contains__('where'):
+                        query1_clause_list.append(f"WHERE Clause NOT used")
 
             if a_number == 3: # Query 2
                 if command.lower().__contains__('select'):
-                    if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
-                        alias_counter += 1
-                    if not command.lower().__contains__(' as '):
-                        query6_clause_list.append(f"Alias NOT used")
+                    
                     if not command.lower().__contains__('from'):
                         query2_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('count'):
-                        query2_function_list.append(f"COUNT Function NOT used")
                     if not command.lower().__contains__('join'):
                         query2_clause_list.append(f"JOIN Clause NOT used")
                     if not command.lower().__contains__('where'):
                         query2_clause_list.append(f"WHERE Clause NOT used")
-                    if not command.lower().__contains__('group by'):
-                        query2_clause_list.append(f"GROUP BY Clause NOT used")
+                    
 
             if a_number == 4: # Query 3
                 if command.lower().__contains__('select'):
-                    if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
-                        alias_counter += 1
-                    if not command.lower().__contains__(' as '):
-                        query6_clause_list.append(f"Alias NOT used")
+                    
                     if not command.lower().__contains__('from'):
                         query3_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('sum'):
-                        query3_function_list.append(f"SUM Function NOT used")
+                    if not command.lower().__contains__('join'):
+                        query3_clause_list.append(f"JOIN Clause NOT used")
                     if not command.lower().__contains__('join'):
                         query3_clause_list.append(f"JOIN Clause NOT used")
                     if not command.lower().__contains__('where'):
                         query3_clause_list.append(f"WHERE Clause NOT used")
-                    if not command.lower().__contains__('group by'):
-                        query3_clause_list.append(f"GROUP BY Clause NOT used")
-                
+            
+            if a_number == 5 and not command.lower().__contains__('use'):
+                if not command.lower().__contains__('use'):
+                    answer.write(f"USE magazine; Statement NOT FOUND\n")
+
             if a_number == 6: # Query 4
                 if command.lower().__contains__('select'):
-                    if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
-                        alias_counter += 1
-                    if not command.lower().__contains__(' as '):
-                        query6_clause_list.append(f"Alias NOT used")
+                    
                     if not command.lower().__contains__('from'):
                         query4_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('count'):
-                        query4_function_list.append(f"COUNT Function NOT used")
                     if not command.lower().__contains__('join'):
                         query4_clause_list.append(f"JOIN Clause NOT used")
                     if not command.lower().__contains__('where'):
                         query4_clause_list.append(f"WHERE Clause NOT used")
-                    if not command.lower().__contains__('group by'):
-                        query4_clause_list.append(f"GROUP BY Clause NOT used")
+                    
             if a_number == 7: # Query 5
                 if command.lower().__contains__('select'):
-                    if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
-                        alias_counter += 1
-                    if not command.lower().__contains__(' as '):
-                        query6_clause_list.append(f"Alias NOT used")
+                    
                     if not command.lower().__contains__('from'):
                         query5_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('avg'):
-                        query5_function_list.append(f"AVG Function NOT used")
-                    if not command.lower().__contains__('format'):
-                        query5_function_list.append(f"FORMAT Function NOT used")
-                    if not command.lower().__contains__('concat'):
-                        query5_function_list.append(f"CONCAT Function NOT used")
                     if not command.lower().__contains__('join'):
                         query5_clause_list.append(f"JOIN Clause NOT used")
-                    if not command.lower().__contains__('group by'):
-                        query5_clause_list.append(f"GROUP BY Clause NOT used")
-                    if not command.lower().__contains__('having'):
-                        query5_clause_list.append(f"HAVING Clause NOT used")
-            if a_number == 8: # Query 6
+                    if not command.lower().__contains__('where'):
+                        query5_clause_list.append(f"WHERE Clause NOT used")
+
+            if a_number == 8 and not command.lower().__contains__('use'): 
+                if command.lower().__contains__('use'):
+                    answer.write(f"USE employees; Statement NOT FOUND\n")
+
+            if a_number == 9: # Query 6
                 if command.lower().__contains__('select'):
                     
                     if not command.lower().__contains__('from'):
                         query6_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('join'):
-                        query6_clause_list.append(f"JOIN Clause NOT used")
+                        query6_clause_list.append(f"JOIN Clause NOT used") 
                     if not command.lower().__contains__('where'):
                         query6_clause_list.append(f"WHERE Clause NOT used")
+                    if not command.lower().__contains__('order by'):
+                        query6_clause_list.append(f"ORDER BY Clause NOT used")
                     
-                    
+            if a_number == 10: # Query 7
+                if command.lower().__contains__('select'):
+                    if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
+                        alias_counter += 1
+                    if not command.lower().__contains__(' as '):
+                        query7_clause_list.append(f"Alias NOT used")
+                    if not command.lower().__contains__('from'):
+                        query7_clause_list.append(f"FROM Clause NOT used")
+                    if not command.lower().__contains__('join'):
+                        query7_clause_list.append(f"JOIN Clause NOT used")
+                    if not command.lower().__contains__('join dept_emp'):
+                        query7_clause_list.append(f"dept_emp table NOT used")
+                    if not command.lower().__contains__('where'):
+                        query7_clause_list.append(f"WHERE Clause NOT used")
+                    if not command.lower().__contains__('order by'):
+                        query7_clause_list.append(f"ORDER BY Clause NOT used")
+                    if not command.lower().__contains__('limit'):
+                        query7_clause_list.append(f"LIMIT Clause NOT used")
+                    if not command.lower().__contains__('concat'):
+                        query7_function_list.append(f"CONCAT Function NOT used")
+                    if not command.lower().__contains__('format'):
+                        query7_function_list.append(f"FORMAT Function NOT used")
 
             # pass each list to a function
             # the function will do all the replacing and formatting
             # then return the list
             # print(f"[{command}]")
             new_query1c_list = format_list(query1_clause_list)
-            new_query1f_list = format_list(query1_function_list)
             new_query2c_list = format_list(query2_clause_list)
-            new_query2f_list = format_list(query2_function_list)
             new_query3c_list = format_list(query3_clause_list)
-            new_query3f_list = format_list(query3_function_list)
             new_query4c_list = format_list(query4_clause_list)
-            new_query4f_list = format_list(query4_function_list)
             new_query5c_list = format_list(query5_clause_list)
-            new_query5f_list = format_list(query5_function_list)
             new_query6c_list = format_list(query6_clause_list)
+            new_query7c_list = format_list(query7_clause_list)
+            new_query7f_list = format_list(query7_function_list)
 
             try:
                 mycursor.execute(command)
@@ -277,7 +280,7 @@ else:
                 final_student_answers.append(student_answers)
 
                 # Compare the student answers to the correct answers
-                if (student_answers in correct_answer_list or student_answers in correct_answer_list[number]) or not command.lower().__contains__(' as ') or not command.lower().__contains__(') as '):
+                if (student_answers in correct_answer_list or student_answers in correct_answer_list[number]):
                     number += 1
                     # answer.write(f"Command: {command}\n")
                     # answer.write(f"Student Answer: {student_answers}\n")
@@ -287,7 +290,7 @@ else:
 
                     answer.write("---------------------\n")
                     answer.write(f"{number}. Incorrect!\n")
-                    
+                    # 1, 5, 8 are the USE statments
                     # check for certain clauses and print that they were used
                     answer.write("------QUERY------\n")
                     answer.write(f"{command}\n")
@@ -322,54 +325,51 @@ else:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query5c_list}\n")
-                    elif a_number == 8:
+                    elif a_number == 9:
                         # print(new_query6_list)
                         if len(new_query6c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query6c_list}\n")
+                    elif a_number == 10:
+                        # print(new_query7_list)
+                        if len(new_query7c_list) == 0:
+                            answer.write(f"All Clauses accounted for\n")
+                        else:
+                            answer.write(f"{new_query7c_list}\n")
 
                     answer.write("----FUNCTIONS----\n")
                     if a_number == 2:
                         # print(new_query1_list)
-                        if len(new_query1f_list) == 0:
-                            answer.write(f"All Functions accounted for\n")
-                        else:
-                            answer.write(f"{new_query1f_list}\n")
+                        answer.write(f"No functions Needed\n")
                     if a_number == 3:
                         # print(new_query2_list)
-                        if len(new_query2f_list) == 0:
-                            answer.write(f"All Functions accounted for\n")
-                        else:
-                            answer.write(f"{new_query2f_list}\n")
+                        answer.write(f"No functions Needed\n")
                     if a_number == 4:
                         # print(new_query3_list)
-                        if len(new_query3f_list) == 0:
-                            answer.write(f"All Functions accounted for\n")
-                        else:
-                            answer.write(f"{new_query3f_list}\n")
+                        answer.write(f"No functions Needed\n")
                     if a_number == 6:
                         # print(new_query4_list)
-                        if len(new_query4f_list) == 0:
-                            answer.write(f"All Functions accounted for\n")
-                        else:
-                            answer.write(f"{new_query4f_list}\n")
+                        answer.write(f"No functions Needed\n")
                     if a_number == 7:
                         # print(new_query5_list)
-                        if len(new_query5f_list) == 0:
-                            answer.write(f"All Functions accounted for\n")
-                        else:
-                            answer.write(f"{new_query5f_list}\n")
-                    elif a_number == 8:
+                        answer.write(f"No functions Needed\n")
+                    if a_number == 9:
                         # print(new_query6_list)
                         answer.write(f"No functions Needed\n")
+                    if a_number == 10:
+                        # print(f"Query {number} Functions:\n{new_query7f_list}")
+                        if len(new_query7f_list) == 0:
+                            answer.write(f"All Functions accounted for\n")
+                        else:
+                            answer.write(f"{new_query7f_list}\n")
                     answer.write("-----ANSWERS-----\n")
                     
                     answer.write(f"Student Answer: {student_answers}\n")
                     answer.write(f"Correct Answer: {correct_answer_list[number-1]}\n")
                     answer.write("---------------------\n")
 
-        answer.write(f"{alias_counter}/{total_aliases} Aliases Used\n")
+        answer.write(f"{alias_counter}/{total_aliases} Alias Used\n")
         answer.write(f"{number}/{total_queries} Queries Written\n")
 
         # print(f"{alias_counter}/{total_aliases} Aliases used")

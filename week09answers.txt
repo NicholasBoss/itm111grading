@@ -1,24 +1,30 @@
 ***********************************
-File: week9hwolaye2.sql
+File: wk9testcode.sql
 ---------------------
-6. Incorrect!
+7. Incorrect!
 ------QUERY------
-SELECT e.first_name, e.last_name, CONCAT('$', FORMAT(s.salary, 0)) AS formatted_salary, d.dept_name
-FROM employees e
-JOIN salaries s ON e.emp_no = s.emp_no
-JOIN dept_emp de ON e.emp_no = de.emp_no
-JOIN departments d ON de.dept_no = d.dept_no
-WHERE e.first_name = 'Hisao' AND e.last_name = 'Lipner'
-ORDER BY s.from_date DESC
+SELECT first_name, last_name, dept_name, salary as salary
+FROM employees
+LEFT JOIN salaries 
+	ON employees.emp_no = salaries.emp_no
+LEFT JOIN dept_manager
+	ON employees.emp_no = dept_manager.emp_no
+LEFT JOIN departments
+	ON dept_manager.dept_no = departments.dept_no
+WHERE employees.first_name = "Hisao" AND employees.last_name = "Lipner"
+ORDER BY salary DESC
 LIMIT 1;
 -----CLAUSES-----
+dept_emp table NOT used
 ----FUNCTIONS----
+CONCAT Function NOT used
+FORMAT Function NOT used
 -----ANSWERS-----
-Student Answer: [['Hisao', 'Lipner', '$53,315', 'Human Resources']]
-Correct Answer: [['Ebru', 'Alpin'], ['Isamu', 'Legleitner']]
+Student Answer: [['Hisao', 'Lipner', None, 53315]]
+Correct Answer: [[['Hisao', 'Lipner', 'Human Resources', '$53,315']], [['Hisao', 'Lipner', 'Human Resources', '$53,315.00']], [['Hisao', 'Lipner', '$53,315', 'Human Resources']]]
 ---------------------
-3/1 Aliases Used
-6/7 Queries Written
+1/1 Alias Used
+7/7 Queries Written
 ***********************************
 
 ***********************************

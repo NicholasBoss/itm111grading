@@ -77,7 +77,7 @@ ORDER BY last_name;
 --    You can use the ORDER BY and LIMIT to get just the most recent salary. 
 --    Format the salary to be readable (Use FORMAT())
 -- ~
-SELECT first_name, last_name, dept_name, salary
+SELECT first_name, last_name, dept_name, salary AS salary
 FROM employees
 LEFT JOIN salaries 
 	ON employees.emp_no = salaries.emp_no
