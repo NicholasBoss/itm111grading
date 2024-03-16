@@ -63,10 +63,7 @@ correct_answer_list = [[[['van Rijn', 'Rembrandt', 'Night Watch'], # 1
                         ['Corn Shucking for Fun and Profit']],
                        [['Ebru', 'Alpin'], # 6
                         ['Isamu', 'Legleitner']],
-                       [[['Hisao', # 7 
-                         'Lipner', 
-                         'Human Resources', 
-                         '$53,315']],
+                       [[['Hisao', 'Lipner', 'Human Resources', '$53,315']], # 7 
                          [['Hisao', 'Lipner', 'Human Resources', '$53,315.00']],
                          [['Hisao', 'Lipner', '$53,315', 'Human Resources']]]]
 
@@ -122,17 +119,13 @@ else:
         number = 0
         a_number = 0
         query1_clause_list = []
-        query1_function_list = []
         query2_clause_list = []
-        query2_function_list = []
         query3_clause_list = []
-        query3_function_list = []
         query4_clause_list = []
-        query4_function_list = []
         query5_clause_list = []
-        query5_function_list = []
         query6_clause_list = []
-        query6_function_list = []
+        query7_clause_list = []
+        query7_function_list = []
         
         for command in sqlCommands:
             a_number += 1
