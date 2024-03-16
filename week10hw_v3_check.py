@@ -167,7 +167,7 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query6_clause_list.append(f"Alias NOT used")
+                        query1_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query1_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('count'):
@@ -178,7 +178,7 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query6_clause_list.append(f"Alias NOT used")
+                        query2_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query2_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('count'):
@@ -195,7 +195,7 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query6_clause_list.append(f"Alias NOT used")
+                        query3_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query3_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('sum'):
@@ -212,7 +212,7 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query6_clause_list.append(f"Alias NOT used")
+                        query4_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query4_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('count'):
@@ -228,7 +228,7 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query6_clause_list.append(f"Alias NOT used")
+                        query5_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query5_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('avg'):
@@ -271,6 +271,8 @@ else:
             new_query5f_list = format_list(query5_function_list)
             new_query6c_list = format_list(query6_clause_list)
 
+            # print(new_query6c_list)
+
             try:
                 mycursor.execute(command)
             except mysql.connector.Error as e:
@@ -304,7 +306,7 @@ else:
                 final_student_answers.append(student_answers)
 
                 # Compare the student answers to the correct answers
-                if (student_answers in correct_answer_list or student_answers in correct_answer_list[number]) or not command.lower().__contains__(' as ') or not command.lower().__contains__(') as '):
+                if (student_answers in correct_answer_list or student_answers in correct_answer_list[number]) :
                     number += 1
                     # answer.write(f"Command: {command}\n")
                     # answer.write(f"Student Answer: {student_answers}\n")
