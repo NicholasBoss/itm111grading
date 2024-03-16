@@ -109,6 +109,18 @@ else:
     for filename in os.listdir(directory):
 
         file_count += 1 # increment the counter
+        edit_file = open(f"{directory}/{filename}", "r+")
+        file_contents = edit_file.read()
+        # Make changes to file_contents as needed
+        file_contents = file_contents.replace("SET", "-- ~\nSET")
+        file_contents = file_contents.replace("USE", "-- ~\nUSE")
+        file_contents = file_contents.replace("SELECT", "-- ~\nSELECT")
+        file_contents = file_contents.replace(";", ";\n-- ~")
+        edit_file.seek(0)
+        edit_file.write(file_contents)
+        edit_file.truncate()
+        edit_file.close()
+        
         f = open(f"{directory}/{filename}", "r")
             
         answer.write("***********************************\n")
