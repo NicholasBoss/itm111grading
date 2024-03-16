@@ -1,0 +1,9 @@
+-- ~
+
+^SELECT
+^USE
+;$
+
+-- ~\nSELECT
+-- ~\nUSE
+;\n-- ~

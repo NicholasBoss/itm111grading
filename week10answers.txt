@@ -1,0 +1,79 @@
+***********************************
+File: cameronmcdonough.sql
+5/5 Aliases Used
+6/6 Queries Written
+***********************************
+
+***********************************
+File: jacksonaden.sql
+5/5 Aliases Used
+6/6 Queries Written
+***********************************
+
+***********************************
+File: johnarthur.sql
+4/5 Aliases Used
+6/6 Queries Written
+***********************************
+
+***********************************
+File: kaylamarion.sql
+5/5 Aliases Used
+6/6 Queries Written
+***********************************
+
+***********************************
+File: narindra.sql
+5/5 Aliases Used
+6/6 Queries Written
+***********************************
+
+***********************************
+File: taylorsanders.sql
+---------------------
+3. Incorrect!
+------QUERY------
+SELECT category_name, COUNT(quantity) AS 'Instock'
+FROM category c
+JOIN product p 
+	ON c.category_id = p.category_id
+JOIN stock st 
+	ON p.product_id = st.product_id
+JOIN store s
+	ON st.store_id = s.store_id
+WHERE s.store_name = 'Santa Cruz Bikes' AND st.quantity > 0
+GROUP BY c.category_name
+ORDER BY COUNT(st.quantity) ASC;
+-----CLAUSES-----
+All Clauses accounted for
+----FUNCTIONS----
+SUM Function NOT used
+-----ANSWERS-----
+Student Answer: [['Cyclocross Bicycles', 10], ['Electric Bikes', 24], ['Comfort Bicycles', 27], ['Road Bikes', 51], ['Mountain Bikes', 56], ['Children Bicycles', 58], ['Cruisers Bicycles', 77]]
+Correct Answer: [[['Cyclocross Bicycles', '158', 'Santa Cruz Bikes'], ['Electric Bikes', '368', 'Santa Cruz Bikes'], ['Comfort Bicycles', '425', 'Santa Cruz Bikes'], ['Road Bikes', '687', 'Santa Cruz Bikes'], ['Mountain Bikes', '849', 'Santa Cruz Bikes'], ['Children Bicycles', '952', 'Santa Cruz Bikes'], ['Cruisers Bicycles', '1093', 'Santa Cruz Bikes']], [['Santa Cruz Bikes', 'Cyclocross Bicycles', '158'], ['Santa Cruz Bikes', 'Electric Bikes', '368'], ['Santa Cruz Bikes', 'Comfort Bicycles', '425'], ['Santa Cruz Bikes', 'Road Bikes', '687'], ['Santa Cruz Bikes', 'Mountain Bikes', '849'], ['Santa Cruz Bikes', 'Children Bicycles', '952'], ['Santa Cruz Bikes', 'Cruisers Bicycles', '1093']], [['Cyclocross Bicycles', '158'], ['Electric Bikes', '368'], ['Comfort Bicycles', '425'], ['Road Bikes', '687'], ['Mountain Bikes', '849'], ['Children Bicycles', '952'], ['Cruisers Bicycles', '1093']]]
+---------------------
+---------------------
+4. Incorrect!
+------QUERY------
+SELECT dept_name, COUNT(e.emp_no) as 'Number of Managers' 
+FROM departments d
+JOIN dept_manager dm 
+	ON d.dept_no = dm.dept_no
+JOIN employees e 
+	ON dm.emp_no = e.emp_no
+GROUP BY d.dept_name;
+-----CLAUSES-----
+WITH ROLLUP Clause NOT used
+----FUNCTIONS----
+All Functions accounted for
+-----ANSWERS-----
+Student Answer: [['Customer Service', 4], ['Development', 2], ['Finance', 2], ['Human Resources', 2], ['Marketing', 2], ['Production', 4], ['Quality Management', 4], ['Research', 2], ['Sales', 2]]
+Correct Answer: [[['Customer Service', 4], ['Development', 2], ['Finance', 2], ['Human Resources', 2], ['Marketing', 2], ['Production', 4], ['Quality Management', 4], ['Research', 2], ['Sales', 2], [None, 24]], [['Customer Service', 4], ['Development', 2], ['Finance', 2], ['Human Resources', 2], ['Marketing', 2], ['Production', 4], ['Quality Management', 4], ['Research', 2], ['Sales', 2], ['Total', 24]]]
+---------------------
+5/5 Aliases Used
+6/6 Queries Written
+***********************************
+
+***********************************
+Total Files Graded: 6
+***********************************
