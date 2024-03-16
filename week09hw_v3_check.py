@@ -115,7 +115,7 @@ else:
         #filter out SET commands
         sqlCommands = [command for command in sqlCommands if not command.lower().startswith('set')]
     
-        final_student_answers = []
+        correct_answer_count = 0
         number = 0
         a_number = 0
         join_counter = 0
@@ -131,7 +131,7 @@ else:
         for command in sqlCommands:
             a_number += 1
             
-            print(f"{a_number}. {command}")
+            # print(f"{a_number}. {command}")
             if a_number == 1 and not command.lower().__contains__('use'):
                 answer.write(f"USE v_art; Statement NOT FOUND\n")
 
@@ -141,8 +141,6 @@ else:
                    
                     if not command.lower().__contains__('from'):
                         query1_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('join'):
-                        query1_clause_list.append(f"JOIN Clause NOT used")
                     if not command.lower().__contains__('join'):
                         query1_clause_list.append(f"JOIN Clause NOT used")
                     if not command.lower().__contains__('where'):
@@ -164,8 +162,6 @@ else:
                     
                     if not command.lower().__contains__('from'):
                         query3_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('join'):
-                        query3_clause_list.append(f"JOIN Clause NOT used")
                     if not command.lower().__contains__('join'):
                         query3_clause_list.append(f"JOIN Clause NOT used")
                     if not command.lower().__contains__('where'):
@@ -277,11 +273,12 @@ else:
             # only output the result if information is returned
             if len(output_list) > 0:
                 student_answers = [list(row) for row in output_list if row is not None]
-                final_student_answers.append(student_answers)
+                
 
                 # Compare the student answers to the correct answers
                 if (student_answers in correct_answer_list or student_answers in correct_answer_list[number]):
                     number += 1
+                    correct_answer_count += 1
                     # answer.write(f"Command: {command}\n")
                     # answer.write(f"Student Answer: {student_answers}\n")
                 
@@ -371,6 +368,7 @@ else:
 
         answer.write(f"{alias_counter}/{total_aliases} Alias Used\n")
         answer.write(f"{number}/{total_queries} Queries Written\n")
+        answer.write(f"{correct_answer_count}/{total_queries} Queries Correct\n")
 
         # print(f"{alias_counter}/{total_aliases} Aliases used")
         alias_counter = 0

@@ -22,7 +22,7 @@ mydb = mysql.connector.connect(
 
 # print("Connected to the database")
 
-answer = open(f"week10answers.txt", "w")
+answer = open(f"week08answers.txt", "w")
 
 # print("***********************************")
 
@@ -30,70 +30,61 @@ answer = open(f"week10answers.txt", "w")
 mycursor = mydb.cursor()
 
 
-correct_answer_list = [[[939]], #1
-                   [['Santa Cruz Bikes', 10], #2
-                    ['Baldwin Bikes', 10], 
-                    ['Rowlett Bikes', 5]],
-                    [[['Cyclocross Bicycles', '158', 'Santa Cruz Bikes'], #3 
-                      ['Electric Bikes', '368', 'Santa Cruz Bikes'], 
-                      ['Comfort Bicycles', '425', 'Santa Cruz Bikes'], 
-                      ['Road Bikes', '687', 'Santa Cruz Bikes'], 
-                      ['Mountain Bikes', '849', 'Santa Cruz Bikes'], 
-                      ['Children Bicycles', '952', 'Santa Cruz Bikes'], 
-                      ['Cruisers Bicycles', '1093', 'Santa Cruz Bikes']],
-                     [['Santa Cruz Bikes', 'Cyclocross Bicycles', '158'], 
-                      ['Santa Cruz Bikes', 'Electric Bikes', '368'], 
-                      ['Santa Cruz Bikes', 'Comfort Bicycles', '425'], 
-                      ['Santa Cruz Bikes', 'Road Bikes', '687'], 
-                      ['Santa Cruz Bikes', 'Mountain Bikes', '849'], 
-                      ['Santa Cruz Bikes', 'Children Bicycles', '952'], 
-                      ['Santa Cruz Bikes', 'Cruisers Bicycles', '1093']], 
-                     [['Cyclocross Bicycles', '158'], 
-                      ['Electric Bikes', '368'], 
-                      ['Comfort Bicycles', '425'], 
-                      ['Road Bikes', '687'], 
-                      ['Mountain Bikes', '849'], 
-                      ['Children Bicycles', '952'], 
-                      ['Cruisers Bicycles', '1093']]],
-                   [[['Customer Service', 4], # 4
-                     ['Development', 2], 
-                     ['Finance', 2], 
-                     ['Human Resources', 2], 
-                     ['Marketing', 2], 
-                     ['Production', 4], 
-                     ['Quality Management', 4], 
-                     ['Research', 2], 
-                     ['Sales', 2], 
-                     [None, 24]],
-                    [['Customer Service', 4], # 4
-                     ['Development', 2], 
-                     ['Finance', 2], 
-                     ['Human Resources', 2], 
-                     ['Marketing', 2], 
-                     ['Production', 4], 
-                     ['Quality Management', 4], 
-                     ['Research', 2], 
-                     ['Sales', 2], 
-                     ['Total', 24]]],
-                    [[['Finance', '$70,815.89'], #5
-                     ['Marketing', '$88,371.69'], 
-                     ['Research', '$77,535.18'], 
-                     ['Sales', '$85,738.76']],
-                    [['Finance', '$ 70,815.89'], #5
-                     ['Marketing', '$ 88,371.69'], 
-                     ['Research', '$ 77,535.18'], 
-                     ['Sales', '$ 85,738.76']],
-                     [['Marketing', '$88,371.69'], 
-                      ['Finance', '$70,815.89'], 
-                      ['Sales', '$85,738.76'], 
-                      ['Research', '$77,535.18']]],
-                    [['Research', 'Arie', 'Staelin'], #6
-                     ['Research', 'Hilary', 'Kambil']]]
+correct_answer_list = [[['Fishing in the Mojave', '8.79'], # 1
+                        ['Car Racing Made Easy', '9.73'], 
+                        ['Pine Cone Computing', '11.03'], 
+                        ['Cooking Like Mad', '11.34'], 
+                        ['If Only I Could Sing', '7.84'], 
+                        ['Beautiful Birds', '7.84'], 
+                        ['Corn Shucking for Fun and Profit', '9.48'], 
+                        ['MySQL Magic', '6.90']],
+                       [[1, '10'], # 2
+                        [2, '10'], 
+                        [3, '9'], 
+                        [5, '9'], 
+                        [3, '10'], 
+                        [5, '9'], 
+                        [4, '9'], 
+                        [3, '10'], 
+                        [4, '10'], 
+                        [3, '9'], 
+                        [3, '10']],
+                       [['03 01, 11', 12, '03 01, 12'], # 3
+                        ['03 01, 11', 14, '05 01, 12'], 
+                        ['02 01, 12', 12, '02 01, 13'], 
+                        ['02 01, 12', 12, '02 01, 13'], 
+                        ['09 01, 11', 12, '09 01, 12'], 
+                        ['07 01, 12', 24, '07 01, 14'], 
+                        ['08 01, 12', 12, '08 01, 13'], 
+                        ['05 01, 11', 12, '05 01, 12'], 
+                        ['09 01, 11', 12, '09 01, 12'], 
+                        ['12 01, 11', 12, '12 01, 12'], 
+                        ['05 01, 11', 18, '11 01, 12']],
+                       [[' - 2016'], # 4
+                        [' - 2016'], 
+                        [' - 2016'], 
+                        [' - 2016'], 
+                        [' - 2016'], 
+                        [' - 2016'], 
+                        [' - 2016'], 
+                        [' - 2016'], 
+                        [' - 2016'], 
+                        [' - 2016'], 
+                        [' - 2016'], 
+                        [' - 2016'], 
+                        [' - 2016'], 
+                        [' - 2015/2016']],
+                       [["Trek Checkpoint ALR 4 Women's - 2019", '$1,699.99', '$340.00', '$194.28'], # 5
+                        ['Trek Checkpoint ALR 5 - 2019', '$1,999.99', '$400.00', '$228.57'], 
+                        ["Trek Checkpoint ALR 5 Women's - 2019", '$1,999.99', '$400.00', '$228.57'], 
+                        ["Trek Checkpoint SL 5 Women's - 2019", '$2,799.99', '$560.00', '$320.00'], 
+                        ['Trek Checkpoint SL 6 - 2019', '$3,799.99', '$760.00', '$434.28'], 
+                        ['Trek Checkpoint ALR Frameset - 2019', '$3,199.99', '$640.00', '$365.71']]]
 
 
 alias_counter = 0
-total_aliases = 5
-total_queries = 6
+total_aliases = 8
+total_queries = 5
 
 # open the test folder and read the files inside
 directory = 'tempgrades'
@@ -141,6 +132,12 @@ else:
         correct_answer_count = 0
         number = 0
         a_number = 0
+        date_format_counter = 0
+        format_counter = 0
+        concat_counter = 0
+        query3_alias_counter = 0
+        query5_alias_counter = 0
+        
         query1_clause_list = []
         query1_function_list = []
         query2_clause_list = []
@@ -151,15 +148,14 @@ else:
         query4_function_list = []
         query5_clause_list = []
         query5_function_list = []
-        query6_clause_list = []
-        query6_function_list = []
+    
         
         for command in sqlCommands:
             a_number += 1
             
             # print(f"{a_number}. {command}")
             if a_number == 1 and not command.lower().__contains__('use'):
-                answer.write(f"USE bike; Statement NOT FOUND\n")
+                answer.write(f"USE magazine; Statement NOT FOUND\n")
 
 
             if a_number == 2: # Query 1
@@ -167,63 +163,63 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query1_clause_list.append(f"Alias NOT used")
+                        query5_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query1_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('count'):
-                        query1_function_list.append(f"COUNT Function NOT used")
+                    if not command.lower().__contains__('round'):
+                        query1_function_list.append(f"ROUND Function NOT used")
 
             if a_number == 3: # Query 2
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query2_clause_list.append(f"Alias NOT used")
+                        query5_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query2_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('count'):
-                        query2_function_list.append(f"COUNT Function NOT used")
-                    if not command.lower().__contains__('join'):
-                        query2_clause_list.append(f"JOIN Clause NOT used")
-                    if not command.lower().__contains__('where'):
-                        query2_clause_list.append(f"WHERE Clause NOT used")
-                    if not command.lower().__contains__('group by'):
-                        query2_clause_list.append(f"GROUP BY Clause NOT used")
+                    if not command.lower().__contains__('round'):
+                        query2_function_list.append(f"ROUND Function NOT used")
+                    if not command.lower().__contains__('datediff'):
+                        query2_function_list.append(f"DATEDIFF Function NOT used")
+                    if not command.lower().__contains__('(\'2021-04.23\', subscriptionStartDate)'):
+                        query2_function_list.append(f"DATEDIFF parameters out of order")
+                    
 
             if a_number == 4: # Query 3
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
-                        alias_counter += 1
+                        for word in command.split():
+                            if word.lower() == 'as':
+                                alias_counter += 1
+                                query3_alias_counter += 1
+                    if query3_alias_counter < 2:
+                        query3_clause_list.append(f"2 Aliases are needed. {2 - query3_alias_counter} missing")
                     if not command.lower().__contains__(' as '):
-                        query3_clause_list.append(f"Alias NOT used")
+                        query5_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query3_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('sum'):
-                        query3_function_list.append(f"SUM Function NOT used")
-                    if not command.lower().__contains__('join'):
-                        query3_clause_list.append(f"JOIN Clause NOT used")
-                    if not command.lower().__contains__('where'):
-                        query3_clause_list.append(f"WHERE Clause NOT used")
-                    if not command.lower().__contains__('group by'):
-                        query3_clause_list.append(f"GROUP BY Clause NOT used")
-                
+                    if command.lower().__contains__('date_format'):
+                        for word in command.split():
+                            if word.lower().__contains__('date_format'):
+                                date_format_counter += 1
+                    if date_format_counter < 2:
+                        query3_function_list.append(f"2 DATE_FORMAT Functions are needed. {2 - date_format_counter} missing")
+                    if not command.lower().__contains__('DATE_FORMAT(subscriptionStartDate,\'%m %d, %y\')'):
+                        query3_function_list.append(f"DATE_FORMAT Function NOT used on first column")
+                    if not command.lower().__contains__('date_format'):
+                        query3_function_list.append(f"DATE_FORMAT Function NOT used")
+                    if not command.lower().__contains__('date_add'):
+                        query3_function_list.append(f"DATE_ADD Function NOT used")
+                    if not command.lower().__contains__('\'%m %d, %y\''):
+                        query3_function_list.append(f"Date format NOT correct")
+                    if not command.lower().__contains__('subscriptionLength MONTH'):
+                        query2_function_list.append(f"MONTH timeunit NOT used")
+            
+            if a_number == 5 and not command.lower().__contains__('use'):
+                if not command.lower().__contains__('use'):
+                    answer.write(f"USE bike; Statement NOT FOUND\n")
+
             if a_number == 6: # Query 4
-                if command.lower().__contains__('select'):
-                    if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
-                        alias_counter += 1
-                    if not command.lower().__contains__(' as '):
-                        query4_clause_list.append(f"Alias NOT used")
-                    if not command.lower().__contains__('from'):
-                        query4_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('count'):
-                        query4_function_list.append(f"COUNT Function NOT used")
-                    if not command.lower().__contains__('join'):
-                        query4_clause_list.append(f"JOIN Clause NOT used")
-                    if not command.lower().__contains__('with rollup'):
-                        query4_clause_list.append(f"WITH ROLLUP Clause NOT used")
-                    if not command.lower().__contains__('group by'):
-                        query4_clause_list.append(f"GROUP BY Clause NOT used")
-            if a_number == 7: # Query 5
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
@@ -231,29 +227,44 @@ else:
                         query5_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query5_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('avg'):
-                        query5_function_list.append(f"AVG Function NOT used")
-                    if not command.lower().__contains__('format'):
-                        query5_function_list.append(f"FORMAT Function NOT used")
-                    if not command.lower().__contains__('concat'):
-                        query5_function_list.append(f"CONCAT Function NOT used")
-                    if not command.lower().__contains__('join'):
-                        query5_clause_list.append(f"JOIN Clause NOT used")
-                    if not command.lower().__contains__('group by'):
-                        query5_clause_list.append(f"GROUP BY Clause NOT used")
-                    if not command.lower().__contains__('having'):
-                        query5_clause_list.append(f"HAVING Clause NOT used")
-            if a_number == 8: # Query 6
+                    if not command.lower().__contains__('order by'):
+                        query5_clause_list.append(f"ORDER BY Clause NOT used")
+                    if not command.lower().__contains__('limit'):
+                        query5_clause_list.append(f"LIMIT Clause NOT used")
+                    if not command.lower().__contains__('substring'):
+                        query5_function_list.append(f"SUBSTRING Function NOT used")
+                    
+            if a_number == 7: # Query 5
                 if command.lower().__contains__('select'):
-                    
+                    if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
+                        for word in command.split():
+                            if word.lower() == 'as':
+                                alias_counter += 1
+                                query5_alias_counter += 1
+                    if query5_alias_counter < 3:
+                        query5_clause_list.append(f"3 Aliases are needed. {3 - query5_alias_counter} missing")
+                    if not command.lower().__contains__(' as '):
+                        query5_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
-                        query6_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('join'):
-                        query6_clause_list.append(f"JOIN Clause NOT used")
+                        query5_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('where'):
-                        query6_clause_list.append(f"WHERE Clause NOT used")
-                    
-                    
+                        query5_clause_list.append(f"WHERE Clause NOT used")
+                    if command.lower().__contains__('concat'):
+                        for word in command.split():
+                            if word.lower().__contains__('concat'):
+                                concat_counter += 1
+                    if concat_counter < 3:
+                        query5_function_list.append(f"3 CONCAT Functions are needed. {3 - concat_counter} missing")
+                    if command.lower().__contains__('format('):
+                        # find the format function and count how many times it appears
+                        for word in command.split():
+                            if word.lower().__contains__('format'):
+                                format_counter += 1
+                    if format_counter < 3:
+                        query5_function_list.append(f"3 FORMAT Functions are needed. {3 - format_counter} missing")
+                        
+
+            
 
             # pass each list to a function
             # the function will do all the replacing and formatting
@@ -269,9 +280,7 @@ else:
             new_query4f_list = format_list(query4_function_list)
             new_query5c_list = format_list(query5_clause_list)
             new_query5f_list = format_list(query5_function_list)
-            new_query6c_list = format_list(query6_clause_list)
-
-            # print(new_query6c_list)
+            
 
             try:
                 mycursor.execute(command)
@@ -303,10 +312,11 @@ else:
             # only output the result if information is returned
             if len(output_list) > 0:
                 student_answers = [list(row) for row in output_list if row is not None]
+                # final_student_answers.append(student_answers)
                 
 
                 # Compare the student answers to the correct answers
-                if (student_answers in correct_answer_list or student_answers in correct_answer_list[number]) :
+                if (student_answers in correct_answer_list or student_answers in correct_answer_list[number]):
                     number += 1
                     correct_answer_count += 1
                     # answer.write(f"Command: {command}\n")
@@ -317,7 +327,7 @@ else:
 
                     answer.write("---------------------\n")
                     answer.write(f"{number}. Incorrect!\n")
-                    
+                    # 1, and 5 are the USE statments
                     # check for certain clauses and print that they were used
                     answer.write("------QUERY------\n")
                     answer.write(f"{command}\n")
@@ -352,12 +362,6 @@ else:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query5c_list}\n")
-                    elif a_number == 8:
-                        # print(new_query6_list)
-                        if len(new_query6c_list) == 0:
-                            answer.write(f"All Clauses accounted for\n")
-                        else:
-                            answer.write(f"{new_query6c_list}\n")
 
                     answer.write("----FUNCTIONS----\n")
                     if a_number == 2:
@@ -390,9 +394,7 @@ else:
                             answer.write(f"All Functions accounted for\n")
                         else:
                             answer.write(f"{new_query5f_list}\n")
-                    elif a_number == 8:
-                        # print(new_query6_list)
-                        answer.write(f"No functions Needed\n")
+                   
                     answer.write("-----ANSWERS-----\n")
                     
                     answer.write(f"Student Answer: {student_answers}\n")
@@ -417,16 +419,13 @@ else:
     # if yes, delete the files
 
     # if no, keep the files
-    f.close()
     delete_files = input("Would you like to delete the files in the tempgrades folder? (yes/no): ")
     if delete_files.lower() == "yes":
+        f.close()
         for filename in os.listdir(directory):
             os.remove(f"{directory}/{filename}")
         print("Files Deleted")
-        answer = open(f"week10answers.txt", "w")
-        answer.close()
     else:
-        f.close()
         print("Files Kept")
     # print("***********************************")
         

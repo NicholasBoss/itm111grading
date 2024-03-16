@@ -3,7 +3,7 @@ File: wk9testcode.sql
 ---------------------
 7. Incorrect!
 ------QUERY------
-SELECT first_name, last_name, dept_name, salary as salary
+SELECT first_name, last_name, dept_name, salary AS salary
 FROM employees
 LEFT JOIN salaries 
 	ON employees.emp_no = salaries.emp_no
@@ -25,6 +25,7 @@ Correct Answer: [[['Hisao', 'Lipner', 'Human Resources', '$53,315']], [['Hisao',
 ---------------------
 1/1 Alias Used
 7/7 Queries Written
+6/7 Queries Correct
 ***********************************
 
 ***********************************
