@@ -30,65 +30,123 @@ answer = open(f"week10answers.txt", "w")
 mycursor = mydb.cursor()
 
 
-correct_answer_list = [[[939]], #1
-                   [['Santa Cruz Bikes', 10], #2
-                    ['Baldwin Bikes', 10], 
-                    ['Rowlett Bikes', 5]],
-                    [[['Cyclocross Bicycles', '158', 'Santa Cruz Bikes'], #3 
-                      ['Electric Bikes', '368', 'Santa Cruz Bikes'], 
-                      ['Comfort Bicycles', '425', 'Santa Cruz Bikes'], 
-                      ['Road Bikes', '687', 'Santa Cruz Bikes'], 
-                      ['Mountain Bikes', '849', 'Santa Cruz Bikes'], 
-                      ['Children Bicycles', '952', 'Santa Cruz Bikes'], 
-                      ['Cruisers Bicycles', '1093', 'Santa Cruz Bikes']],
-                     [['Santa Cruz Bikes', 'Cyclocross Bicycles', '158'], 
-                      ['Santa Cruz Bikes', 'Electric Bikes', '368'], 
-                      ['Santa Cruz Bikes', 'Comfort Bicycles', '425'], 
-                      ['Santa Cruz Bikes', 'Road Bikes', '687'], 
-                      ['Santa Cruz Bikes', 'Mountain Bikes', '849'], 
-                      ['Santa Cruz Bikes', 'Children Bicycles', '952'], 
-                      ['Santa Cruz Bikes', 'Cruisers Bicycles', '1093']], 
-                     [['Cyclocross Bicycles', '158'], 
-                      ['Electric Bikes', '368'], 
-                      ['Comfort Bicycles', '425'], 
-                      ['Road Bikes', '687'], 
-                      ['Mountain Bikes', '849'], 
-                      ['Children Bicycles', '952'], 
-                      ['Cruisers Bicycles', '1093']]],
-                   [[['Customer Service', 4], # 4
-                     ['Development', 2], 
-                     ['Finance', 2], 
-                     ['Human Resources', 2], 
-                     ['Marketing', 2], 
-                     ['Production', 4], 
-                     ['Quality Management', 4], 
-                     ['Research', 2], 
-                     ['Sales', 2], 
-                     [None, 24]],
-                    [['Customer Service', 4], # 4
-                     ['Development', 2], 
-                     ['Finance', 2], 
-                     ['Human Resources', 2], 
-                     ['Marketing', 2], 
-                     ['Production', 4], 
-                     ['Quality Management', 4], 
-                     ['Research', 2], 
-                     ['Sales', 2], 
-                     ['Total', 24]]],
-                    [[['Finance', '$70,815.89'], #5
-                     ['Marketing', '$88,371.69'], 
-                     ['Research', '$77,535.18'], 
-                     ['Sales', '$85,738.76']],
-                    [['Finance', '$ 70,815.89'], #5
-                     ['Marketing', '$ 88,371.69'], 
-                     ['Research', '$ 77,535.18'], 
-                     ['Sales', '$ 85,738.76']],
-                     [['Marketing', '$88,371.69'], 
-                      ['Finance', '$70,815.89'], 
-                      ['Sales', '$85,738.76'], 
-                      ['Research', '$77,535.18']]],
-                    [['Research', 'Arie', 'Staelin'], #6
-                     ['Research', 'Hilary', 'Kambil']]]
+correct_answer_list = [[[[939]],[['939']]], #1
+                       [[['Santa Cruz Bikes', 10], #2
+                         ['Baldwin Bikes', 10], 
+                         ['Rowlett Bikes', 5]],
+                        [['Baldwin Bikes', 10], 
+                         ['Santa Cruz Bikes', 10], 
+                         ['Rowlett Bikes', 5]],
+                        [[10, 'Santa Cruz Bikes'],
+                         [10, 'Baldwin Bikes'],
+                         [5, 'Rowlett Bikes']],
+                        [[10, 'Baldwin Bikes'],
+                         [10, 'Santa Cruz Bikes'],
+                         [5, 'Rowlett Bikes']
+                        ]],
+                       [[['Cyclocross Bicycles', '158'], # 3
+                         ['Electric Bikes', '368'], 
+                         ['Comfort Bicycles', '425'], 
+                         ['Road Bikes', '687'], 
+                         ['Children Bicycles', '952'], 
+                         ['Mountain Bikes', '849'], 
+                         ['Cruisers Bicycles', '1093']],
+                        [['Cyclocross Bicycles', '158'], 
+                         ['Electric Bikes', '368'], 
+                         ['Comfort Bicycles', '425'], 
+                         ['Road Bikes', '687'], 
+                         ['Mountain Bikes', '849'], 
+                         ['Children Bicycles', '952'], 
+                         ['Cruisers Bicycles', '1093']],
+                        [['158', 'Cyclocross Bicycles'], 
+                         ['368', 'Electric Bikes'], 
+                         ['425', 'Comfort Bicycles'], 
+                         ['687', 'Road Bikes'], 
+                         ['849', 'Mountain Bikes'], 
+                         ['952', 'Children Bicycles'], 
+                         ['1093', 'Cruisers Bicycles']],
+                        [['Cyclocross Bicycles', '158', 'Santa Cruz Bikes'],
+                         ['Electric Bikes', '368', 'Santa Cruz Bikes'], 
+                         ['Comfort Bicycles', '425', 'Santa Cruz Bikes'], 
+                         ['Road Bikes', '687', 'Santa Cruz Bikes'], 
+                         ['Mountain Bikes', '849', 'Santa Cruz Bikes'], 
+                         ['Children Bicycles', '952', 'Santa Cruz Bikes'], 
+                         ['Cruisers Bicycles', '1093', 'Santa Cruz Bikes']],
+                        [['Santa Cruz Bikes', 'Cyclocross Bicycles', '158'], 
+                         ['Santa Cruz Bikes', 'Electric Bikes', '368'], 
+                         ['Santa Cruz Bikes', 'Comfort Bicycles', '425'], 
+                         ['Santa Cruz Bikes', 'Road Bikes', '687'], 
+                         ['Santa Cruz Bikes', 'Mountain Bikes', '849'], 
+                         ['Santa Cruz Bikes', 'Children Bicycles', '952'], 
+                         ['Santa Cruz Bikes', 'Cruisers Bicycles', '1093']
+                        ]],
+                       [[['Customer Service', 4], # 4
+                         ['Development', 2], 
+                         ['Finance', 2], 
+                         ['Human Resources', 2], 
+                         ['Marketing', 2], 
+                         ['Production', 4], 
+                         ['Quality Management', 4], 
+                         ['Research', 2], 
+                         ['Sales', 2], 
+                         [None, 24]],
+                        [[4, 'Customer Service'], 
+                         [2, 'Development'],
+                         [2, 'Finance'], 
+                         [2, 'Human Resources'], 
+                         [2, 'Marketing'], 
+                         [4, 'Production'],
+                         [4, 'Quality Management'], 
+                         [2, 'Research'], 
+                         [2, 'Sales'], 
+                         [24, None]],
+                        [['Customer Service', 4],
+                         ['Development', 2], 
+                         ['Finance', 2], 
+                         ['Human Resources', 2], 
+                         ['Marketing', 2], 
+                         ['Production', 4], 
+                         ['Quality Management', 4], 
+                         ['Research', 2], 
+                         ['Sales', 2], 
+                         ['Total', 24]],
+                        [['Customer Service', 4], 
+                         ['Development', 2], 
+                         ['Finance', 2], 
+                         ['Human Resources', 2], 
+                         ['Marketing', 2], 
+                         ['Production', 4], 
+                         ['Quality Management', 4], 
+                         ['Research', 2], 
+                         ['Sales', 2], 
+                         ['total', 24]
+                        ]],
+                       [[['Finance', '$70,815.89'], #5
+                         ['Marketing', '$88,371.69'], 
+                         ['Research', '$77,535.18'], 
+                         ['Sales', '$85,738.76']],
+                        [['Finance', '$ 70,815.89'],
+                         ['Marketing', '$ 88,371.69'], 
+                         ['Research', '$ 77,535.18'], 
+                         ['Sales', '$ 85,738.76']],
+                        [['Marketing', '$88,371.69'], 
+                         ['Finance', '$70,815.89'], 
+                         ['Sales', '$85,738.76'], 
+                         ['Research', '$77,535.18']],
+                        [['$70,815.89', 'Finance'], 
+                         ['$88,371.69', 'Marketing'], 
+                         ['$77,535.18', 'Research'], 
+                         ['$85,738.76', 'Sales']
+                        ]],
+                       [[['Research', 'Arie', 'Staelin'], #6
+                         ['Research', 'Hilary', 'Kambil']],
+                        [['Research', 'Arie Staelin'], 
+                         ['Research', 'Hilary Kambil']],
+                        [['Research', 'Staelin', 'Arie'], 
+                         ['Research', 'Kambil', 'Hilary']],
+                        [['Arie', 'Staelin', 'Research'], 
+                         ['Hilary', 'Kambil', 'Research']
+                        ]]]
 
 
 alias_counter = 0
@@ -122,9 +180,9 @@ else:
         file_contents = edit_file.read()
         # check to see if delimiter exists
         if not file_contents.__contains__('-- ~'):
-            file_contents = file_contents.replace("SET", "-- ~\nSET")
-            file_contents = file_contents.replace("USE", "-- ~\nUSE")
-            file_contents = file_contents.replace("SELECT", "-- ~\nSELECT")
+            file_contents = file_contents.lower().replace("set", "-- ~\nSET")
+            file_contents = file_contents.lower().replace("use", "-- ~\nUSE")
+            file_contents = file_contents.lower().replace("select", "-- ~\nSELECT")
             file_contents = file_contents.replace(";", ";\n-- ~")
             edit_file.seek(0)
             edit_file.write(file_contents)
@@ -138,6 +196,7 @@ else:
             
         answer.write("***********************************\n")
         answer.write(f"File: {filename}\n")
+        # print(f"File: {filename}\n")
         # print("---------------------")
 
         sqlFile = f.read()
@@ -146,11 +205,35 @@ else:
         sqlCommands = [command.strip() for command in sqlCommands]
         # print(sqlCommands)
         # Filter out SELECT and USE commands
+        
+        
         sqlCommands = [command for command in sqlCommands if (not command.lower().startswith('select *') and command.lower().startswith('select')) or command.lower().startswith('use')]
+        # check to make sure there are only 2 USE commands
+        use_bike_count = 0
+        use_employees_count = 0
+        for command in sqlCommands:
+            if command.lower().startswith('use bike'):
+                use_bike_count += 1
+            if command.lower().startswith('use employees'):
+                use_employees_count += 1
+        if use_bike_count > 1:
+            answer.write(f"USE bike; command used {use_bike_count} times. Only use it once\n")
+            answer.write("Skipping to the next file...\n")
+            answer.write("***********************************\n\n")
+            continue
+        if use_employees_count > 1:
+            answer.write(f"USE employees; command used {use_employees_count} times. Only use it once\n")
+            answer.write("Skipping to the next file...\n")
+            answer.write("***********************************\n\n")
+            continue
+        
+
+
         # print(sqlCommands)
         # filter out SELECT @ and SELECT @@ commands
         sqlCommands = [command for command in sqlCommands if not command.lower().startswith('select @') and not command.lower().startswith('select @@')]
-
+        
+        sqlCommands = [command for command in sqlCommands if not command.lower().startswith('select*')]
         #filter out SET commands
         sqlCommands = [command for command in sqlCommands if not command.lower().startswith('set')]
     
@@ -180,12 +263,20 @@ else:
 
             if a_number == 2: # Query 1
                 if command.lower().__contains__('select'):
+                    if command.lower().__contains__('select distinct'):
+                        query1_clause_list.append(f"DISTINCT Clause used. This is not needed.")
+                    if command.lower().__contains__('count(distinct '):
+                        query1_clause_list.append(f"DISTINCT Clause used. This is not needed.")
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
+                        # print(alias_counter)
                     if not command.lower().__contains__(' as '):
                         query1_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query1_clause_list.append(f"FROM Clause NOT used")
+                    if command.lower().__contains__('where'):
+                        query1_clause_list.append(f"WHERE Clause used")
+                    
                     if not command.lower().__contains__('count'):
                         query1_function_list.append(f"COUNT Function NOT used")
 
@@ -193,6 +284,7 @@ else:
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
+                        # print(alias_counter)
                     if not command.lower().__contains__(' as '):
                         query2_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
@@ -203,6 +295,8 @@ else:
                         query2_clause_list.append(f"JOIN Clause NOT used")
                     if not command.lower().__contains__('where'):
                         query2_clause_list.append(f"WHERE Clause NOT used")
+                    if not command.lower().__contains__('order by'):
+                        query2_clause_list.append(f"ORDER BY Clause NOT used")
                     if not command.lower().__contains__('group by'):
                         query2_clause_list.append(f"GROUP BY Clause NOT used")
 
@@ -210,6 +304,7 @@ else:
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
+                        # print(alias_counter)
                     if not command.lower().__contains__(' as '):
                         query3_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
@@ -222,11 +317,18 @@ else:
                         query3_clause_list.append(f"WHERE Clause NOT used")
                     if not command.lower().__contains__('group by'):
                         query3_clause_list.append(f"GROUP BY Clause NOT used")
+                    if not command.lower().__contains__('order by'):
+                        query3_clause_list.append(f"ORDER BY Clause NOT used")
+                    if not command.lower().__contains__('order by sum(quantity)') or not command.lower().__contains__('order by sum(quantity) asc'):
+                        query3_clause_list.append(f"SUM(quantity) NOT used in ORDER BY Clause")
                 
             if a_number == 6: # Query 4
                 if command.lower().__contains__('select'):
+                    if not command.lower().__contains__('select dept_name'):
+                        query4_clause_list.append(f"DEPT_NAME column NOT selected")
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
+                        # print(alias_counter)
                     if not command.lower().__contains__(' as '):
                         query4_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
@@ -243,22 +345,26 @@ else:
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
+                        # print(alias_counter)
                     if not command.lower().__contains__(' as '):
                         query5_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query5_clause_list.append(f"FROM Clause NOT used")
+                    if not command.lower().__contains__('join'):
+                        query5_clause_list.append(f"JOIN Clause NOT used")
+                    if command.lower().__contains__('where'):
+                        query5_clause_list.append(f"WHERE Clause used")
+                    if not command.lower().__contains__('group by'):
+                        query5_clause_list.append(f"GROUP BY Clause NOT used")
+                    if not command.lower().__contains__('having'):
+                        query5_clause_list.append(f"HAVING Clause NOT used")
                     if not command.lower().__contains__('avg'):
                         query5_function_list.append(f"AVG Function NOT used")
                     if not command.lower().__contains__('format'):
                         query5_function_list.append(f"FORMAT Function NOT used")
                     if not command.lower().__contains__('concat'):
                         query5_function_list.append(f"CONCAT Function NOT used")
-                    if not command.lower().__contains__('join'):
-                        query5_clause_list.append(f"JOIN Clause NOT used")
-                    if not command.lower().__contains__('group by'):
-                        query5_clause_list.append(f"GROUP BY Clause NOT used")
-                    if not command.lower().__contains__('having'):
-                        query5_clause_list.append(f"HAVING Clause NOT used")
+                    
             if a_number == 8: # Query 6
                 if command.lower().__contains__('select'):
                     
@@ -303,7 +409,10 @@ else:
                 
                 break
             output = mycursor.fetchall()
-                        
+            if len(output) == 0 and command.lower().__contains__('select'):
+                answer.write(f"Query {number + 1}. No results returned\n")
+                number += 1
+                continue
 
             
             output_list = [list(row) for row in output if row is not None]

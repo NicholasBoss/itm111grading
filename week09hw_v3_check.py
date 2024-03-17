@@ -65,7 +65,8 @@ correct_answer_list = [[[['van Rijn', 'Rembrandt', 'Night Watch'], # 1
                         ['Isamu', 'Legleitner']],
                        [[['Hisao', 'Lipner', 'Human Resources', '$53,315']], # 7 
                          [['Hisao', 'Lipner', 'Human Resources', '$53,315.00']],
-                         [['Hisao', 'Lipner', '$53,315', 'Human Resources']]]]
+                         [['Hisao', 'Lipner', '$53,315', 'Human Resources']],
+                         [['Hisao', 'Lipner', '$53,315.00', 'Human Resources']]]]
 
 
 alias_counter = 0
@@ -99,9 +100,9 @@ else:
         file_contents = edit_file.read()
         # Make changes to file_contents as needed
         if not file_contents.__contains__('-- ~'):
-            file_contents = file_contents.replace("^USE", "-- ~\nUSE")
-            file_contents = file_contents.replace("^SELECT", "-- ~\nSELECT")
-            file_contents = file_contents.replace(";$", ";\n-- ~")
+            file_contents = file_contents.lower().replace("use", "-- ~\nUSE")
+            file_contents = file_contents.lower().replace("select", "-- ~\nSELECT")
+            file_contents = file_contents.replace(";", ";\n-- ~")
             edit_file.seek(0)
             edit_file.write(file_contents)
             edit_file.truncate()
@@ -122,6 +123,32 @@ else:
         # print(sqlCommands)
         # Filter out SELECT and USE commands
         sqlCommands = [command for command in sqlCommands if (not command.lower().startswith('select *') and command.lower().startswith('select')) or command.lower().startswith('use')]
+        use_v_art_count = 0
+        use_employees_count = 0
+        use_magazine_count = 0
+        for command in sqlCommands:
+            if command.lower().startswith('use v_art'):
+                use_v_art_count += 1
+            if command.lower().startswith('use employees'):
+                use_employees_count += 1
+            if command.lower().startswith('use magazine'):
+                use_magazine_count += 1
+        if use_v_art_count > 1:
+            answer.write(f"USE v_art; command used {use_v_art_count} times. Only use it once\n")
+            answer.write("Skipping to the next file...\n")
+            answer.write("***********************************\n\n")
+            continue
+        if use_employees_count > 1:
+            answer.write(f"USE employees; command used {use_employees_count} times. Only use it once\n")
+            answer.write("Skipping to the next file...\n")
+            answer.write("***********************************\n\n")
+            continue
+        if use_magazine_count > 1:
+            answer.write(f"USE magazine; command used {use_magazine_count} times. Only use it once\n")
+            answer.write("Skipping to the next file...\n")
+            answer.write("***********************************\n\n")
+            continue
+        
         # print(sqlCommands)
         # filter out SELECT @ and SELECT @@ commands
         sqlCommands = [command for command in sqlCommands if not command.lower().startswith('select @') and not command.lower().startswith('select @@')]
@@ -176,8 +203,8 @@ else:
                     
                     if not command.lower().__contains__('from'):
                         query3_clause_list.append(f"FROM Clause NOT used")
-                    if not command.lower().__contains__('join'):
-                        query3_clause_list.append(f"JOIN Clause NOT used")
+                    if not command.lower().__contains__('left join'):
+                        query3_clause_list.append(f"LEFT JOIN Clause NOT used")
                     if not command.lower().__contains__('where'):
                         query3_clause_list.append(f"WHERE Clause NOT used")
             
@@ -215,7 +242,9 @@ else:
                     if not command.lower().__contains__('from'):
                         query6_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('join'):
-                        query6_clause_list.append(f"JOIN Clause NOT used") 
+                        query6_clause_list.append(f"JOIN Clause NOT used")
+                    if not command.lower().__contains__('join dept_manager'):
+                        query6_clause_list.append(f"dept_manager table NOT used")
                     if not command.lower().__contains__('where'):
                         query6_clause_list.append(f"WHERE Clause NOT used")
                     if not command.lower().__contains__('order by'):
@@ -271,6 +300,13 @@ else:
                 
                 break
             output = mycursor.fetchall()
+            # if the commans was a SELECT statement, and it didn't return
+            # any results, print that no results were returned in the output list
+            if len(output) == 0 and command.lower().__contains__('select'):
+                answer.write(f"Query {number + 1}. No results returned\n")
+                number += 1
+                continue
+            
                         
 
             
@@ -398,12 +434,14 @@ else:
     # if yes, delete the files
 
     # if no, keep the files
+    f.close()
     delete_files = input("Would you like to delete the files in the tempgrades folder? (yes/no): ")
     if delete_files.lower() == "yes":
-        f.close()
         for filename in os.listdir(directory):
             os.remove(f"{directory}/{filename}")
         print("Files Deleted")
+        answer = open(f"week09answers.txt", "w")
+        answer.close()
     else:
         print("Files Kept")
     # print("***********************************")
