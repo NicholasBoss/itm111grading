@@ -144,7 +144,7 @@ else:
             if command.lower().startswith('use magazine'):
                 use_magazine_count += 1
         if use_bike_count > 1:
-            answer.write(f"USE v_art; command used {use_bike_count} times. Only use it once\n")
+            answer.write(f"USE bike; command used {use_bike_count} times. Only use it once\n")
             answer.write("Skipping to the next file...\n")
             answer.write("***********************************\n\n")
             continue
