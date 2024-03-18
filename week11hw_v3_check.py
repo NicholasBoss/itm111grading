@@ -88,7 +88,7 @@ else:
         create_count = 0
         total_create_count = 10
         insert_count = 0
-        total_insert_count = 9
+        total_insert_count = 10
         mydb_count = 0
 
         
@@ -172,8 +172,8 @@ else:
         answer.write(f"{drop_count}/{total_drop_count} of 10 total possible DROP Statements Written\n")
         answer.write(f"{create_count}/{total_create_count} of 10 total possible CREATE Statements Written\n")
         answer.write("-------INSERTS--------\n")
-        answer.write("Insert statments can be between 7 and 9\n")
-        answer.write(f"{insert_count}/{total_insert_count} of 9 total possible INSERT Statements Written\n")
+        answer.write("Insert statments can be between 7 and 10\n")
+        answer.write(f"{insert_count}/{total_insert_count} of 10 total possible INSERT Statements Written\n")
         answer.write("-----FINAL TOTALS-----\n")
         answer.write(f"{erd_count}/{total_erd_count} of 20 total possible ERD Statements Written\n")
         answer.write(f"{number}/{total_queries} of 29 total possible Statements Written\n")
