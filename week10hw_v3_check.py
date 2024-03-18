@@ -352,6 +352,9 @@ else:
                         query5_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('join'):
                         query5_clause_list.append(f"JOIN Clause NOT used")
+                    if not command.lower().__contains__('join dept_manager'):
+                        query5_clause_list.append(f"JOIN dept_manager NOT used")
+                        query5_clause_list.append(f"Feedback: Query 5 is using the wrong table. It asks for average manager salaries, not employees.")
                     if command.lower().__contains__('where'):
                         query5_clause_list.append(f"WHERE Clause used")
                     if not command.lower().__contains__('group by'):
