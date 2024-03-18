@@ -305,7 +305,7 @@ else:
                         query10_clause_list.append(f"WHERE Clause NOT used")
                     if not command.lower().__contains__('limit'):
                         query10_clause_list.append(f"LIMIT Clause NOT used")
-                    if not command.lower().__contains__('phone IS NOT NULL'):
+                    if not command.lower().__contains__('phone is not null'):
                         query10_clause_list.append(f"IS NOT NULL Operator NOT used")
                     if command.lower().__contains__('city like'):
                         for word in command.split():
