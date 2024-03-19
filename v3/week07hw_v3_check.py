@@ -480,7 +480,7 @@ else:
                     answer.write(f"Student Answer: {student_answers}\n")
                     answer.write(f"Correct Answer: {correct_answer_list[number-1]}\n")
                     answer.write("---------------------\n")
-
+        answer.write("--------RESULTS-------\n") 
         answer.write(f"{alias_counter}/{total_aliases} Aliases Used\n")
         answer.write(f"{number}/{total_queries} Queries Written\n")
         answer.write(f"{correct_answer_count}/{total_queries} Queries Correct\n")
