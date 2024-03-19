@@ -29,6 +29,7 @@ world
 film
 
 university
+
 The student user is created in the Local Instance tab (Root User):
 
 ```
