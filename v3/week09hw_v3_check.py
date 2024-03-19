@@ -48,11 +48,23 @@ correct_answer_list = [[[['van Rijn', 'Rembrandt', 'Night Watch'], # 1
                           ['van Rijn','stormgalilee.jpg']],
                           [['Night Watch', 'Storm on the Sea of Galilee']],
                           [['nightwatch.jpg'], ['stormgalilee.jpg']]],
-                        [['nightwatch.jpg']], # 2
-                       [['Leonardo', 'da Vinci', 'Head of a Woman'], # 3
-                        ['Leonardo', 'da Vinci', 'Last Supper'], 
-                        ['Leonardo', 'da Vinci', 'Mona Lisa'], 
-                        ['Michelangelo', 'Simoni', None]],
+                        [[['nightwatch.jpg']], # 2
+                         [['battle', 'Night Watch']], 
+                         [['battle', 'nightwatch.jpg']],
+                         [['nightwatch.jpg', 'battle']],
+                         [['Night Watch', 'battle']]], 
+                       [[['Leonardo', 'da Vinci', 'Head of a Woman'], # 3
+                         ['Leonardo', 'da Vinci', 'Last Supper'], 
+                         ['Leonardo', 'da Vinci', 'Mona Lisa'], 
+                         ['Michelangelo', 'Simoni', None]],
+                        [['Italy', 'Leonardo', 'da Vinci', 'Head of a Woman'], 
+                         ['Italy', 'Leonardo', 'da Vinci', 'Last Supper'], 
+                         ['Italy', 'Leonardo', 'da Vinci', 'Mona Lisa'], 
+                         ['Italy', 'Michelangelo', 'Simoni', None]],
+                        [['Leonardo', 'da Vinci', 'Head of a Woman', 'Italy'], 
+                         ['Leonardo', 'da Vinci', 'Last Supper', 'Italy'], 
+                         ['Leonardo', 'da Vinci', 'Mona Lisa', 'Italy'], 
+                         ['Michelangelo', 'Simoni', None, 'Italy']]],
                        [[[None, 'Wong', 'Walter']], # 4
                         [[None, 'Walter', 'Wong']],
                         [['Walter', 'Wong', None]],
