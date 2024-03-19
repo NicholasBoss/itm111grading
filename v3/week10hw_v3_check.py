@@ -319,7 +319,7 @@ else:
                         query3_clause_list.append(f"GROUP BY Clause NOT used")
                     if not command.lower().__contains__('order by'):
                         query3_clause_list.append(f"ORDER BY Clause NOT used")
-                    if not command.lower().__contains__('order by sum(quantity)') or not command.lower().__contains__('order by sum(quantity) asc'):
+                    if not command.lower().__contains__('order by sum(quantity)') and not command.lower().__contains__('order by sum(quantity) asc'):
                         query3_clause_list.append(f"SUM(quantity) NOT used in ORDER BY Clause")
                 
             if a_number == 6: # Query 4
