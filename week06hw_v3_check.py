@@ -14,7 +14,7 @@ mydb = mysql.connector.connect(
 
 # print("Connected to the database")
 
-answer = open(f"week11answers.txt", "w")
+answer = open(f"week06answers.txt", "w")
 
 # print("***********************************")
 
@@ -22,9 +22,7 @@ answer = open(f"week11answers.txt", "w")
 mycursor = mydb.cursor()
 
 
-alias_counter = 0
-total_aliases = 1
-total_queries = 29
+total_queries = 41
 
 # open the test folder and read the files inside
 directory = 'tempgrades'
@@ -82,13 +80,13 @@ else:
         sqlCommands = [command for command in sqlCommands if command.lower().startswith('use') or command.lower().startswith('drop') or command.lower().startswith('create') or command.lower().startswith('insert') or command.lower().startswith('update') or command.lower().startswith('delete')]
         
         erd_count = 0
-        total_erd_count = 20
+        total_erd_count = 28
         drop_count = 0
-        total_drop_count = 10
+        total_drop_count = 14
         create_count = 0
-        total_create_count = 10
+        total_create_count = 14
         insert_count = 0
-        total_insert_count = 10
+        total_insert_count = 13
         mydb_count = 0
 
         
@@ -104,7 +102,7 @@ else:
             if mydb_count > 0:
                 break
             if command.lower().__contains__('mydb'):
-                answer.write("`mydb` database name found. Please switch this to be named university\n")
+                answer.write("`mydb` database name found. Please switch this to be named `film`\n")
                 answer.write("Skipping ERD check...\n")
                 mydb_count += 1
                 continue
@@ -167,16 +165,14 @@ else:
             # print(f"[{command}]")
         # answer.write("--------RESULTS-------\n")
         answer.write("---------ERD----------\n")
-        answer.write("ERD statements can be between 8 and 10\n")
-        answer.write(f"{drop_count}/{total_drop_count} of 10 total possible DROP Statements Written\n")
+        answer.write(f"{drop_count}/{total_drop_count} of 14 total possible DROP Statements Written\n")
         answer.write(f"{create_count}/{total_create_count} of 10 total possible CREATE Statements Written\n")
         answer.write("-------INSERTS--------\n")
-        answer.write("Insert statments can be between 7 and 10\n")
-        answer.write(f"{insert_count}/{total_insert_count} of 10 total possible INSERT Statements Written\n")
+        answer.write(f"{insert_count}/{total_insert_count} of 13 total possible INSERT Statements Written\n")
         answer.write("-----FINAL TOTALS-----\n")
-        answer.write(f"{erd_count}/{total_erd_count} of 20 total possible ERD Statements Written\n")
-        answer.write(f"{number}/{total_queries} of 29 total possible Statements Written\n")
-        answer.write(f"{correct_answer_count}/{total_queries} of 29 total possible Statements Correct\n")
+        answer.write(f"{erd_count}/{total_erd_count} of 28 total possible ERD Statements Written\n")
+        answer.write(f"{number}/{total_queries} of 41 total possible Statements Written\n")
+        answer.write(f"{correct_answer_count}/{total_queries} of 41 total possible Statements Correct\n")
 
         # print(f"{alias_counter}/{total_aliases} Aliases used")
         alias_counter = 0
@@ -198,7 +194,7 @@ else:
         for filename in os.listdir(directory):
             os.remove(f"{directory}/{filename}")
         print("Files Deleted")
-        answer = open(f"week11answers.txt", "w")
+        answer = open(f"week06answers.txt", "w")
         answer.close()
     else:
         print("Files Kept")

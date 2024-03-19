@@ -505,7 +505,7 @@ else:
         for filename in os.listdir(directory):
             os.remove(f"{directory}/{filename}")
         print("Files Deleted")
-        answer = open(f"week08answers.txt", "w")
+        answer = open(f"week07answers.txt", "w")
         answer.close()
     else:
         print("Files Kept")
