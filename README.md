@@ -51,6 +51,6 @@ You must use the mysql.connector library. You can install it using:
 pip install mysql-connector-python
 ```
 
-To run the application, choose the particular week you are grading and click the play button:
+To run the application, choose the particular week you are grading and click the play button
 
 If everything has been successfully installed, the application will run.
