@@ -188,6 +188,8 @@ else:
             file_contents = file_contents.replace("select", "-- ~\nSELECT")
             file_contents = file_contents.replace("(-- ~\nSELECT", "(SELECT")
             file_contents = file_contents.replace("(-- ~\nselect", "(SELECT")
+            file_contents = file_contents.replace("UNION ALL\n-- ~\nSELECT", "UNION ALL\nSELECT")
+            file_contents = file_contents.replace("UNION ALL\n-- ~\nselect", "UNION ALL\nSELECT")
             file_contents = file_contents.replace(";", ";\n-- ~")
             edit_file.seek(0)
             edit_file.write(file_contents)
