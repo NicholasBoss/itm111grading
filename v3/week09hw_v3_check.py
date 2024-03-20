@@ -112,8 +112,12 @@ else:
         file_contents = edit_file.read()
         # Make changes to file_contents as needed
         if not file_contents.__contains__('-- ~'):
-            file_contents = file_contents.lower().replace("use", "-- ~\nUSE")
-            file_contents = file_contents.lower().replace("select", "-- ~\nSELECT")
+            file_contents = file_contents.replace("USE", "-- ~\nUSE")
+            file_contents = file_contents.replace("use", "-- ~\nUSE")
+            file_contents = file_contents.replace("SELECT", "-- ~\nSELECT")
+            file_contents = file_contents.replace("select", "-- ~\nSELECT")
+            file_contents = file_contents.replace("(-- ~\nSELECT", "(SELECT")
+            file_contents = file_contents.replace("(-- ~\nselect", "(SELECT")
             file_contents = file_contents.replace(";", ";\n-- ~")
             edit_file.seek(0)
             edit_file.write(file_contents)
