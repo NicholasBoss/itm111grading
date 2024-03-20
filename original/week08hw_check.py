@@ -212,7 +212,7 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query5_clause_list.append(f"Alias NOT used")
+                        query1_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query1_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('round'):
@@ -223,7 +223,7 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query5_clause_list.append(f"Alias NOT used")
+                        query2_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query2_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('round'):
@@ -241,7 +241,7 @@ else:
                             if word.lower() == 'as':
                                 alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query5_clause_list.append(f"Alias NOT used")
+                        query3_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query3_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('date_format'):
@@ -251,7 +251,7 @@ else:
                     if not command.lower().__contains__('\'%M %e, %Y\''):
                         query3_function_list.append(f"Date format NOT correct")
                     if not command.lower().__contains__('subscriptionLength MONTH'):
-                        query2_function_list.append(f"MONTH timeunit NOT used")
+                        query3_function_list.append(f"MONTH timeunit NOT used")
             
             if a_number == 5 and not command.lower().__contains__('use'):
                 if not command.lower().__contains__('use'):
@@ -262,15 +262,15 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query5_clause_list.append(f"Alias NOT used")
+                        query4_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
-                        query5_clause_list.append(f"FROM Clause NOT used")
+                        query4_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('order by'):
-                        query5_clause_list.append(f"ORDER BY Clause NOT used")
+                        query4_clause_list.append(f"ORDER BY Clause NOT used")
                     if not command.lower().__contains__('limit'):
-                        query5_clause_list.append(f"LIMIT Clause NOT used")
+                        query4_clause_list.append(f"LIMIT Clause NOT used")
                     if not command.lower().__contains__('substring'):
-                        query5_function_list.append(f"SUBSTRING Function NOT used")
+                        query4_function_list.append(f"SUBSTRING Function NOT used")
                     
             if a_number == 7: # Query 5
                 if command.lower().__contains__('select'):
