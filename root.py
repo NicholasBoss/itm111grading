@@ -17,7 +17,7 @@ directory = os.getcwd()
 # check to see what system I'm using
 name = platform.system()
 if name == 'Linux' or name == 'Darwin':
-    filename = f"{directory}/code/week1/root.sql"
+    filename = f"{directory}/root.sql"
 elif name == 'Windows':
     filename = f"{directory}\\root.sql"
 
@@ -50,5 +50,9 @@ studentcursor = student.cursor()
 studentcursor.execute("SHOW DATABASES")
 output = studentcursor.fetchall()
 # print the databases
+count = 0
 for x in output:
+    count += 1
     print(x)
+
+print(f"{count} databases found")
