@@ -162,8 +162,9 @@ if os_name == 'Windows':
     answer = open(f"{directory}\\week10answers.txt", "w")
 
 elif os_name == 'Linux' or os_name == 'Darwin':
-    directory = os.getcwd() + '/v3/tempgrades'
-    answer = open(f"{directory}/v3/week10answers.txt", "w")
+    directory = os.getcwd() + '/v3'
+    grading_directory = os.getcwd() + '/v3/tempgrades'
+    answer = open(f"{directory}/week10answers.txt", "w")
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(directory):
     print("No Directory\n")
@@ -182,10 +183,10 @@ else:
     
     file_count = 0
    
-    for filename in os.listdir(directory):
+    for filename in os.listdir(grading_directory):
 
         file_count += 1 # increment the counter
-        edit_file = open(f"{directory}/{filename}", "r+")
+        edit_file = open(f"{grading_directory}/{filename}", "r+")
         file_contents = edit_file.read()
         # check to see if delimiter exists
         if not file_contents.__contains__('-- ~'):
@@ -205,7 +206,7 @@ else:
             # print("Delimiter Found")
             pass
 
-        f = open(f"{directory}/{filename}", "r")
+        f = open(f"{grading_directory}/{filename}", "r")
             
         answer.write("***********************************\n")
         answer.write(f"File: {filename}\n")
@@ -242,7 +243,7 @@ else:
         
 
 
-        # print(sqlCommands)
+        print(sqlCommands)
         # filter out SELECT @ and SELECT @@ commands
         sqlCommands = [command for command in sqlCommands if not command.lower().startswith('select @') and not command.lower().startswith('select @@')]
         
@@ -265,11 +266,13 @@ else:
         query5_function_list = []
         query6_clause_list = []
         query6_function_list = []
+
+        print(f"Filtered List: {sqlCommands}")
         
         for command in sqlCommands:
             a_number += 1
             
-            # print(f"{a_number}. {command}")
+            print(f"{a_number}. {command}")
             if a_number == 1 and not command.lower().__contains__('use'):
                 answer.write(f"USE bike; Statement NOT FOUND\n")
 
@@ -410,7 +413,7 @@ else:
             new_query6c_list = format_list(query6_clause_list)
 
             # print(new_query6c_list)
-
+            output = ''
             try:
                 mycursor.execute(command)
             except mysql.connector.Error as e:
@@ -424,7 +427,9 @@ else:
                 answer.write("---------------------\n")
                 
                 break
-            output = mycursor.fetchall()
+            if a_number not in(1,5):
+                output = mycursor.fetchall()
+           
             if len(output) == 0 and command.lower().__contains__('select'):
                 answer.write(f"Query {number + 1}. No results returned\n")
                 number += 1
