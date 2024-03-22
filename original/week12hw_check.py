@@ -24,8 +24,6 @@ mydb = mysql.connector.connect(
 
 # print("Connected to the database")
 
-answer = open(f"week12answers.txt", "w")
-
 # print("***********************************")
 
 # Create a cursor
@@ -79,9 +77,11 @@ correct_answer_list = [[['Preston', 'Larsen', 'September 22, 1996'], # 1
 os_name = platform.system()
 if os_name == 'Windows':
     directory = os.getcwd() + '\\tempgrades'
+    answer = open(f"{directory}\\week12answers.txt", "w")
 
 elif os_name == 'Linux' or os_name == 'Darwin':
     directory = os.getcwd() + '/original/tempgrades'
+    answer = open(f"{directory}/original/week12answers.txt", "w")
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(directory):
     print("No Directory\n")

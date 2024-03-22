@@ -23,7 +23,6 @@ mydb = mysql.connector.connect(
 
 # print("Connected to the database")
 
-answer = open(f"week09answers.txt", "w")
 
 # print("***********************************")
 
@@ -90,9 +89,11 @@ total_queries = 7
 os_name = platform.system()
 if os_name == 'Windows':
     directory = os.getcwd() + '\\tempgrades'
+    answer = open(f"{directory}\\week09answers.txt", "w")
 
 elif os_name == 'Linux' or os_name == 'Darwin':
     directory = os.getcwd() + '/v3/tempgrades'
+    answer = open(f"{directory}/v3/week09answers.txt", "w")
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(directory):
     print("No Directory\n")
