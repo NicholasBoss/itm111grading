@@ -158,7 +158,8 @@ total_queries = 6
 # open the test folder and read the files inside
 os_name = platform.system()
 if os_name == 'Windows':
-    directory = os.getcwd() + '\\tempgrades'
+    directory = os.getcwd()
+    grading_directory = os.getcwd() + '\\tempgrades'
     answer = open(f"{directory}\\week10answers.txt", "w")
 
 elif os_name == 'Linux' or os_name == 'Darwin':
@@ -166,13 +167,13 @@ elif os_name == 'Linux' or os_name == 'Darwin':
     grading_directory = os.getcwd() + '/v3/tempgrades'
     answer = open(f"{directory}/week10answers.txt", "w")
 # if directory doesn't exist, write no files to grade
-if not os.path.exists(directory):
+if not os.path.exists(grading_directory):
     print("No Directory\n")
-    os.makedirs(directory)
+    os.makedirs(grading_directory)
     print("Directory Created\n")
 
 # if the directory is empty, write no files to grade
-if not os.listdir(directory):
+if not os.listdir(grading_directory):
     # answer.write("No Files to Grade\n")
     print("No Files to Grade\n")
 
@@ -243,7 +244,7 @@ else:
         
 
 
-        print(sqlCommands)
+        # print(sqlCommands)
         # filter out SELECT @ and SELECT @@ commands
         sqlCommands = [command for command in sqlCommands if not command.lower().startswith('select @') and not command.lower().startswith('select @@')]
         
@@ -267,12 +268,12 @@ else:
         query6_clause_list = []
         query6_function_list = []
 
-        print(f"Filtered List: {sqlCommands}")
+        # print(f"Filtered List: {sqlCommands}")
         
         for command in sqlCommands:
             a_number += 1
             
-            print(f"{a_number}. {command}")
+            # print(f"{a_number}. {command}")
             if a_number == 1 and not command.lower().__contains__('use'):
                 answer.write(f"USE bike; Statement NOT FOUND\n")
 

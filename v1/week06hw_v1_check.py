@@ -27,20 +27,22 @@ total_queries = 41
 # open the test folder and read the files inside
 os_name = platform.system()
 if os_name == 'Windows':
-    directory = os.getcwd() + '\\tempgrades'
-    answer = open(f"{directory}\\week06answers.txt", "w")
+    directory = os.getcwd()
+    grading_directory = os.getcwd() + '\\tempgrades'
+    answer = open(f"{directory}\\week10answers.txt", "w")
 
 elif os_name == 'Linux' or os_name == 'Darwin':
-    directory = os.getcwd() + '/v3/tempgrades'
-    answer = open(f"{directory}/v3/week06answers.txt", "w")
+    directory = os.getcwd() + '/v1'
+    grading_directory = os.getcwd() + '/v1/tempgrades'
+    answer = open(f"{directory}/week10answers.txt", "w")
 # if directory doesn't exist, write no files to grade
-if not os.path.exists(directory):
+if not os.path.exists(grading_directory):
     print("No Directory\n")
-    os.makedirs(directory)
+    os.makedirs(grading_directory)
     print("Directory Created\n")
 
 # if the directory is empty, write no files to grade
-if not os.listdir(directory):
+if not os.listdir(grading_directory):
     # answer.write("No Files to Grade\n")
     print("No Files to Grade\n")
 
@@ -51,10 +53,10 @@ else:
     
     file_count = 0
    
-    for filename in os.listdir(directory):
+    for filename in os.listdir(grading_directory):
 
         file_count += 1 # increment the counter
-        edit_file = open(f"{directory}/{filename}", "r+")
+        edit_file = open(f"{grading_directory}/{filename}", "r+")
         file_contents = edit_file.read()
         # Make changes to file_contents as needed
         if not file_contents.__contains__('-- ~'):
@@ -72,7 +74,7 @@ else:
         else:
             edit_file.close()
             
-        f = open(f"{directory}/{filename}", "r")
+        f = open(f"{grading_directory}/{filename}", "r")
             
         answer.write("***********************************\n")
         answer.write(f"File: {filename}\n")
