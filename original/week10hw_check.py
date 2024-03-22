@@ -99,7 +99,7 @@ if os_name == 'Windows':
     directory = os.getcwd() + '\\tempgrades'
 
 elif os_name == 'Linux' or os_name == 'Darwin':
-    directory = os.getcwd() + '/tempgrades'
+    directory = os.getcwd() + '/original/tempgrades'
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(directory):
     print("No Directory\n")
