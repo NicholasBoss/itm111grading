@@ -727,9 +727,11 @@ else:
         f.close()
         for filename in os.listdir(grading_directory):
             os.remove(f"{grading_directory}/{filename}")
+        if os_name == 'Windows':
+            os.remove(f"{directory}\\week12answers.txt")
+        elif os_name == 'Linux' or os_name == 'Darwin':
+            os.remove(f"{directory}/week12answers.txt")
         print("Files Deleted")
-        answer = open(f"week12answers.txt", "w")
-        answer.close()
     else:
         f.close()
         print("Files Kept")

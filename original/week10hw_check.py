@@ -488,11 +488,14 @@ else:
     f.close()
     delete_files = input("Would you like to delete the files in the tempgrades folder? (yes/no): ")
     if delete_files.lower() == "yes":
+        f.close()
         for filename in os.listdir(grading_directory):
             os.remove(f"{grading_directory}/{filename}")
+        if os_name == 'Windows':
+            os.remove(f"{directory}\\week10answers.txt")
+        elif os_name == 'Linux' or os_name == 'Darwin':
+            os.remove(f"{directory}/week10answers.txt")
         print("Files Deleted")
-        answer = open(f"week10answers.txt", "w")
-        answer.close()
     else:
         f.close()
         print("Files Kept")
