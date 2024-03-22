@@ -323,7 +323,7 @@ else:
                 answer.write("---------------------\n")
                 
                 break
-            if a_number not in(1,5):
+            if a_number not in(1,5,8):
                 output = mycursor.fetchall()
             # if the commans was a SELECT statement, and it didn't return
             # any results, print that no results were returned in the output list
