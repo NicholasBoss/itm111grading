@@ -1,5 +1,6 @@
 import mysql.connector
 import os
+import platform
 
 
 # with open('week10hw.sql', 'r') as f:
@@ -25,7 +26,12 @@ mycursor = mydb.cursor()
 total_queries = 28
 
 # open the test folder and read the files inside
-directory = 'tempgrades'
+os_name = platform.system()
+if os_name == 'Windows':
+    directory = os.getcwd() + '\\tempgrades'
+
+elif os_name == 'Linux' or os_name == 'Darwin':
+    directory = os.getcwd() + '/tempgrades'
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(directory):
     print("No Directory\n")

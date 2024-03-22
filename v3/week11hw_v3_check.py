@@ -1,5 +1,6 @@
 import mysql.connector
 import os
+import platform
 
 
 # with open('week10hw.sql', 'r') as f:
@@ -27,7 +28,12 @@ total_aliases = 1
 total_queries = 29
 
 # open the test folder and read the files inside
-directory = 'tempgrades'
+os_name = platform.system()
+if os_name == 'Windows':
+    directory = os.getcwd() + '\\tempgrades'
+
+elif os_name == 'Linux' or os_name == 'Darwin':
+    directory = os.getcwd() + '/tempgrades'
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(directory):
     print("No Directory\n")
@@ -54,17 +60,11 @@ else:
         # Make changes to file_contents as needed
         if not file_contents.__contains__('-- ~'):
             file_contents = file_contents.replace("USE", "-- ~\nUSE")
-            file_contents = file_contents.replace("use", "-- ~\nUSE")
             file_contents = file_contents.replace("SET", "-- ~\nSET")
-            file_contents = file_contents.replace("set", "-- ~\nSET")
             file_contents = file_contents.replace("-- ~\nSET", "SET")
-            file_contents = file_contents.replace("-- ~\nset", "SET")
             file_contents = file_contents.replace("DROP", "-- ~\nDROP")
-            file_contents = file_contents.replace("drop", "-- ~\nDROP")
             file_contents = file_contents.replace("CREATE", "-- ~\nCREATE")
-            file_contents = file_contents.replace("create", "-- ~\nCREATE")
             file_contents = file_contents.replace("INSERT", "-- ~\nINSERT")
-            file_contents = file_contents.replace("insert", "-- ~\nINSERT")
             file_contents = file_contents.replace(";", ";\n-- ~")
             edit_file.seek(0)
             edit_file.write(file_contents)
@@ -120,7 +120,7 @@ else:
         # print(sqlCommands)
         
         #filter out SET commands
-        sqlCommands = [command for command in sqlCommands if not command.lower().startswith('set')]
+        sqlCommands = [command for command in sqlCommands if (not command.lower().startswith('set') and command.lower().startswith('set @'))]
     
         correct_answer_count = 0
         number = 0

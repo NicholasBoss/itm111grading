@@ -1,6 +1,7 @@
 import mysql.connector
 import decimal
 import os
+import platform
 
 
 def format_list(list):
@@ -101,7 +102,12 @@ total_aliases = 1
 total_queries = 10
 
 # open the test folder and read the files inside
-directory = 'tempgrades'
+os_name = platform.system()
+if os_name == 'Windows':
+    directory = os.getcwd() + '\\tempgrades'
+
+elif os_name == 'Linux' or os_name == 'Darwin':
+    directory = os.getcwd() + '/tempgrades'
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(directory):
     print("No Directory\n")

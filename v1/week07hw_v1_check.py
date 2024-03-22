@@ -1,6 +1,7 @@
 import mysql.connector
 import decimal
 import os
+import platform
 
 
 def format_list(list):
@@ -101,7 +102,12 @@ total_aliases = 1
 total_queries = 10
 
 # open the test folder and read the files inside
-directory = 'tempgrades'
+os_name = platform.system()
+if os_name == 'Windows':
+    directory = os.getcwd() + '\\tempgrades'
+
+elif os_name == 'Linux' or os_name == 'Darwin':
+    directory = os.getcwd() + '/tempgrades'
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(directory):
     print("No Directory\n")
@@ -128,15 +134,10 @@ else:
         # Make changes to file_contents as needed
         if not file_contents.__contains__('-- ~'):
             file_contents = file_contents.replace("USE", "-- ~\nUSE")
-            file_contents = file_contents.replace("use", "-- ~\nUSE")
             file_contents = file_contents.replace("SELECT", "-- ~\nSELECT")
-            file_contents = file_contents.replace("select", "-- ~\nSELECT")
             file_contents = file_contents.replace("INSERT", "-- ~\nINSERT")
-            file_contents = file_contents.replace("insert", "-- ~\nINSERT")
             file_contents = file_contents.replace("UPDATE", "-- ~\nUPDATE")
-            file_contents = file_contents.replace("update", "-- ~\nUPDATE")
             file_contents = file_contents.replace("DELETE", "-- ~\nDELETE")
-            file_contents = file_contents.replace("delete", "-- ~\nDELETE")
             file_contents = file_contents.replace(";", ";\n-- ~")
             edit_file.seek(0)
             edit_file.write(file_contents)

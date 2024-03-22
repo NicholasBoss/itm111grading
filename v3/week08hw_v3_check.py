@@ -1,6 +1,7 @@
 import mysql.connector
 import decimal
 import os
+import platform
 
 
 def format_list(list):
@@ -30,7 +31,7 @@ answer = open(f"week08answers.txt", "w")
 mycursor = mydb.cursor()
 
 
-correct_answer_list = [[['Fishing in the Mojave', '8.79'], # 1
+correct_answer_list = [[[['Fishing in the Mojave', '8.79'], # 1
                         ['Car Racing Made Easy', '9.73'], 
                         ['Pine Cone Computing', '11.03'], 
                         ['Cooking Like Mad', '11.34'], 
@@ -38,6 +39,14 @@ correct_answer_list = [[['Fishing in the Mojave', '8.79'], # 1
                         ['Beautiful Birds', '7.84'], 
                         ['Corn Shucking for Fun and Profit', '9.48'], 
                         ['MySQL Magic', '6.90']],
+                        [['MySQL Magic', '10.95', '6.90'], 
+                         ['If Only I Could Sing', '12.45', '7.84'], 
+                         ['Beautiful Birds', '12.45', '7.84'], 
+                         ['Fishing in the Mojave', '13.95', '8.79'], 
+                         ['Corn Shucking for Fun and Profit', '15.05', '9.48'], 
+                         ['Car Racing Made Easy', '15.45', '9.73'], 
+                         ['Pine Cone Computing', '17.50', '11.03'], 
+                         ['Cooking Like Mad', '18.00', '11.34']]],
                        [[1, '10'], # 2
                         [2, '10'], 
                         [3, '9'], 
@@ -87,7 +96,35 @@ correct_answer_list = [[['Fishing in the Mojave', '8.79'], # 1
                          ['- 2016'], 
                          ['- 2016'], 
                          ['- 2016'], 
-                         ['- 2015/2016']]],
+                         ['- 2015/2016']],
+                         [['- 2016'], 
+                         ['2016'], 
+                         ['2016'], 
+                         ['2016'], 
+                         ['2016'], 
+                         ['2016'], 
+                         ['2016'], 
+                         ['2016'], 
+                         ['2016'], 
+                         ['2016'], 
+                         ['2016'], 
+                         ['2016'], 
+                         ['2016'], 
+                         ['2015/2016']],
+                         [['Trek 820 - 2016', 1, '- 2016'], 
+                          ['Ritchey Timberwolf Frameset - 2016', 2, '- 2016'], 
+                          ['Surly Wednesday Frameset - 2016', 3, '- 2016'], 
+                          ['Trek Fuel EX 8 29 - 2016', 4, '- 2016'], 
+                          ['Heller Shagamaw Frame - 2016', 5, '- 2016'], 
+                          ['Surly Ice Cream Truck Frameset - 2016', 6, '- 2016'], 
+                          ['Trek Slash 8 27.5 - 2016', 7, '- 2016'], 
+                          ['Trek Remedy 29 Carbon Frameset - 2016', 8, '- 2016'], 
+                          ['Trek Conduit+ - 2016', 9, '- 2016'], 
+                          ['Surly Straggler - 2016', 10, '- 2016'], 
+                          ['Surly Straggler 650b - 2016', 11, '- 2016'], 
+                          ['Electra Townie Original 21D - 2016', 12, '- 2016'], 
+                          ['Electra Cruiser 1 (24-Inch) - 2016', 13, '- 2016'], 
+                          ["Electra Girl's Hawaii 1 (16-inch) - 2015/2016", 14, '- 2015/2016']]],
                        [["Trek Checkpoint ALR 4 Women's - 2019", '$1,699.99', '$340.00', '$194.28'], # 5
                         ['Trek Checkpoint ALR 5 - 2019', '$1,999.99', '$400.00', '$228.57'], 
                         ["Trek Checkpoint ALR 5 Women's - 2019", '$1,999.99', '$400.00', '$228.57'], 
@@ -101,7 +138,12 @@ total_aliases = 8
 total_queries = 5
 
 # open the test folder and read the files inside
-directory = 'tempgrades'
+os_name = platform.system()
+if os_name == 'Windows':
+    directory = os.getcwd() + '\\tempgrades'
+
+elif os_name == 'Linux' or os_name == 'Darwin':
+    directory = os.getcwd() + '/tempgrades'
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(directory):
     print("No Directory\n")
@@ -128,11 +170,8 @@ else:
         # Make changes to file_contents as needed
         if not file_contents.__contains__('-- ~'):
             file_contents = file_contents.replace("USE", "-- ~\nUSE")
-            file_contents = file_contents.replace("use", "-- ~\nUSE")
             file_contents = file_contents.replace("SELECT", "-- ~\nSELECT")
-            file_contents = file_contents.replace("select", "-- ~\nSELECT")
             file_contents = file_contents.replace("(-- ~\nSELECT", "(SELECT")
-            file_contents = file_contents.replace("(-- ~\nselect", "(SELECT")
             file_contents = file_contents.replace(";", ";\n-- ~")
             edit_file.seek(0)
             edit_file.write(file_contents)
@@ -214,7 +253,7 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query5_clause_list.append(f"Alias NOT used")
+                        query1_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query1_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('round'):
@@ -225,7 +264,7 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query5_clause_list.append(f"Alias NOT used")
+                        query2_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query2_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('round'):
@@ -275,15 +314,15 @@ else:
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query5_clause_list.append(f"Alias NOT used")
+                        query4_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
-                        query5_clause_list.append(f"FROM Clause NOT used")
+                        query4_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('order by'):
-                        query5_clause_list.append(f"ORDER BY Clause NOT used")
+                        query4_clause_list.append(f"ORDER BY Clause NOT used")
                     if not command.lower().__contains__('limit'):
-                        query5_clause_list.append(f"LIMIT Clause NOT used")
+                        query4_clause_list.append(f"LIMIT Clause NOT used")
                     if not command.lower().__contains__('substring'):
-                        query5_function_list.append(f"SUBSTRING Function NOT used")
+                        query4_function_list.append(f"SUBSTRING Function NOT used")
                     
             if a_number == 7: # Query 5
                 if command.lower().__contains__('select'):

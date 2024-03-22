@@ -1,6 +1,7 @@
 import mysql.connector
 import decimal
 import os
+import platform
 
 
 def format_list(list):
@@ -145,8 +146,10 @@ correct_answer_list = [[[[939]],[['939']]], #1
                         [['Research', 'Staelin', 'Arie'], 
                          ['Research', 'Kambil', 'Hilary']],
                         [['Arie', 'Staelin', 'Research'], 
-                         ['Hilary', 'Kambil', 'Research']
-                        ]]]
+                         ['Hilary', 'Kambil', 'Research']],
+                        [['Arie', 'Staelin'], 
+                         ['Hilary', 'Kambil']]
+                          ]]
 
 
 alias_counter = 0
@@ -154,7 +157,12 @@ total_aliases = 5
 total_queries = 6
 
 # open the test folder and read the files inside
-directory = 'tempgrades'
+os_name = platform.system()
+if os_name == 'Windows':
+    directory = os.getcwd() + '\\tempgrades'
+
+elif os_name == 'Linux' or os_name == 'Darwin':
+    directory = os.getcwd() + '/tempgrades'
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(directory):
     print("No Directory\n")
@@ -181,11 +189,8 @@ else:
         # check to see if delimiter exists
         if not file_contents.__contains__('-- ~'):
             file_contents = file_contents.replace("SET", "-- ~\nSET") 
-            file_contents = file_contents.replace("set", "-- ~\nSET")
             file_contents = file_contents.replace("USE", "-- ~\nUSE") 
-            file_contents = file_contents.replace("use", "-- ~\nUSE")
             file_contents = file_contents.replace("SELECT", "-- ~\nSELECT")
-            file_contents = file_contents.replace("select", "-- ~\nSELECT")
             file_contents = file_contents.replace("(-- ~\nSELECT", "(SELECT")
             file_contents = file_contents.replace("(-- ~\nselect", "(SELECT")
             file_contents = file_contents.replace("UNION ALL\n-- ~\nSELECT", "UNION ALL\nSELECT")
