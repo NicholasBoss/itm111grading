@@ -4,6 +4,10 @@ This is for use for any graders of the ITM 111 (Intro to Databases) course at BY
 
 # System Requirements
 
+Access to the AWS instance that hosts MySQL Workbench
+
+OR
+
 VS Code
 
 Python (Make sure you add it to the path/environment variables when installing)
@@ -30,22 +34,16 @@ film
 
 university
 
-The student user is created in the Local Instance tab (Root User):
+The student user and database access can be created from the files in the `setup` folder
 
-```
-CREATE USER 'student'@'localhost';
-GRANT ALL ON bike.* TO 'student'@'localhost';
-GRANT ALL ON employees.* TO 'student'@'localhost';
-GRANT ALL ON magazine.* TO 'student'@'localhost';
-GRANT ALL ON v_art.* TO 'student'@'localhost';
-GRANT ALL ON world.* TO 'student'@'localhost';
-GRANT ALL ON film.* TO 'student'@'localhost';
-GRANT ALL ON university.* TO 'student'@'localhost';
-```
+On line 9 in root.py, you may need to replace the password with your root password if you are on a local machine. If you are using AWS to grade, you can ignore this.
+
 
 # How to Access the Application
 
-You must use the mysql.connector library. You can install it using:
+If you are on the AWS instance, the mysql.connector library is already installed.
+
+If you are on a local machine, you must install the mysql.connector library:
 
 ```
 pip install mysql-connector-python
