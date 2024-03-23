@@ -530,6 +530,7 @@ else:
                 
                 break
             output = mycursor.fetchall()
+            mydb.commit()
             if len(output) == 0 and (command.lower().__contains__('drop')):
                 # answer.write(f"Query {number + 1}. DROP Successful\n")
                 number += 1

@@ -325,6 +325,7 @@ else:
                 break
             if a_number not in(1,5,8):
                 output = mycursor.fetchall()
+                mydb.commit()
             # if the commans was a SELECT statement, and it didn't return
             # any results, print that no results were returned in the output list
             if len(output) == 0 and command.lower().__contains__('select'):

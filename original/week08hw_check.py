@@ -328,6 +328,7 @@ else:
                 break
             if a_number not in(1,5):
                 output = mycursor.fetchall()
+                mydb.commit()
             if len(output) == 0 and command.lower().__contains__('select'):
                 answer.write(f"Query {number + 1}. No results returned\n")
                 number += 1

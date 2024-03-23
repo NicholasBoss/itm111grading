@@ -359,6 +359,7 @@ else:
                 break
             if a_number not in(1,5):
                 output = mycursor.fetchall()
+                mydb.commit()
             # print(output)
 
             # if the output is empty, no error was found and 

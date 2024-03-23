@@ -148,6 +148,7 @@ else:
                 answer.write("-------RESULTS-------\n")
                 break
             output = mycursor.fetchall()
+            mydb.commit()
             # print(output)
 
             # if the output is empty, no error was found and 

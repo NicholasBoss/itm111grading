@@ -63,7 +63,6 @@ else:
         if not file_contents.__contains__('-- ~'):
             file_contents = file_contents.replace("USE", "-- ~\nUSE")
             file_contents = file_contents.replace("SET", "-- ~\nSET")
-            file_contents = file_contents.replace("-- ~\nSET", "SET")
             file_contents = file_contents.replace("DROP", "-- ~\nDROP")
             file_contents = file_contents.replace("CREATE", "-- ~\nCREATE")
             file_contents = file_contents.replace("INSERT", "-- ~\nINSERT")
@@ -122,7 +121,7 @@ else:
         # print(sqlCommands)
         
         #filter out SET commands
-        sqlCommands = [command for command in sqlCommands if (not command.lower().startswith('set') and command.lower().startswith('set @'))]
+        sqlCommands = [command for command in sqlCommands if (not command.lower().startswith('set'))]
     
         correct_answer_count = 0
         number = 0
@@ -133,11 +132,13 @@ else:
         for command in sqlCommands:
             a_number += 1
             
-            # answer.write(f"{a_number}. {command}\n")
+            # answer.write(f"COMMAND: {a_number}. {command}\n")
         
 
             try:
                 mycursor.execute(command)
+                # commit the changes
+                mydb.commit()
             except mysql.connector.Error as e:
                 # number the queries run and print the error
                 answer.write("Error found. Skipping to the next file...\n")
