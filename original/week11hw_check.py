@@ -99,7 +99,6 @@ else:
         mydb_count = 0
 
         command_num = 0
-        drop_schema = False
 
         for command in sqlCommands:
             command_num += 1
@@ -108,7 +107,6 @@ else:
                 answer.write("DROP SCHEMA university not found\n")
                 answer.write("Please add DROP SCHEMA university\n")
                 answer.write("Skipping ERD check...\n")
-                drop_schema = True
                 break
             if command.lower().startswith('drop'):
                 drop_count += 1
@@ -137,71 +135,71 @@ else:
         a_number = 0
 
     
-        if drop_schema == False:
-            for command in sqlCommands:
-                a_number += 1
-                
-                # answer.write(f"{a_number}. {command}\n")
+        
+        for command in sqlCommands:
+            a_number += 1
             
+            # answer.write(f"{a_number}. {command}\n")
+        
 
-                try:
-                    mycursor.execute(command)
-                    mydb.commit()
-                    number += 1
-                    correct_answer_count += 1
-                except mysql.connector.Error as e:
-                    # number the queries run and print the error
-                    answer.write("Error found. Skipping to the next file...\n")
-                    answer.write("-------ERROR DETAILS-------\n")
-                    answer.write(f"Query {number + 1}. Error: {e}\n")
-                    
-                    answer.write("------QUERY------\n")
-                    answer.write(f"{command}\n")
-                    answer.write("-------RESULTS-------\n")
-                    break
-
+            try:
+                mycursor.execute(command)
+                mydb.commit()
+                number += 1
+                correct_answer_count += 1
+            except mysql.connector.Error as e:
+                # number the queries run and print the error
+                answer.write("Error found. Skipping to the next file...\n")
+                answer.write("-------ERROR DETAILS-------\n")
+                answer.write(f"Query {number + 1}. Error: {e}\n")
                 
-            # print(f"[{command}]")
-            # answer.write("--------RESULTS-------\n")
-            answer.write("---------ERD----------\n")
-            answer.write(f"{drop_count}/{total_drop_count}  DROP Statements Written\n")
-            answer.write(f"{create_count}/{total_create_count} CREATE Statements Written\n")
-            answer.write("-------INSERTS--------\n")
-            answer.write(f"{insert_count}/{total_insert_count} INSERT Statements Written\n")
-            answer.write("-----FINAL TOTALS-----\n")
-            answer.write(f"{erd_count}/{total_erd_count} ERD Statements Written\n")
-            answer.write(f"{number}/{total_erd_queries} Statements Written\n")
-            answer.write(f"{correct_answer_count}/{total_erd_queries} Statements Correct\n")
+                answer.write("------QUERY------\n")
+                answer.write(f"{command}\n")
+                answer.write("-------RESULTS-------\n")
+                break
 
-            # print(f"{alias_counter}/{total_aliases} Aliases used")
-            alias_counter = 0
-            answer.write("***********************************\n\n")
-        answer.write("***********************************\n")
-        answer.write(f"Total Files Graded: {file_count}\n")
-        answer.write("***********************************\n")
+            
+        # print(f"[{command}]")
+        # answer.write("--------RESULTS-------\n")
+        answer.write("---------ERD----------\n")
+        answer.write(f"{drop_count}/{total_drop_count}  DROP Statements Written\n")
+        answer.write(f"{create_count}/{total_create_count} CREATE Statements Written\n")
+        answer.write("-------INSERTS--------\n")
+        answer.write(f"{insert_count}/{total_insert_count} INSERT Statements Written\n")
+        answer.write("-----FINAL TOTALS-----\n")
+        answer.write(f"{erd_count}/{total_erd_count} ERD Statements Written\n")
+        answer.write(f"{number}/{total_erd_queries} Statements Written\n")
+        answer.write(f"{correct_answer_count}/{total_erd_queries} Statements Correct\n")
 
-        print("Grading Complete")
+        # print(f"{alias_counter}/{total_aliases} Aliases used")
+        alias_counter = 0
+        answer.write("***********************************\n\n")
+    answer.write("***********************************\n")
+    answer.write(f"Total Files Graded: {file_count}\n")
+    answer.write("***********************************\n")
 
-        answer.close()
-        # ask if user wants to delete files in the tempgrades folder
-        # if yes, delete the files
+    print("Grading Complete")
 
-        # if no, keep the files
+    answer.close()
+    # ask if user wants to delete files in the tempgrades folder
+    # if yes, delete the files
+
+    # if no, keep the files
+    f.close()
+    delete_files = input("Would you like to delete the files in the tempgrades folder? (yes/no): ")
+    if delete_files.lower() == "yes":
         f.close()
-        delete_files = input("Would you like to delete the files in the tempgrades folder? (yes/no): ")
-        if delete_files.lower() == "yes":
-            f.close()
-            for filename in os.listdir(grading_directory):
-                os.remove(f"{grading_directory}/{filename}")
-            if os_name == 'Windows':
-                os.remove(f"{directory}\\week11answers.txt")
-            elif os_name == 'Linux' or os_name == 'Darwin':
-                os.remove(f"{directory}/week11answers.txt")
-            print("Files Deleted")
-        else:
-            f.close()
-            print("Files Kept")
-        # print("***********************************")
-            
-        # print("***********************************\n")
-        # print("***********************************")
+        for filename in os.listdir(grading_directory):
+            os.remove(f"{grading_directory}/{filename}")
+        if os_name == 'Windows':
+            os.remove(f"{directory}\\week11answers.txt")
+        elif os_name == 'Linux' or os_name == 'Darwin':
+            os.remove(f"{directory}/week11answers.txt")
+        print("Files Deleted")
+    else:
+        f.close()
+        print("Files Kept")
+    # print("***********************************")
+        
+    # print("***********************************\n")
+    # print("***********************************")
