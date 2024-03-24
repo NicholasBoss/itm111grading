@@ -111,6 +111,7 @@ else:
 
         # check for the DROP SCHEMA university command
         command_num = 0
+        drop_schema = False
         
         for command in sqlCommands:
             command_num += 1
@@ -120,6 +121,7 @@ else:
                 answer.write("DROP SCHEMA university not found\n")
                 answer.write("Please add DROP SCHEMA university\n")
                 answer.write("Skipping ERD check...\n")
+                drop_schema = True
                 break
             if command.lower().startswith('drop'):
                 drop_count += 1
@@ -148,74 +150,74 @@ else:
         a_number = 0
 
     
-        
-        for command in sqlCommands:
-            a_number += 1
-            
-            # answer.write(f"COMMAND: {a_number}. {command}\n")
-        
-
-            try:
-                mycursor.execute(command)
-                # commit the changes
-                mydb.commit()
-                number += 1
-                correct_answer_count += 1
-            except mysql.connector.Error as e:
-                # number the queries run and print the error
-                answer.write("Error found. Skipping to the next file...\n")
-                answer.write("-------ERROR DETAILS-------\n")
-                answer.write(f"Query {number + 1}. Error: {e}\n")
+        if not drop_schema:
+            for command in sqlCommands:
+                a_number += 1
                 
-                answer.write("------QUERY------\n")
-                answer.write(f"{command}\n")
-                answer.write("-------RESULTS-------\n")
-                break
+                # answer.write(f"COMMAND: {a_number}. {command}\n")
             
+
+                try:
+                    mycursor.execute(command)
+                    # commit the changes
+                    mydb.commit()
+                    number += 1
+                    correct_answer_count += 1
+                except mysql.connector.Error as e:
+                    # number the queries run and print the error
+                    answer.write("Error found. Skipping to the next file...\n")
+                    answer.write("-------ERROR DETAILS-------\n")
+                    answer.write(f"Query {number + 1}. Error: {e}\n")
+                    
+                    answer.write("------QUERY------\n")
+                    answer.write(f"{command}\n")
+                    answer.write("-------RESULTS-------\n")
+                    break
+                
+                
+                # print(f"[{command}]")
+            # answer.write("--------RESULTS-------\n")
+            answer.write("---------ERD----------\n")
+            answer.write("ERD statements can be between 8 and 10\n")
+            answer.write(f"{drop_count}/{total_drop_count} of 10 total possible DROP Statements Written\n")
+            answer.write(f"{create_count}/{total_create_count} of 10 total possible CREATE Statements Written\n")
+            answer.write("-------INSERTS--------\n")
+            answer.write("Insert statments can be between 7 and 10\n")
+            answer.write(f"{insert_count}/{total_insert_count} of 10 total possible INSERT Statements Written\n")
+            answer.write("-----FINAL TOTALS-----\n")
+            answer.write(f"{erd_count}/{total_erd_count} of 20 total possible ERD Statements Written\n")
+            answer.write(f"{number}/{total_queries} of 29 total possible Statements Written\n")
+            answer.write(f"{correct_answer_count}/{total_queries} of 29 total possible Statements Correct\n")
+
+            # print(f"{alias_counter}/{total_aliases} Aliases used")
+            alias_counter = 0
+            answer.write("***********************************\n\n")
+        answer.write("***********************************\n")
+        answer.write(f"Total Files Graded: {file_count}\n")
+        answer.write("***********************************\n")
+
+        print("Grading Complete")
+
+        answer.close()
+        # ask if user wants to delete files in the tempgrades folder
+        # if yes, delete the files
+
+        # if no, keep the files
+        f.close()
+        delete_files = input("Would you like to delete the files in the tempgrades folder? (yes/no): ")
+        if delete_files.lower() == "yes":
+            f.close()
+            for filename in os.listdir(grading_directory):
+                os.remove(f"{grading_directory}/{filename}")
+            if os_name == 'Windows':
+                os.remove(f"{directory}\\week11answers.txt")
+            elif os_name == 'Linux' or os_name == 'Darwin':
+                os.remove(f"{directory}/week11answers.txt")
+            print("Files Deleted")
+        else:
+            f.close()
+            print("Files Kept")
+        # print("***********************************")
             
-            # print(f"[{command}]")
-        # answer.write("--------RESULTS-------\n")
-        answer.write("---------ERD----------\n")
-        answer.write("ERD statements can be between 8 and 10\n")
-        answer.write(f"{drop_count}/{total_drop_count} of 10 total possible DROP Statements Written\n")
-        answer.write(f"{create_count}/{total_create_count} of 10 total possible CREATE Statements Written\n")
-        answer.write("-------INSERTS--------\n")
-        answer.write("Insert statments can be between 7 and 10\n")
-        answer.write(f"{insert_count}/{total_insert_count} of 10 total possible INSERT Statements Written\n")
-        answer.write("-----FINAL TOTALS-----\n")
-        answer.write(f"{erd_count}/{total_erd_count} of 20 total possible ERD Statements Written\n")
-        answer.write(f"{number}/{total_queries} of 29 total possible Statements Written\n")
-        answer.write(f"{correct_answer_count}/{total_queries} of 29 total possible Statements Correct\n")
-
-        # print(f"{alias_counter}/{total_aliases} Aliases used")
-        alias_counter = 0
-        answer.write("***********************************\n\n")
-    answer.write("***********************************\n")
-    answer.write(f"Total Files Graded: {file_count}\n")
-    answer.write("***********************************\n")
-
-    print("Grading Complete")
-
-    answer.close()
-    # ask if user wants to delete files in the tempgrades folder
-    # if yes, delete the files
-
-    # if no, keep the files
-    f.close()
-    delete_files = input("Would you like to delete the files in the tempgrades folder? (yes/no): ")
-    if delete_files.lower() == "yes":
-        f.close()
-        for filename in os.listdir(grading_directory):
-            os.remove(f"{grading_directory}/{filename}")
-        if os_name == 'Windows':
-            os.remove(f"{directory}\\week11answers.txt")
-        elif os_name == 'Linux' or os_name == 'Darwin':
-            os.remove(f"{directory}/week11answers.txt")
-        print("Files Deleted")
-    else:
-        f.close()
-        print("Files Kept")
-    # print("***********************************")
-        
-    # print("***********************************\n")
-    # print("***********************************")
+        # print("***********************************\n")
+        # print("***********************************")
