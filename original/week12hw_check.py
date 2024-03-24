@@ -210,7 +210,7 @@ else:
         erd_number = 0
 
     
-        if not drop_schema:
+        if drop_schema == False:
             for command in sqlCommands:
                 erd_number += 1
                 

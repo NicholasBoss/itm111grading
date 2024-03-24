@@ -150,7 +150,7 @@ else:
         a_number = 0
 
     
-        if not drop_schema:
+        if drop_schema == False:
             for command in sqlCommands:
                 a_number += 1
                 
