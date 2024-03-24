@@ -115,7 +115,7 @@ else:
         
         for command in sqlCommands:
             command_num += 1
-            answer.write(f"COMMAND: {command_num}: \n{command}\n")
+            # answer.write(f"COMMAND: {command_num}: \n{command}\n")
             if command_num == 1 and not command.lower().__contains__('drop schema university'):
                 answer.write("DROP SCHEMA university not found\n")
                 drop_schema = True
@@ -135,10 +135,6 @@ else:
                 mydb_count += 1
                 continue
             
-        if drop_schema:
-            answer.write("DROP SCHEMA university not found\n")
-            answer.write("Skipping ERD check...\n")
-            break
 
         # print(sqlCommands)
         
