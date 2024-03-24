@@ -98,8 +98,16 @@ else:
         total_insert_count = 8
         mydb_count = 0
 
-        
+        command_num = 0
+
         for command in sqlCommands:
+            command_num += 1
+            if command_num == 1 and not command.lower().__contains__('drop schema if exists `university`'):
+                answer.write("-------DROP SCHEMA UNIVERSITY-------\n")
+                answer.write("DROP SCHEMA university not found\n")
+                answer.write("Please add DROP SCHEMA university\n")
+                answer.write("Skipping ERD check...\n")
+                break
             if command.lower().startswith('drop'):
                 drop_count += 1
                 erd_count += 1
