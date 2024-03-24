@@ -208,6 +208,9 @@ else:
 
             try:
                 mycursor.execute(command)
+                mydb.commit()
+                number += 1
+                correct_answer_count += 1
             except mysql.connector.Error as e:
                 # number the queries run and print the error
                 answer.write("Error found. Skipping to the next file...\n")
@@ -218,32 +221,9 @@ else:
                 answer.write(f"{command}\n")
                 answer.write("-------RESULTS-------\n")
                 break
-            output = mycursor.fetchall()
-            # print(output)
-
-            # if the output is empty, no error was found and 
-            # the command was an insert, update, or delete statement
-            # print that the command was successful
-            if len(output) == 0 and (command.lower().__contains__('drop')):
-                # answer.write(f"Query {number + 1}. DROP Successful\n")
-                number += 1
-                correct_answer_count += 1
-                continue
-            if len(output) == 0 and (command.lower().__contains__('create')):
-                # answer.write(f"Query {number + 1}. CREATE Successful\n")
-                number += 1
-                correct_answer_count += 1
-                continue
-            if len(output) == 0 and (command.lower().__contains__('insert')):
-                # answer.write(f"Query {number + 1}. INSERT Successful\n")
-                number += 1
-                correct_answer_count += 1
-                continue
-        
             
             
-            
-            # print(f"[{command}]")
+        # print(f"[{command}]")
         # answer.write("--------RESULTS-------\n")
         
         answer.write("---------ERD----------\n")
@@ -518,6 +498,7 @@ else:
 
             try:
                 mycursor.execute(command)
+                mydb.commit()
             except mysql.connector.Error as e:
                 # number the queries run and print the error
                 answer.write("Error found. Skipping to the next file...\n")
@@ -529,23 +510,8 @@ else:
                 answer.write("---------------------\n")
                 
                 break
+            
             output = mycursor.fetchall()
-            mydb.commit()
-            if len(output) == 0 and (command.lower().__contains__('drop')):
-                # answer.write(f"Query {number + 1}. DROP Successful\n")
-                number += 1
-                correct_answer_count += 1
-                continue
-            if len(output) == 0 and (command.lower().__contains__('create')):
-                # answer.write(f"Query {number + 1}. CREATE Successful\n")
-                number += 1
-                correct_answer_count += 1
-                continue
-            if len(output) == 0 and (command.lower().__contains__('insert')):
-                # answer.write(f"Query {number + 1}. INSERT Successful\n")
-                number += 1
-                correct_answer_count += 1
-                continue
             if len(output) == 0 and command.lower().__contains__('select'):
                 answer.write(f"Query {number + 1}. No results returned\n")
                 number += 1

@@ -55,9 +55,18 @@ else:
     file_count = 0
    
     for filename in os.listdir(grading_directory):
-
+        files = []
+        files.append(filename)
+        
         file_count += 1 # increment the counter
-        edit_file = open(f"{grading_directory}/{filename}", "r+")
+
+        # open the file from the list
+        files = [f"{grading_directory}/{filename}" for filename in files]
+        # print(files)
+        for file in files:
+            
+            edit_file = open(file, "r+")
+        # create a list (queue) to loop through the files
         file_contents = edit_file.read()
         # Make changes to file_contents as needed
         if not file_contents.__contains__('-- ~'):
@@ -66,6 +75,7 @@ else:
             file_contents = file_contents.replace("DROP", "-- ~\nDROP")
             file_contents = file_contents.replace("CREATE", "-- ~\nCREATE")
             file_contents = file_contents.replace("INSERT", "-- ~\nINSERT")
+            file_contents = file_contents.replace("DEFAULT CHARACTER -- ~\nSET", "DEFAULT CHARACTER SET")
             file_contents = file_contents.replace(";", ";\n-- ~")
             edit_file.seek(0)
             edit_file.write(file_contents)
@@ -99,8 +109,16 @@ else:
         total_insert_count = 10
         mydb_count = 0
 
+        # check for the DROP SCHEMA university command
+        command_num = 0
+        drop_schema = False
         
         for command in sqlCommands:
+            command_num += 1
+            answer.write(f"COMMAND: {command_num}: \n{command}\n")
+            if command_num == 1 and not command.lower().__contains__('drop schema university'):
+                answer.write("DROP SCHEMA university not found\n")
+                drop_schema = True
             if command.lower().startswith('drop'):
                 drop_count += 1
                 erd_count += 1
@@ -117,6 +135,10 @@ else:
                 mydb_count += 1
                 continue
             
+        if drop_schema:
+            answer.write("DROP SCHEMA university not found\n")
+            answer.write("Skipping ERD check...\n")
+            break
 
         # print(sqlCommands)
         
@@ -139,6 +161,8 @@ else:
                 mycursor.execute(command)
                 # commit the changes
                 mydb.commit()
+                number += 1
+                correct_answer_count += 1
             except mysql.connector.Error as e:
                 # number the queries run and print the error
                 answer.write("Error found. Skipping to the next file...\n")
@@ -149,30 +173,6 @@ else:
                 answer.write(f"{command}\n")
                 answer.write("-------RESULTS-------\n")
                 break
-            output = mycursor.fetchall()
-            mydb.commit()
-            # print(output)
-
-            # if the output is empty, no error was found and 
-            # the command was an insert, update, or delete statement
-            # print that the command was successful
-            if len(output) == 0 and (command.lower().__contains__('drop')):
-                # answer.write(f"Query {number + 1}. DROP Successful\n")
-                number += 1
-                correct_answer_count += 1
-                continue
-            if len(output) == 0 and (command.lower().__contains__('create')):
-                # answer.write(f"Query {number + 1}. CREATE Successful\n")
-                number += 1
-                correct_answer_count += 1
-                continue
-            if len(output) == 0 and (command.lower().__contains__('insert')):
-                # answer.write(f"Query {number + 1}. INSERT Successful\n")
-                number += 1
-                correct_answer_count += 1
-                continue
-        
-            
             
             
             # print(f"[{command}]")
