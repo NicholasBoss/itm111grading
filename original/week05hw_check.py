@@ -93,13 +93,21 @@ else:
         create_count = 0
 
         mydb_count = 0
+        drop_schema_count = 0
+        create_schema_count = 0
 
         
         for command in sqlCommands:
-            if command.lower().startswith('drop'):
+            if command.lower().startswith('drop schema if exists'):
+                drop_schema_count += 1
+                erd_count += 1
+            if command.lower().startswith('create schema if not exists'):
+                create_schema_count += 1
+                erd_count += 1
+            if command.lower().startswith('drop table'):
                 drop_count += 1
                 erd_count += 1
-            if command.lower().startswith('create'):
+            if command.lower().startswith('create table'):
                 create_count += 1
                 erd_count += 1
             if mydb_count > 0:
@@ -164,8 +172,10 @@ else:
             # print(f"[{command}]")
         # answer.write("--------RESULTS-------\n")
         answer.write("---------ERD----------\n")
-        answer.write(f"{drop_count} DROP Statements Written\n")
-        answer.write(f"{create_count} CREATE Statements Written\n")
+        answer.write(f"{drop_schema_count}/{1} DROP SCHEMA UNIVERSITY Statement Written\n")
+        answer.write(f"{create_schema_count}/{1} CREATE SCHEMA UNIVERSITY Statement Written\n")
+        answer.write(f"{drop_count} DROP TABLE Statements Written\n")
+        answer.write(f"{create_count} CREATE TABLE Statements Written\n")
         answer.write("-----FINAL TOTALS-----\n")
         answer.write(f"{erd_count} ERD Statements Written\n")
         answer.write(f"{number} Statements Written\n")

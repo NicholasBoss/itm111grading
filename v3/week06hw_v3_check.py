@@ -99,12 +99,21 @@ else:
         total_insert_count = 13
         mydb_count = 0
 
+        drop_schema_count = 0
+        create_schema_count = 0
+
         
         for command in sqlCommands:
-            if command.lower().startswith('drop'):
+            if command.lower().startswith('drop schema if exists `film`'):
+                drop_schema_count += 1
+                erd_count += 1
+            if command.lower().startswith('create schema if not exists `film`'):
+                create_schema_count += 1
+                erd_count += 1
+            if command.lower().startswith('drop table'):
                 drop_count += 1
                 erd_count += 1
-            if command.lower().startswith('create'):
+            if command.lower().startswith('create table'):
                 create_count += 1
                 erd_count += 1
             if command.lower().__contains__('insert'):
@@ -176,8 +185,10 @@ else:
             # print(f"[{command}]")
         # answer.write("--------RESULTS-------\n")
         answer.write("---------ERD----------\n")
-        answer.write(f"{drop_count}/{total_drop_count} of 14 total possible DROP Statements Written\n")
-        answer.write(f"{create_count}/{total_create_count} of 10 total possible CREATE Statements Written\n")
+        answer.write(f"{drop_schema_count}/{1} DROP SCHEMA UNIVERSITY Statement Written\n")
+        answer.write(f"{create_schema_count}/{1} CREATE SCHEMA UNIVERSITY Statement Written\n")
+        answer.write(f"{drop_count}/{total_drop_count} of 14 total possible DROP TABLE Statements Written\n")
+        answer.write(f"{create_count}/{total_create_count} of 10 total possible CREATE TABLE Statements Written\n")
         answer.write("-------INSERTS--------\n")
         answer.write(f"{insert_count}/{total_insert_count} of 13 total possible INSERT Statements Written\n")
         answer.write("-----FINAL TOTALS-----\n")

@@ -163,6 +163,8 @@ else:
         total_select_count = 10
 
         command_num = 0
+        drop_schema_count = 0
+        create_schema_count = 0
 
         for command in sqlCommands:
             command_num += 1
@@ -172,12 +174,19 @@ else:
                 answer.write("Please add DROP SCHEMA university\n")
                 answer.write("Skipping ERD check...\n")
                 break
+
+            if command.lower().startswith('drop schema if exists `university`'):
+                drop_schema_count += 1
+                erd_count += 1
+            if command.lower().startswith('create schema if not exists `university`'):
+                create_schema_count += 1
+                erd_count += 1
             if command.lower().startswith('use university'):
                 university_count += 1
-            if command.lower().startswith('drop'):
+            if command.lower().startswith('drop table'):
                 drop_count += 1
                 erd_count += 1
-            if command.lower().startswith('create'):
+            if command.lower().startswith('create table'):
                 create_count += 1
                 erd_count += 1
             if command.lower().__contains__('insert'):
@@ -236,8 +245,10 @@ else:
         # answer.write("--------RESULTS-------\n")
         
         answer.write("---------ERD----------\n")
-        answer.write(f"{drop_count}/{total_drop_count} DROP Statements Written\n")
-        answer.write(f"{create_count}/{total_create_count} CREATE Statements Written\n")
+        answer.write(f"{drop_schema_count}/{1} DROP SCHEMA UNIVERSITY Statement Written\n")
+        answer.write(f"{create_schema_count}/{1} CREATE SCHEMA UNIVERSITY Statement Written\n")
+        answer.write(f"{drop_count}/{total_drop_count} DROP TABLE Statements Written\n")
+        answer.write(f"{create_count}/{total_create_count} CREATE TABLE Statements Written\n")
         answer.write("-------INSERTS--------\n")
         answer.write(f"{insert_count}/{total_insert_count} INSERT Statements Written\n")
         answer.write("-----FINAL TOTALS-----\n")
