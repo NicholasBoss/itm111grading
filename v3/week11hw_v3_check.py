@@ -149,7 +149,7 @@ else:
         # print(sqlCommands)
         
         #filter out SET commands
-        sqlCommands = [command for command in sqlCommands if (not command.lower().startswith('set'))]
+        sqlCommands = [command for command in sqlCommands if not command.lower().startswith('set @OLD_UNIQUE_CHECKS') or not command.lower().startswith('set @OLD_FOREIGN_KEY_CHECKS') or not command.lower().startswith('set @OLD_SQL_MODE') or not command.lower().startswith('set OLD_UNIQUE_CHECKS') or not command.lower().startswith('set OLD_FOREIGN_KEY_CHECKS') or not command.lower().startswith('set OLD_SQL_MODE')]
     
         correct_answer_count = 0
         number = 0
