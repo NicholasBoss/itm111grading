@@ -130,7 +130,9 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                         [['Allen', 'Stokes', 'Musicianship 4', 'Winter'], 
                          ['Erick', 'Woodward', 'Musicianship 4', 'Fall']],
                         [['Erick', 'Woodward', 'Musicianship 4'], 
-                         ['Allen', 'Stokes', 'Musicianship 4']]],
+                         ['Allen', 'Stokes', 'Musicianship 4']],
+                        [['Erick', 'Woodward', 'Fall'], 
+                         ['Allen', 'Stokes', 'Winter']]],
                        [[['CSE', 251, 'Parallelism and Concurrency', 1, 'Fall'], # 6
                          ['CSE', 251, 'Parallelism and Concurrency', 2, 'Winter']],
                         [['CSE', 251, 'Parallelism and Concurrency', '1', 'Fall'], 
