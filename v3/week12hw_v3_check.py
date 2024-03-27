@@ -43,7 +43,7 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                          ['Clark', 'Maria', '2002-01-25', 21, 234, '21 - Yrs, 234 - Days'], 
                          ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20 - Yrs, 347 - Days'], 
                          ['Shah', 'Kerri', '2003-04-05', 20, 164, '20 - Yrs, 164 - Days'], 
-                         ['Bowers', 'Janine', '2004-06-23', 19, 84, '19 - Yrs, 84 - Days'], 
+                         ['Meyers', 'Isabel', '2004-06-23', 19, 84, '19 - Yrs, 84 - Days'], 
                          ['Stokes', 'Allen', '2004-09-16', 18, 364, '18 - Yrs, 364 - Days']],
                         [['Woodward', 'Erick', '1998-08-05', 25, 43, '25-yrs 43-days '], 
                          ['Rollins', 'Josh', '1998-11-28', 24, 293, '24-yrs 293-days '], 
@@ -54,7 +54,47 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                          ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20-yrs 347-days '], 
                          ['Meyers', 'Isabel', '2003-05-15', 20, 124, '20-yrs 124-days '], 
                          ['Shah', 'Kerri', '2003-04-05', 20, 164, '20-yrs 164-days '], 
-                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18-yrs 364-days ']]],
+                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18-yrs 364-days ']],
+                        [['Woodward', 'Erick', '1998-08-05', 25, 43, '25 - Yrs, 43 - Days'], 
+                         ['Rollins', 'Josh', '1998-11-28', 24, 293, '24 - Yrs, 293 - Days'], 
+                         ['Summers', 'Lillie', '1999-11-05', 23, 316, '23 - Yrs, 316 - Days'], 
+                         ['Spence', 'Marshall', '2000-06-23', 23, 85, '23 - Yrs, 85 - Days'], 
+                         ['Marquez', 'Nellie', '2001-06-25', 22, 83, '22 - Yrs, 83 - Days'], 
+                         ['Clark', 'Maria', '2002-01-25', 21, 234, '21 - Yrs, 234 - Days'], 
+                         ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20 - Yrs, 347 - Days'], 
+                         ['Shaw', 'Kerri', '2003-04-05', 20, 164, '20 - Yrs, 164 - Days'], 
+                         ['Meyers', 'Isabel', '2003-05-15', 20, 124, '20 - Yrs, 124 - Days'], 
+                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18 - Yrs, 364 - Days']],
+                        [['Woodward', 'Erick', '1998-08-05', 25, 43, '25 -Yrs 43 -Days'], 
+                         ['Rollins', 'Josh', '1998-11-28', 24, 293, '24 -Yrs 293 -Days'], 
+                         ['Summers', 'Lillie', '1999-11-05', 23, 316, '23 -Yrs 316 -Days'], 
+                         ['Spence', 'Marshall', '2000-06-23', 23, 85, '23 -Yrs 85 -Days'], 
+                         ['Marquez', 'Nellie', '2001-06-25', 22, 83, '22 -Yrs 83 -Days'], 
+                         ['Clark', 'Maria', '2002-01-25', 21, 234, '21 -Yrs 234 -Days'], 
+                         ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20 -Yrs 347 -Days'], 
+                         ['Shah', 'Kerri', '2003-04-05', 20, 164, '20 -Yrs 164 -Days'], 
+                         ['Meyers', 'Isabel', '2003-05-15', 20, 124, '20 -Yrs 124 -Days'], 
+                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18 -Yrs 364 -Days']],
+                        [['Erick', 'Woodward', '1998-08-05', '25', 43, '25 - Yrs, 43 - Days'], 
+                         ['Josh', 'Rollins', '1998-11-28', '25', 293, '25 - Yrs, 293 - Days'], 
+                         ['Lillie', 'Summers', '1999-11-05', '24', 316, '24 - Yrs, 316 - Days'], 
+                         ['Marshall', 'Spence', '2000-06-23', '23', 85, '23 - Yrs, 85 - Days'], 
+                         ['Nellie', 'Marquez', '2001-06-25', '22', 83, '22 - Yrs, 83 - Days'], 
+                         ['Maria', 'Clark', '2002-01-25', '22', 234, '22 - Yrs, 234 - Days'], 
+                         ['Tracy', 'Woodward', '2002-10-04', '21', 347, '21 - Yrs, 347 - Days'], 
+                         ['Kerri', 'Shah', '2003-04-05', '20', 164, '20 - Yrs, 164 - Days'], 
+                         ['Isabel', 'Meyers', '2003-05-15', '20', 124, '20 - Yrs, 124 - Days'], 
+                         ['Allen', 'Stokes', '2004-09-16', '19', 364, '19 - Yrs, 364 - Days']],
+                        [['Woodward', 'Erick', '1998-08-05', 25, 43, '25 - yrs, 43 - days'], 
+                         ['Rollins', 'Josh', '1998-11-28', 24, 293, '24 - yrs, 293 - days'], 
+                         ['Summers', 'Lillie', '1999-11-05', 23, 316, '23 - yrs, 316 - days'], 
+                         ['Spence', 'Marshall', '2000-06-23', 23, 85, '23 - yrs, 85 - days'], 
+                         ['Marquez', 'Nellie', '2001-06-25', 22, 83, '22 - yrs, 83 - days'], 
+                         ['Clark', 'Maria', '2002-01-25', 21, 234, '21 - yrs, 234 - days'], 
+                         ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20 - yrs, 347 - days'], 
+                         ['Shah', 'Kerri', '2003-04-05', 20, 164, '20 - yrs, 164 - days'], 
+                         ['Meyers', 'Isabel', '2003-05-15', 20, 124, '20 - yrs, 124 - days'], 
+                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18 - yrs, 364 - days']]],
                        [[['Marshall', 'Spence', 'Student'], # 3
                          ['Nellie', 'Marquez', 'Student'], 
                          ['Allen', 'Stokes', 'Student'], 
@@ -66,17 +106,39 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                          ['Kerri', 'Shah', 'Student'], 
                          ['Nellie', 'Marquez', 'Student'], 
                          ['Brady', 'Meyer', 'Teacher'], 
-                         ['Bryan', 'Drew', 'Teacher']]],
+                         ['Bryan', 'Drew', 'Teacher']],
+                        [['Marshall', 'Spence', 'Student'], 
+                         ['Allen', 'Stokes', 'Student'], 
+                         ['Kerri', 'Shaw', 'Student'], 
+                         ['Nellie', 'Marquez', 'Student'], 
+                         ['Brady', 'Meyer', 'Teacher'], 
+                         ['Bryan', 'Drew', 'Teacher']],
+                        [['Marshall', 'Spence', 'student'], 
+                         ['Allen', 'Stokes', 'student'], 
+                         ['Kerri', 'Shah', 'student'], 
+                         ['Nellie', 'Marquez', 'student'], 
+                         ['Brady', 'Meyer', 'teacher'], 
+                         ['Bryan', 'Drew', 'teacher']]],
                        [[['Lillie', 'Summers', 'TA', 'Musicianship 4'], # 4
                          ['Allen', 'Stokes', 'TA', 'Web Frontend Development I']],
                         [['Allen', 'Stokes', 'TA', 'Web Frontend Development I'], 
                          ['Lillie', 'Summers', 'TA', 'Musicianship 4']]],
-                       [['Allen', 'Stokes', 'Winter'], # 5
-                        ['Erick', 'Woodward', 'Fall']],
+                       [[['Allen', 'Stokes', 'Winter'], # 5
+                         ['Erick', 'Woodward', 'Fall']],
+                        [['Stokes', 'Allen', 'Winter'], 
+                         ['Woodward', 'Erick', 'Fall']],
+                        [['Allen', 'Stokes', 'Musicianship 4', 'Winter'], 
+                         ['Erick', 'Woodward', 'Musicianship 4', 'Fall']],
+                        [['Erick', 'Woodward', 'Musicianship 4'], 
+                         ['Allen', 'Stokes', 'Musicianship 4']]],
                        [[['CSE', 251, 'Parallelism and Concurrency', 1, 'Fall'], # 6
                          ['CSE', 251, 'Parallelism and Concurrency', 2, 'Winter']],
                         [['CSE', 251, 'Parallelism and Concurrency', '1', 'Fall'], 
-                         ['CSE', 251, 'Parallelism and Concurrency', '2', 'Winter']]],
+                         ['CSE', 251, 'Parallelism and Concurrency', '2', 'Winter']],
+                        [['Brady', 'Meyer', 'Parallelism and Concurrency', 1, 'Fall'], 
+                         ['Brady', 'Meyer', 'Parallelism and Concurrency', 2, 'Winter']],
+                        [['CSE', '251', 'Parallelism and Concurrency', 1, 'Fall'], 
+                         ['CSE', '251', 'Parallelism and Concurrency', 2, 'Winter']]],
                        [[['Fall', 2024, 5]], # 7
                         [['Fall', 2024, 7]],
                         [[5, 'Fall', 2024]]],
@@ -90,15 +152,35 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                         [['Adam', 'Woods', 25.0], 
                          ['Brady', 'Meyer', 35.0], 
                          ['Lucy', 'Fuller', 45.0], 
-                         ['Andy', 'Kipner', 60.0]]],
+                         ['Andy', 'Kipner', 60.0]],
+                        [['Adam', 'Woods', '25', 'Teacher', 'Fall'], 
+                         ['Brady', 'Meyer', '35', 'Teacher', 'Fall'], 
+                         ['Lucy', 'Fuller', '45', 'Teacher', 'Fall'], 
+                         ['Andy', 'Kipner', '60', 'Teacher', 'Fall']]],
                        [[['Marquez', 'Nellie', '3'], # 10
-                        ['Shah', 'Kerri', '3'], 
-                        ['Rollins', 'Josh', '2'], 
-                        ['Bowers', 'Janine', '2']],
+                         ['Shah', 'Kerri', '3'], 
+                         ['Rollins', 'Josh', '2'], 
+                         ['Meyers', 'Isabel', '2']],
                         [['Shah', 'Kerri', '3'], 
                          ['Marquez', 'Nellie', '3'], 
                          ['Rollins', 'Josh', '2'], 
-                         ['Meyers', 'Isabel', '2']]]
+                         ['Meyers', 'Isabel', '2']],
+                        [['Shaw', 'Kerri', '3'], 
+                         ['Marquez', 'Nellie', '3'], 
+                         ['Rollins', 'Josh', '2'], 
+                         ['Meyers', 'Isabel', '2']],
+                        [['Kerri', 'Shah', '3'], 
+                         ['Nellie', 'Marquez', '3'], 
+                         ['Josh', 'Rollins', '2'], 
+                         ['Isabel', 'Meyers', '2']],
+                        [['Shah', 'Kerri', 3], 
+                         ['Marquez', 'Nellie', 3], 
+                         ['Rollins', 'Josh', 2], 
+                         ['Meyers', 'Isabel', 2]],
+                        [['Shah', 'Kerri', '3.0'], 
+                         ['Marquez', 'Nellie', '3.0'], 
+                         ['Rollins', 'Josh', '2.0'], 
+                         ['Meyers', 'Isabel', '2.0']]]
                       ]
 
 
@@ -255,7 +337,7 @@ else:
         sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('select*')]
         #filter out SET commands
         sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('set')]
-        
+
         correct_answer_count = 0
         number = 0
         erd_number = 0
@@ -384,8 +466,8 @@ else:
                         for word in command.split():
                             if word.lower().__contains__('floor'):
                                 floor_counter += 1
-                        if floor_counter < 4:
-                            query2_function_list.append(f" 4 FLOOR Functions required. {4 - floor_counter} missing")
+                        if floor_counter < 2:
+                            query2_function_list.append(f" 2 FLOOR Functions required. {2 - floor_counter} missing")
                     if not command.lower().__contains__('floor'):
                         query2_function_list.append(f"FLOOR Function NOT used")
                     if command.lower().__contains__('datediff'):
@@ -530,6 +612,8 @@ else:
             # the function will do all the replacing and formatting
             # then return the list
             # print(f"[{command}]")
+            # print(filename)
+            # print(f"{a_number}. {query2_function_list}")
             new_query1c_list = format_list(query1_clause_list)
             new_query1f_list = format_list(query1_function_list)
             new_query2c_list = format_list(query2_clause_list)
@@ -685,7 +769,7 @@ else:
                         else:
                             answer.write(f"{new_query1f_list}\n")
                     if a_number == 3:
-                        # print(new_query2_list)
+                        # print(new_query2f_list)
                         if len(new_query2f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
