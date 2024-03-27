@@ -209,14 +209,28 @@ else:
 
         # print(sqlCommands)
         
-        #filter out SET commands
+         #filter out SET commands
         sqlCommands = [command for command in sqlCommands if not command.lower().startswith('set @OLD_UNIQUE_CHECKS') or not command.lower().startswith('set @OLD_FOREIGN_KEY_CHECKS') or not command.lower().startswith('set @OLD_SQL_MODE') or not command.lower().startswith('set OLD_UNIQUE_CHECKS') or not command.lower().startswith('set OLD_FOREIGN_KEY_CHECKS') or not command.lower().startswith('set OLD_SQL_MODE')]
+
+        # filter out SELECT commands
+        sqlQueryCommands = [command for command in sqlCommands if (not command.lower().startswith('select *') and command.lower().startswith('select')) or command.lower().startswith('use')]
+        sqlCommands = [command for command in sqlCommands if not command.lower().startswith('select')]
+
+
+        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('drop') and not command.lower().startswith('create') and not command.lower().startswith('use `university`;') and not command.lower().startswith('use `university` ;')]
+        # print(f"QUERY COMMANDS: {sqlQueryCommands}\n")
+        # filter out SELECT @ and SELECT @@ commands
+        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('select @') and not command.lower().startswith('select @@')]
+        
+        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('select*')]
+        #filter out SET commands
+        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('set')]
     
         correct_answer_count = 0
         number = 0
         erd_number = 0
 
-    
+        mycursor.execute("DROP SCHEMA IF EXISTS university")    
         
         for command in sqlCommands:
             erd_number += 1
@@ -257,17 +271,7 @@ else:
         answer.write(f"{correct_answer_count}/{total_erd_queries} Statements Correct\n")
 
 
-        sqlQueryCommands = [command for command in sqlCommands if (not command.lower().startswith('select *') and command.lower().startswith('select')) or command.lower().startswith('use')]
-
-        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('drop') and not command.lower().startswith('create') and not command.lower().startswith('use `university`;') and not command.lower().startswith('use `university` ;')]
-        # print(f"QUERY COMMANDS: {sqlQueryCommands}\n")
-        # filter out SELECT @ and SELECT @@ commands
-        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('select @') and not command.lower().startswith('select @@')]
         
-        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('select*')]
-        #filter out SET commands
-        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('set')]
-    
         correct_answer_count = 0
         number = 0
         a_number = 0
@@ -518,7 +522,6 @@ else:
 
             try:
                 mycursor.execute(command)
-                mydb.commit()
             except mysql.connector.Error as e:
                 # number the queries run and print the error
                 answer.write("Error found. Skipping to the next file...\n")

@@ -31,44 +31,74 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-correct_answer_list = [[['Lillie', 'Summers', 'November 05, 1999'], # 1
-                        ['Josh', 'Rollins', 'November 28, 1998']],
-                       [['Woodward', 'Erick', '1998-08-05', 25, 43, '25 - Yrs, 43 - Days'], # 2
-                        ['Rollins', 'Josh', '1998-11-28', 24, 293, '24 - Yrs, 293 - Days'], 
-                        ['Summers', 'Lillie', '1999-11-05', 23, 316, '23 - Yrs, 316 - Days'], 
-                        ['Spence', 'Marshall', '2000-06-23', 23, 85, '23 - Yrs, 85 - Days'], 
-                        ['Marquez', 'Nellie', '2001-06-25', 22, 83, '22 - Yrs, 83 - Days'], 
-                        ['Clark', 'Maria', '2002-01-25', 21, 234, '21 - Yrs, 234 - Days'], 
-                        ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20 - Yrs, 347 - Days'], 
-                        ['Shah', 'Kerri', '2003-04-05', 20, 164, '20 - Yrs, 164 - Days'], 
-                        ['Bowers', 'Janine', '2004-06-23', 19, 84, '19 - Yrs, 84 - Days'], 
-                        ['Stokes', 'Allen', '2004-09-16', 18, 364, '18 - Yrs, 364 - Days']],
-                       [['Marshall', 'Spence', 'Student'], # 3
-                        ['Nellie', 'Marquez', 'Student'], 
-                        ['Allen', 'Stokes', 'Student'], 
-                        ['Kerri', 'Shah', 'Student'], 
-                        ['Brady', 'Meyer', 'Teacher'], 
-                        ['Bryan', 'Drew', 'Teacher']],
-                       [['Lillie', 'Summers', 'TA', 'Musicianship 4'], # 4
-                        ['Allen', 'Stokes', 'TA', 'Web Frontend Development I']],
+correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
+                         ['Josh', 'Rollins', 'November 28, 1998']],
+                        [['Lillie', 'Summers', 'November 05 1999'], 
+                         ['Josh', 'Rollins', 'November 28 1998']]],
+                       [[['Woodward', 'Erick', '1998-08-05', 25, 43, '25 - Yrs, 43 - Days'], # 2
+                         ['Rollins', 'Josh', '1998-11-28', 24, 293, '24 - Yrs, 293 - Days'], 
+                         ['Summers', 'Lillie', '1999-11-05', 23, 316, '23 - Yrs, 316 - Days'], 
+                         ['Spence', 'Marshall', '2000-06-23', 23, 85, '23 - Yrs, 85 - Days'], 
+                         ['Marquez', 'Nellie', '2001-06-25', 22, 83, '22 - Yrs, 83 - Days'], 
+                         ['Clark', 'Maria', '2002-01-25', 21, 234, '21 - Yrs, 234 - Days'], 
+                         ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20 - Yrs, 347 - Days'], 
+                         ['Shah', 'Kerri', '2003-04-05', 20, 164, '20 - Yrs, 164 - Days'], 
+                         ['Bowers', 'Janine', '2004-06-23', 19, 84, '19 - Yrs, 84 - Days'], 
+                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18 - Yrs, 364 - Days']],
+                        [['Woodward', 'Erick', '1998-08-05', 25, 43, '25-yrs 43-days '], 
+                         ['Rollins', 'Josh', '1998-11-28', 24, 293, '24-yrs 293-days '], 
+                         ['Spence', 'Marshall', '2000-06-23', 23, 85, '23-yrs 85-days '], 
+                         ['Summers', 'Lillie', '1999-11-05', 23, 316, '23-yrs 316-days '],
+                         ['Marquez', 'Nellie', '2001-06-25', 22, 83, '22-yrs 83-days '], 
+                         ['Clark', 'Maria', '2002-01-25', 21, 234, '21-yrs 234-days '], 
+                         ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20-yrs 347-days '], 
+                         ['Meyers', 'Isabel', '2003-05-15', 20, 124, '20-yrs 124-days '], 
+                         ['Shah', 'Kerri', '2003-04-05', 20, 164, '20-yrs 164-days '], 
+                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18-yrs 364-days ']]],
+                       [[['Marshall', 'Spence', 'Student'], # 3
+                         ['Nellie', 'Marquez', 'Student'], 
+                         ['Allen', 'Stokes', 'Student'], 
+                         ['Kerri', 'Shah', 'Student'], 
+                         ['Brady', 'Meyer', 'Teacher'], 
+                         ['Bryan', 'Drew', 'Teacher']],
+                        [['Marshall', 'Spence', 'Student'], 
+                         ['Allen', 'Stokes', 'Student'], 
+                         ['Kerri', 'Shah', 'Student'], 
+                         ['Nellie', 'Marquez', 'Student'], 
+                         ['Brady', 'Meyer', 'Teacher'], 
+                         ['Bryan', 'Drew', 'Teacher']]],
+                       [[['Lillie', 'Summers', 'TA', 'Musicianship 4'], # 4
+                         ['Allen', 'Stokes', 'TA', 'Web Frontend Development I']],
+                        [['Allen', 'Stokes', 'TA', 'Web Frontend Development I'], 
+                         ['Lillie', 'Summers', 'TA', 'Musicianship 4']]],
                        [['Allen', 'Stokes', 'Winter'], # 5
                         ['Erick', 'Woodward', 'Fall']],
-                       [['CSE', 251, 'Parallelism and Concurrency', 1, 'Fall'], # 6
-                        ['CSE', 251, 'Parallelism and Concurrency', 2, 'Winter'], 
-                        ['CSE', 251, 'Parallelism and Concurrency', 3, 'Winter']],
+                       [[['CSE', 251, 'Parallelism and Concurrency', 1, 'Fall'], # 6
+                         ['CSE', 251, 'Parallelism and Concurrency', 2, 'Winter']],
+                        [['CSE', 251, 'Parallelism and Concurrency', '1', 'Fall'], 
+                         ['CSE', 251, 'Parallelism and Concurrency', '2', 'Winter']]],
                        [[['Fall', 2024, 5]], # 7
-                        [['Fall', 2024, 7]]],
+                        [['Fall', 2024, 7]],
+                        [[5, 'Fall', 2024]]],
                        [['Computer Science and Engineering', 2], # 8
                         ['Mathematics', 1], 
                         ['Music', 1]],
-                       [['Brady', 'Meyer', '35'], # 9
-                        ['Lucy', 'Fuller', '40'], 
-                        ['Adam', 'Woods', '40'], 
+                       [[['Adam', 'Woods', '25'], # 9
+                        ['Brady', 'Meyer', '35'], 
+                        ['Lucy', 'Fuller', '45'], 
                         ['Andy', 'Kipner', '60']],
-                       [['Marquez', 'Nellie', '3'], # 10
+                        [['Adam', 'Woods', 25.0], 
+                         ['Brady', 'Meyer', 35.0], 
+                         ['Lucy', 'Fuller', 45.0], 
+                         ['Andy', 'Kipner', 60.0]]],
+                       [[['Marquez', 'Nellie', '3'], # 10
                         ['Shah', 'Kerri', '3'], 
                         ['Rollins', 'Josh', '2'], 
-                        ['Bowers', 'Janine', '2']]
+                        ['Bowers', 'Janine', '2']],
+                        [['Shah', 'Kerri', '3'], 
+                         ['Marquez', 'Nellie', '3'], 
+                         ['Rollins', 'Josh', '2'], 
+                         ['Meyers', 'Isabel', '2']]]
                       ]
 
 
@@ -115,11 +145,12 @@ else:
         if not file_contents.__contains__('-- ~'):
             file_contents = file_contents.replace("USE", "-- ~\nUSE")
             file_contents = file_contents.replace("SET", "-- ~\nSET")
-            file_contents = file_contents.replace("-- ~\nSET", "SET")
+            file_contents = file_contents.replace("DEFAULT CHARACTER -- ~\nSET", "DEFAULT CHARACTER SET")
             file_contents = file_contents.replace("DROP", "-- ~\nDROP")
             file_contents = file_contents.replace("CREATE", "-- ~\nCREATE")
             file_contents = file_contents.replace("SELECT", "-- ~\nSELECT")
             file_contents = file_contents.replace("(-- ~\nSELECT", "(SELECT")
+            file_contents = file_contents.replace("INSERT", "-- ~\nINSERT")
             file_contents = file_contents.replace(";", ";\n-- ~")
             edit_file.seek(0)
             edit_file.write(file_contents)
@@ -210,12 +241,26 @@ else:
         
         #filter out SET commands
         sqlCommands = [command for command in sqlCommands if not command.lower().startswith('set @OLD_UNIQUE_CHECKS') or not command.lower().startswith('set @OLD_FOREIGN_KEY_CHECKS') or not command.lower().startswith('set @OLD_SQL_MODE') or not command.lower().startswith('set OLD_UNIQUE_CHECKS') or not command.lower().startswith('set OLD_FOREIGN_KEY_CHECKS') or not command.lower().startswith('set OLD_SQL_MODE')]
-    
+
+        # filter out SELECT commands
+        sqlQueryCommands = [command for command in sqlCommands if (not command.lower().startswith('select *') and command.lower().startswith('select')) or command.lower().startswith('use')]
+        sqlCommands = [command for command in sqlCommands if not command.lower().startswith('select')]
+
+
+        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('drop') and not command.lower().startswith('create') and not command.lower().startswith('use `university`;') and not command.lower().startswith('use `university` ;')]
+        # print(f"QUERY COMMANDS: {sqlQueryCommands}\n")
+        # filter out SELECT @ and SELECT @@ commands
+        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('select @') and not command.lower().startswith('select @@')]
+        
+        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('select*')]
+        #filter out SET commands
+        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('set')]
+        
         correct_answer_count = 0
         number = 0
         erd_number = 0
 
-    
+        mycursor.execute("DROP SCHEMA IF EXISTS university")
         
         for command in sqlCommands:
             erd_number += 1
@@ -251,22 +296,13 @@ else:
         answer.write("-------INSERTS--------\n")
         answer.write("Insert statments can be between 7 and 10\n")
         answer.write(f"{insert_count}/{total_insert_count} of 10 total possible INSERT Statements Written\n")
-        answer.write("-----FINAL TOTALS-----\n")
+        answer.write("---FINAL ERD TOTALS---\n")
         answer.write(f"{erd_count}/{total_erd_count} of 20 total possible ERD Statements Written\n")
         answer.write(f"{number}/{total_erd_queries} of 29 total possible Statements Written\n")
         answer.write(f"{correct_answer_count}/{total_erd_queries} of 29 total possible Statements Correct\n")
 
 
-        sqlQueryCommands = [command for command in sqlCommands if (not command.lower().startswith('select *') and command.lower().startswith('select')) or command.lower().startswith('use')]
-
-        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('drop') and not command.lower().startswith('create') and not command.lower().startswith('use `university`;') and not command.lower().startswith('use `university` ;')]
-        # print(f"QUERY COMMANDS: {sqlQueryCommands}\n")
-        # filter out SELECT @ and SELECT @@ commands
-        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('select @') and not command.lower().startswith('select @@')]
         
-        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('select*')]
-        #filter out SET commands
-        sqlQueryCommands = [command for command in sqlQueryCommands if not command.lower().startswith('set')]
     
         correct_answer_count = 0
         number = 0
@@ -518,7 +554,7 @@ else:
 
             try:
                 mycursor.execute(command)
-                mydb.commit()
+                # mydb.commit()
             except mysql.connector.Error as e:
                 # number the queries run and print the error
                 answer.write("Error found. Skipping to the next file...\n")

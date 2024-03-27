@@ -102,6 +102,8 @@ else:
         drop_schema_count = 0
         create_schema_count = 0
 
+        mycursor.execute("DROP SCHEMA IF EXISTS university")
+
         for command in sqlCommands:
             command_num += 1
             if command_num == 1 and not command.lower().__contains__('drop schema if exists `university`'):

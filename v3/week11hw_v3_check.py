@@ -155,7 +155,7 @@ else:
         number = 0
         a_number = 0
 
-    
+        mycursor.execute("DROP SCHEMA IF EXISTS university")
         
         for command in sqlCommands:
             a_number += 1
