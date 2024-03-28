@@ -31,110 +31,60 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-correct_answer_list = [[[['Fishing in the Mojave', '8.79'], # 1
-                        ['Car Racing Made Easy', '9.73'], 
-                        ['Pine Cone Computing', '11.03'], 
-                        ['Cooking Like Mad', '11.34'], 
-                        ['If Only I Could Sing', '7.84'], 
-                        ['Beautiful Birds', '7.84'], 
-                        ['Corn Shucking for Fun and Profit', '9.48'], 
-                        ['MySQL Magic', '6.90']],
-                        [['MySQL Magic', '10.95', '6.90'], 
-                         ['If Only I Could Sing', '12.45', '7.84'], 
-                         ['Beautiful Birds', '12.45', '7.84'], 
-                         ['Fishing in the Mojave', '13.95', '8.79'], 
-                         ['Corn Shucking for Fun and Profit', '15.05', '9.48'], 
-                         ['Car Racing Made Easy', '15.45', '9.73'], 
-                         ['Pine Cone Computing', '17.50', '11.03'], 
-                         ['Cooking Like Mad', '18.00', '11.34']]],
+correct_answer_list = [[['Fishing in the Mojave', '13.53'], # 1
+                        ['Car Racing Made Easy', '14.99'], 
+                        ['Pine Cone Computing', '16.98'], 
+                        ['Cooking Like Mad', '17.46'], 
+                        ['If Only I Could Sing', '12.08'], 
+                        ['Beautiful Birds', '12.08'], 
+                        ['Corn Shucking for Fun and Profit', '14.60'], 
+                        ['MySQL Magic', '10.62']],
                        [[1, '10'], # 2
                         [2, '10'], 
                         [3, '9'], 
                         [5, '9'], 
+                        [3, '9'], 
+                        [5, '8'], 
+                        [4, '8'], 
                         [3, '10'], 
-                        [5, '9'], 
                         [4, '9'], 
-                        [3, '10'], 
-                        [4, '10'], 
                         [3, '9'], 
                         [3, '10']],
-                       [['03 01, 11', 12, '03 01, 12'], # 3
-                        ['03 01, 11', 14, '05 01, 12'], 
-                        ['02 01, 12', 12, '02 01, 13'], 
-                        ['02 01, 12', 12, '02 01, 13'], 
-                        ['09 01, 11', 12, '09 01, 12'], 
-                        ['07 01, 12', 24, '07 01, 14'], 
-                        ['08 01, 12', 12, '08 01, 13'], 
-                        ['05 01, 11', 12, '05 01, 12'], 
-                        ['09 01, 11', 12, '09 01, 12'], 
-                        ['12 01, 11', 12, '12 01, 12'], 
-                        ['05 01, 11', 18, '11 01, 12']],
-                       [[[' - 2016'], # 4
-                        [' - 2016'], 
-                        [' - 2016'], 
-                        [' - 2016'], 
-                        [' - 2016'], 
-                        [' - 2016'], 
-                        [' - 2016'], 
-                        [' - 2016'], 
-                        [' - 2016'], 
-                        [' - 2016'], 
-                        [' - 2016'], 
-                        [' - 2016'], 
-                        [' - 2016'], 
-                        [' - 2015/2016']],
-                        [['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2016'], 
-                         ['- 2015/2016']],
-                         [['- 2016'], 
-                         ['2016'], 
-                         ['2016'], 
-                         ['2016'], 
-                         ['2016'], 
-                         ['2016'], 
-                         ['2016'], 
-                         ['2016'], 
-                         ['2016'], 
-                         ['2016'], 
-                         ['2016'], 
-                         ['2016'], 
-                         ['2016'], 
-                         ['2015/2016']],
-                         [['Trek 820 - 2016', 1, '- 2016'], 
-                          ['Ritchey Timberwolf Frameset - 2016', 2, '- 2016'], 
-                          ['Surly Wednesday Frameset - 2016', 3, '- 2016'], 
-                          ['Trek Fuel EX 8 29 - 2016', 4, '- 2016'], 
-                          ['Heller Shagamaw Frame - 2016', 5, '- 2016'], 
-                          ['Surly Ice Cream Truck Frameset - 2016', 6, '- 2016'], 
-                          ['Trek Slash 8 27.5 - 2016', 7, '- 2016'], 
-                          ['Trek Remedy 29 Carbon Frameset - 2016', 8, '- 2016'], 
-                          ['Trek Conduit+ - 2016', 9, '- 2016'], 
-                          ['Surly Straggler - 2016', 10, '- 2016'], 
-                          ['Surly Straggler 650b - 2016', 11, '- 2016'], 
-                          ['Electra Townie Original 21D - 2016', 12, '- 2016'], 
-                          ['Electra Cruiser 1 (24-Inch) - 2016', 13, '- 2016'], 
-                          ["Electra Girl's Hawaii 1 (16-inch) - 2015/2016", 14, '- 2015/2016']]],
-                       [["Trek Checkpoint ALR 4 Women's - 2019", '$1,699.99', '$340.00', '$194.28'], # 5
-                        ['Trek Checkpoint ALR 5 - 2019', '$1,999.99', '$400.00', '$228.57'], 
-                        ["Trek Checkpoint ALR 5 Women's - 2019", '$1,999.99', '$400.00', '$228.57'], 
-                        ["Trek Checkpoint SL 5 Women's - 2019", '$2,799.99', '$560.00', '$320.00'], 
-                        ['Trek Checkpoint SL 6 - 2019', '$3,799.99', '$760.00', '$434.28'], 
-                        ['Trek Checkpoint ALR Frameset - 2019', '$3,199.99', '$640.00', '$365.71']]]
-
+                       [['2011-03-01', 12, 'March 1, 2012'], # 3
+                        ['2011-03-01', 14, 'May 1, 2012'], 
+                        ['2012-02-01', 12, 'February 1, 2013'], 
+                        ['2012-02-01', 12, 'February 1, 2013'], 
+                        ['2011-09-01', 12, 'September 1, 2012'], 
+                        ['2012-07-01', 24, 'July 1, 2014'], 
+                        ['2012-08-01', 12, 'August 1, 2013'], 
+                        ['2011-05-01', 12, 'May 1, 2012'], 
+                        ['2011-09-01', 12, 'September 1, 2012'], 
+                        ['2011-12-01', 12, 'December 1, 2012'], 
+                        ['2011-05-01', 18, 'November 1, 2012']],
+                       [['Trek 820'], 
+                        ['Ritchey Timberwolf Frameset'], 
+                        ['Surly Wednesday Frameset'], 
+                        ['Trek Fuel EX 8 29'], 
+                        ['Heller Shagamaw Frame'], 
+                        ['Surly Ice Cream Truck Frameset'], 
+                        ['Trek Slash 8 27.5'], 
+                        ['Trek Remedy 29 Carbon Frameset'], 
+                        ['Trek Conduit+'], 
+                        ['Surly Straggler'], 
+                        ['Surly Straggler 650b'], 
+                        ['Electra Townie Original 21D'], 
+                        ['Electra Cruiser 1 (24-Inch)'], 
+                        ["Electra Girl's Hawaii 1 (16-inch)"]],
+                       [["Trek Checkpoint ALR 4 Women's - 2019", '$566.66'], 
+                        ['Trek Checkpoint ALR 5 - 2019', '$666.66'], 
+                        ["Trek Checkpoint ALR 5 Women's - 2019", '$666.66'], 
+                        ["Trek Checkpoint SL 5 Women's - 2019", '$933.33'], 
+                        ['Trek Checkpoint SL 6 - 2019', '$1,266.66'], 
+                        ['Trek Checkpoint ALR Frameset - 2019', '$1,066.66']]
+                      ]
 
 alias_counter = 0
-total_aliases = 8
+total_aliases = 5
 total_queries = 5
 
 # open the test folder and read the files inside
@@ -275,39 +225,26 @@ else:
                         query2_function_list.append(f"ROUND Function NOT used")
                     if not command.lower().__contains__('datediff'):
                         query2_function_list.append(f"DATEDIFF Function NOT used")
-                    if not command.lower().__contains__('(\'2021-04-23\', subscriptionStartDate)'):
+                    if not command.lower().__contains__('(\'2020-12-20\', subscriptionStartDate)'):
                         query2_function_list.append(f"DATEDIFF parameters out of order")
                     
 
             if a_number == 4: # Query 3
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
-                        for word in command.split():
-                            if word.lower() == 'as':
-                                alias_counter += 1
-                                query3_alias_counter += 1
-                    if query3_alias_counter < 2:
-                        query3_clause_list.append(f"2 Aliases are needed. {2 - query3_alias_counter} missing")
+                        alias_counter += 1
                     if not command.lower().__contains__(' as '):
-                        query5_clause_list.append(f"Alias NOT used")
+                        query3_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query3_clause_list.append(f"FROM Clause NOT used")
-                    if command.lower().__contains__('date_format'):
-                        for word in command.split():
-                            if word.lower().__contains__('date_format'):
-                                date_format_counter += 1
-                    if date_format_counter < 2:
-                        query3_function_list.append(f"2 DATE_FORMAT Functions are needed. {2 - date_format_counter} missing")
-                    if not command.lower().__contains__('DATE_FORMAT(subscriptionStartDate,\'%m %d, %y\')'):
-                        query3_function_list.append(f"DATE_FORMAT Function NOT used on first column")
                     if not command.lower().__contains__('date_format'):
                         query3_function_list.append(f"DATE_FORMAT Function NOT used")
                     if not command.lower().__contains__('date_add'):
                         query3_function_list.append(f"DATE_ADD Function NOT used")
-                    if not command.lower().__contains__('\'%m %d, %y\''):
+                    if not command.lower().__contains__("'%M %e, %Y'"):
                         query3_function_list.append(f"Date format NOT correct")
                     if not command.lower().__contains__('subscriptionLength MONTH'):
-                        query2_function_list.append(f"MONTH timeunit NOT used")
+                        query3_function_list.append(f"MONTH timeunit NOT used")
             
             if a_number == 5 and not command.lower().__contains__('use'):
                 if not command.lower().__contains__('use'):
@@ -331,31 +268,18 @@ else:
             if a_number == 7: # Query 5
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
-                        for word in command.split():
-                            if word.lower() == 'as':
-                                alias_counter += 1
-                                query5_alias_counter += 1
-                    if query5_alias_counter < 3:
-                        query5_clause_list.append(f"3 Aliases are needed. {3 - query5_alias_counter} missing")
+                        alias_counter += 1
                     if not command.lower().__contains__(' as '):
                         query5_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query5_clause_list.append(f"FROM Clause NOT used")
                     if not command.lower().__contains__('where'):
                         query5_clause_list.append(f"WHERE Clause NOT used")
-                    if command.lower().__contains__('concat'):
-                        for word in command.split():
-                            if word.lower().__contains__('concat'):
-                                concat_counter += 1
-                    if concat_counter < 3:
-                        query5_function_list.append(f"3 CONCAT Functions are needed. {3 - concat_counter} missing")
-                    if command.lower().__contains__('format('):
-                        # find the format function and count how many times it appears
-                        for word in command.split():
-                            if word.lower().__contains__('format'):
-                                format_counter += 1
-                    if format_counter < 3:
-                        query5_function_list.append(f"3 FORMAT Functions are needed. {3 - format_counter} missing")
+                    if not command.lower().__contains__('concat'):
+                        query5_function_list.append(f"CONCAT Function NOT used")
+                    if not command.lower().__contains__('format('):
+                        query5_function_list.append(f"FORMAT Function NOT used")
+                        
                         
 
             
