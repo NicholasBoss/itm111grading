@@ -172,8 +172,8 @@ else:
                 answer.write("-------DROP SCHEMA UNIVERSITY-------\n")
                 answer.write("DROP SCHEMA university not found\n")
                 answer.write("Please add DROP SCHEMA university\n")
-                answer.write("Skipping ERD check...\n")
-                break
+                answer.write("Executing DROP statement...")
+                mycursor.execute("DROP SCHEMA IF EXISTS university")
 
             if command.lower().startswith('drop schema if exists `university`'):
                 drop_schema_count += 1
@@ -230,7 +230,6 @@ else:
         number = 0
         erd_number = 0
 
-        mycursor.execute("DROP SCHEMA IF EXISTS university")    
         
         for command in sqlCommands:
             erd_number += 1
