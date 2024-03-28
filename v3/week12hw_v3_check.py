@@ -12,8 +12,6 @@ def format_list(list):
     new_list = new_list.replace(']', '')
     new_list = new_list.replace("'", "")
     return new_list
-# with open('week10hw.sql', 'r') as f:
-#     print(f.read())
 
 # Connect to the database
 mydb = mysql.connector.connect(
@@ -21,11 +19,6 @@ mydb = mysql.connector.connect(
     user="student",
     password="student",
 )
-
-# print("Connected to the database")
-
-
-# print("***********************************")
 
 # Create a cursor
 mycursor = mydb.cursor()
@@ -222,7 +215,7 @@ if not os.path.exists(grading_directory):
 
 # if the directory is empty, write no files to grade
 if not os.listdir(grading_directory):
-    # answer.write("No Files to Grade\n")
+    
     print("No Files to Grade\n")
 
 # loop through the files in the directory
@@ -261,15 +254,13 @@ else:
         print(f"Grading {filename}...")
         answer.write("***********************************\n")
         answer.write(f"File: {filename}\n")
-        # print(f"File: {filename}\n")
-        # print("---------------------")
+        
 
         sqlFile = f.read()
         sqlCommands = sqlFile.split('-- ~')
         # strip the \n from the commands
         sqlCommands = [command.strip() for command in sqlCommands]
-        # print(sqlCommands)
-        # Filter out SELECT and USE commands
+                # Filter out SELECT and USE commands
         
         
         sqlCommands = [command for command in sqlCommands if command.lower().startswith('use') or command.lower().startswith('drop') or command.lower().startswith('create') or command.lower().startswith('insert') or command.lower().startswith('update') or command.lower().startswith('delete') or command.lower().startswith('select')]
@@ -334,7 +325,7 @@ else:
             continue
             
 
-        # print(sqlCommands)
+        # debug.write(f"COMMAND LIST: {sqlCommands}")
         
         #filter out SET commands
         sqlCommands = [command for command in sqlCommands if not command.lower().startswith('set @OLD_UNIQUE_CHECKS') or not command.lower().startswith('set @OLD_FOREIGN_KEY_CHECKS') or not command.lower().startswith('set @OLD_SQL_MODE') or not command.lower().startswith('set OLD_UNIQUE_CHECKS') or not command.lower().startswith('set OLD_FOREIGN_KEY_CHECKS') or not command.lower().startswith('set OLD_SQL_MODE')]
@@ -380,7 +371,7 @@ else:
                 break
 
 
-            # print(f"[{command}]")
+            
         # answer.write("--------RESULTS-------\n")
         answer.write("---------ERD----------\n")
         answer.write("ERD statements can be between 8 and 10\n")
@@ -440,7 +431,7 @@ else:
         
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
-                        # print(alias_counter)
+                        
                     if not command.lower().__contains__(' as '):
                         query1_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
@@ -462,7 +453,7 @@ else:
                                 alias2_counter += 1
                     if alias2_counter < 3:
                         query2_clause_list.append(f"3 Aliases required. {3 - alias2_counter} missing")
-                        # print(alias_counter)
+                        
                     if not command.lower().__contains__(' as '):
                         query2_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('distinct'):
@@ -545,7 +536,7 @@ else:
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
-                        # print(alias_counter)
+                        
                     if not command.lower().__contains__(' as '):
                         query7_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('distinct'):
@@ -563,7 +554,7 @@ else:
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
-                        # print(alias_counter)
+                        
                     if not command.lower().__contains__(' as '):
                         query8_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
@@ -581,7 +572,7 @@ else:
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
-                        # print(alias_counter)
+                        
                     if not command.lower().__contains__(' as '):
                         query9_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
@@ -601,7 +592,7 @@ else:
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
                         alias_counter += 1
-                        # print(alias_counter)
+                        
                     if not command.lower().__contains__(' as '):
                         query10_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
@@ -624,7 +615,7 @@ else:
             # pass each list to a function
             # the function will do all the replacing and formatting
             # then return the list
-            # print(f"[{command}]")
+            
             # print(filename)
             # print(f"{a_number}. {query2_function_list}")
             new_query1c_list = format_list(query1_clause_list)
@@ -647,7 +638,7 @@ else:
             new_query10c_list = format_list(query10_clause_list)
             new_query10f_list = format_list(query10_function_list)
 
-            # print(new_query6c_list)
+            
 
             try:
                 mycursor.execute(command)
@@ -672,7 +663,7 @@ else:
 
             
             output_list = [list(row) for row in output if row is not None]
-            # print(f"[{command}]")
+            
 
             # change all decimal values to strings
             for row in output_list:
@@ -696,8 +687,7 @@ else:
                 if (student_answers in correct_answer_list or student_answers in correct_answer_list[number]) :
                     number += 1
                     correct_answer_count += 1
-                    # answer.write(f"Command: {command}\n")
-                    # answer.write(f"Student Answer: {student_answers}\n")
+                    
                 
                 else:
                     number += 1
@@ -710,64 +700,64 @@ else:
                     answer.write(f"{command}\n")
                     answer.write("-----CLAUSES-----\n")
                     if a_number == 2:
-                        # print(new_query1_list)
+                        # debug.write(new_query1_list)
                         if len(new_query1c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query1c_list}\n")
                     elif a_number == 3:
-                        # print(new_query2_list)
+                        # debug.write(new_query2_list)
                         if len(new_query2c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query2c_list}\n")
                     elif a_number == 4:
-                        # print(new_query3_list)
+                        # debug.write(new_query3_list)
                         if len(new_query3c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query3c_list}\n")
                     elif a_number == 5:
-                        # print(new_query4_list)
+                        # debug.write(new_query4_list)
                         if len(new_query4c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query4c_list}\n")
                     elif a_number == 6:
-                        # print(new_query5_list)
+                        # debug.write(new_query5_list)
                         if len(new_query5c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query5c_list}\n")
                     elif a_number == 7:
-                        # print(new_query6_list)
+                        # debug.write(new_query6_list)
                         if len(new_query6c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query6c_list}\n")
 
                     elif a_number == 8:
-                        # print(new_query7_list)
+                        # debug.write(new_query7_list)
                         if len(new_query7c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query7c_list}\n")
                     elif a_number == 9:
-                        # print(new_query8_list)
+                        # debug.write(new_query8_list)
                         if len(new_query8c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query8c_list}\n")
 
                     elif a_number == 10:
-                        # print(new_query9_list)
+                        # debug.write(new_query9_list)
                         if len(new_query9c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query9c_list}\n")
 
                     elif a_number == 11:
-                        # print(new_query10_list)
+                        # debug.write(new_query10_list)
                         if len(new_query10c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
@@ -775,43 +765,43 @@ else:
 
                     answer.write("----FUNCTIONS----\n")
                     if a_number == 2:
-                        # print(new_query1_list)
+                        # debug.write(new_query1f_list)
                         if len(new_query1f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
                             answer.write(f"{new_query1f_list}\n")
                     if a_number == 3:
-                        # print(new_query2f_list)
+                        # debug.write(new_query2f_list)
                         if len(new_query2f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
                             answer.write(f"{new_query2f_list}\n")
                     elif a_number == 7:
-                        # print(new_query6_list)
+                        # debug.write(new_query6f_list)
                         if len(new_query7f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
                             answer.write(f"{new_query7f_list}\n")
                     elif a_number == 8:
-                        # print(new_query7_list)
+                        # debug.write(new_query7f_list)
                         if len(new_query8f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
                             answer.write(f"{new_query8f_list}\n")
                     elif a_number == 9:
-                        # print(new_query8_list)
+                        # debug.write(new_query8f_list)
                         if len(new_query9f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
                             answer.write(f"{new_query9f_list}\n")
                     elif a_number == 10:
-                        # print(new_query9_list)
+                        # debug.write(new_query9f_list)
                         if len(new_query10f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
                             answer.write(f"{new_query10f_list}\n")
                     elif a_number == 11:
-                        # print(new_query10_list)
+                        # debug.write(new_query10f_list)
                         if len(new_query10f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
@@ -827,7 +817,7 @@ else:
         answer.write(f"{number}/{total_queries} Queries Written\n")
         answer.write(f"{correct_answer_count}/{total_queries} Queries Correct\n")
 
-        # print(f"{alias_counter}/{total_aliases} Aliases used")
+        
         alias_counter = 0
         answer.write("***********************************\n\n")
     answer.write("***********************************\n")
@@ -855,7 +845,4 @@ else:
     else:
         f.close()
         print("Files Kept")
-    # print("***********************************")
-        
-    # print("***********************************\n")
-    # print("***********************************")
+

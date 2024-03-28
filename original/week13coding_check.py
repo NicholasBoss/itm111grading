@@ -12,8 +12,6 @@ def format_list(list):
     new_list = new_list.replace(']', '')
     new_list = new_list.replace("'", "")
     return new_list
-# with open('week10hw.sql', 'r') as f:
-#     print(f.read())
 
 # Connect to the database
 mydb = mysql.connector.connect(
@@ -21,10 +19,6 @@ mydb = mysql.connector.connect(
     user="student",
     password="student",
 )
-
-# print("Connected to the database")
-
-# print("***********************************")
 
 # Create a cursor
 mycursor = mydb.cursor()
@@ -84,7 +78,7 @@ if not os.path.exists(grading_directory):
 
 # if the directory is empty, write no files to grade
 if not os.listdir(grading_directory):
-    # answer.write("No Files to Grade\n")
+    
     print("No Files to Grade\n")
 
 # loop through the files in the directory
@@ -124,8 +118,7 @@ else:
         sqlCommands = sqlFile.split('-- ~')
         # strip the \n from the commands
         sqlCommands = [command.strip() for command in sqlCommands]
-        # print(sqlCommands)
-        # Filter out SELECT and USE commands
+                # Filter out SELECT and USE commands
         sqlCommands = [command for command in sqlCommands if (not command.lower().startswith('select *') and command.lower().startswith('select')) or command.lower().startswith('use')]
         use_world_count = 0
         for command in sqlCommands:
@@ -138,7 +131,7 @@ else:
             continue
         
         
-        # print(sqlCommands)
+        # debug.write(f"COMMAND LIST: {sqlCommands}")
         # filter out SELECT @ and SELECT @@ commands
         sqlCommands = [command for command in sqlCommands if not command.lower().startswith('select @') and not command.lower().startswith('select @@')]
 
@@ -165,7 +158,7 @@ else:
         for command in sqlCommands:
             a_number += 1
             
-            # print(f"{a_number}. {command}")
+            # debug.write(f"Query {a_number}. {command}\n")            
             if a_number == 1 and not command.lower().__contains__('use'):
                 answer.write(f"USE world; Statement NOT FOUND\n")
 
@@ -236,7 +229,7 @@ else:
             # pass each list to a function
             # the function will do all the replacing and formatting
             # then return the list
-            # print(f"[{command}]")
+            
             new_query1c_list = format_list(query1_clause_list)
             new_query1f_list = format_list(query1_function_list)
             new_query2c_list = format_list(query2_clause_list)
@@ -271,7 +264,7 @@ else:
 
             
             output_list = [list(row) for row in output if row is not None]
-            # print(f"[{command}]")
+            
 
             # change all decimal values to strings
             for row in output_list:
@@ -297,8 +290,7 @@ else:
                 if (student_answers in correct_answer_list or student_answers in correct_answer_list[number]):
                     number += 1
                     correct_answer_count += 1
-                    # answer.write(f"Command: {command}\n")
-                    # answer.write(f"Student Answer: {student_answers}\n")
+                    
                 
                 else:
                     number += 1
@@ -311,25 +303,25 @@ else:
                     answer.write(f"{command}\n")
                     answer.write("-----CLAUSES-----\n")
                     if a_number == 2:
-                        # print(new_query1_list)
+                        # debug.write(new_query1_list)
                         if len(new_query1c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query1c_list}\n")
                     elif a_number == 3:
-                        # print(new_query2_list)
+                        # debug.write(new_query2_list)
                         if len(new_query2c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query2c_list}\n")
                     elif a_number == 4:
-                        # print(new_query3_list)
+                        # debug.write(new_query3_list)
                         if len(new_query3c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
                             answer.write(f"{new_query3c_list}\n")
                     elif a_number == 5:
-                        # print(new_query4_list)
+                        # debug.write(new_query4_list)
                         if len(new_query4c_list) == 0:
                             answer.write(f"All Clauses accounted for\n")
                         else:
@@ -337,25 +329,25 @@ else:
 
                     answer.write("----FUNCTIONS----\n")
                     if a_number == 2:
-                        # print(new_query1_list)
+                        # debug.write(new_query1f_list)
                         if len(new_query1f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
                             answer.write(f"{new_query1f_list}\n")
                     if a_number == 3:
-                        # print(new_query2_list)
+                        # debug.write(new_query2f_list)
                         if len(new_query2f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
                             answer.write(f"{new_query2f_list}\n")
                     if a_number == 4:
-                        # print(new_query3_list)
+                        # debug.write(new_query3f_list)
                         if len(new_query3f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
                             answer.write(f"{new_query3f_list}\n")
                     if a_number == 5:
-                        # print(new_query4_list)
+                        # debug.write(new_query4f_list)
                         if len(new_query4f_list) == 0:
                             answer.write(f"All Functions accounted for\n")
                         else:
@@ -371,7 +363,7 @@ else:
         answer.write(f"{number}/{total_queries} Queries Written\n")
         answer.write(f"{correct_answer_count}/{total_queries} Queries Correct\n")
 
-        # print(f"{alias_counter}/{total_aliases} Aliases used")
+        
         alias_counter = 0
         answer.write("***********************************\n\n")
     answer.write("***********************************\n")
@@ -399,7 +391,4 @@ else:
     else:
         f.close()
         print("Files Kept")
-    # print("***********************************")
-        
-    # print("***********************************\n")
-    # print("***********************************")
+

@@ -3,9 +3,6 @@ import os
 import platform
 
 
-# with open('week10hw.sql', 'r') as f:
-#     print(f.read())
-
 # Connect to the database
 mydb = mysql.connector.connect(
     host="localhost",
@@ -13,10 +10,6 @@ mydb = mysql.connector.connect(
     password="student",
 )
 
-# print("Connected to the database")
-
-
-# print("***********************************")
 
 # Create a cursor
 mycursor = mydb.cursor()
@@ -45,7 +38,7 @@ if not os.path.exists(grading_directory):
 
 # if the directory is empty, write no files to grade
 if not os.listdir(grading_directory):
-    # answer.write("No Files to Grade\n")
+    
     print("No Files to Grade\n")
 
 # loop through the files in the directory
@@ -83,14 +76,13 @@ else:
         answer.write("***********************************\n")
         answer.write(f"File: {filename}\n")
         
-        # answer.write("---------------------\n")
+        
 
         sqlFile = f.read()
         sqlCommands = sqlFile.split('-- ~')
         # strip the \n from the commands
         sqlCommands = [command.strip() for command in sqlCommands]
-        # print(sqlCommands)
-        # Filter out SELECT and USE commands
+                # Filter out SELECT and USE commands
         sqlCommands = [command for command in sqlCommands if command.lower().startswith('use') or command.lower().startswith('drop') or command.lower().startswith('create') or command.lower().startswith('insert') or command.lower().startswith('update') or command.lower().startswith('delete')]
         
         erd_count = 0
@@ -126,7 +118,7 @@ else:
                 continue
             
 
-        # print(sqlCommands)
+        # debug.write(f"COMMAND LIST: {sqlCommands}")
         
         #filter out SET commands
         sqlCommands = [command for command in sqlCommands if not command.lower().startswith('set')]
@@ -140,7 +132,7 @@ else:
         for command in sqlCommands:
             a_number += 1
             
-            # answer.write(f"{a_number}. {command}\n")
+            # debug.write(f"Query {a_number}. {command}\n")
         
 
             try:
@@ -158,18 +150,18 @@ else:
                 break
             output = mycursor.fetchall()
             
-            # print(output)
+            
 
             # if the output is empty, no error was found and 
             # the command was an insert, update, or delete statement
             # print that the command was successful
             if len(output) == 0 and (command.lower().__contains__('drop')):
-                # answer.write(f"Query {number + 1}. DROP Successful\n")
+                # debug.write(f"Query {number + 1}. DROP Successful\n")
                 number += 1
                 correct_answer_count += 1
                 continue
             if len(output) == 0 and (command.lower().__contains__('create')):
-                # answer.write(f"Query {number + 1}. CREATE Successful\n")
+                # debug.write(f"Query {number + 1}. CREATE Successful\n")
                 number += 1
                 correct_answer_count += 1
                 continue
@@ -177,7 +169,7 @@ else:
             
             
             
-            # print(f"[{command}]")
+            
         # answer.write("--------RESULTS-------\n")
         answer.write("---------ERD----------\n")
         answer.write(f"{drop_schema_count}/{1} DROP SCHEMA UNIVERSITY Statement Written\n")
@@ -189,7 +181,7 @@ else:
         answer.write(f"{number}/{total_queries} of 28 total possible Statements Written\n")
         answer.write(f"{correct_answer_count}/{total_queries} of 28 total possible Statements Correct\n")
 
-        # print(f"{alias_counter}/{total_aliases} Aliases used")
+        
         alias_counter = 0
         answer.write("***********************************\n\n")
     answer.write("***********************************\n")
@@ -217,7 +209,4 @@ else:
     else:
         f.close()
         print("Files Kept")
-    # print("***********************************")
-        
-    # print("***********************************\n")
-    # print("***********************************")
+
