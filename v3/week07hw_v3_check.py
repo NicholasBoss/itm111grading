@@ -346,6 +346,8 @@ else:
 
             try:
                 mycursor.execute(command)
+                if a_number in(1,2,4,5,6):
+                    mydb.commit()
             except mysql.connector.Error as e:
                 # number the queries run and print the error
                 answer.write("Error found. Skipping to the next file...\n")
@@ -357,9 +359,8 @@ else:
                 answer.write("---------------------\n")
                 
                 break
-            if a_number not in(1,5):
+            if a_number not in(1,2,4,5,6):
                 output = mycursor.fetchall()
-                mydb.commit()
             # print(output)
 
             # if the output is empty, no error was found and 

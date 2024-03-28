@@ -142,6 +142,7 @@ else:
 
             try:
                 mycursor.execute(command)
+                mydb.commit()
             except mysql.connector.Error as e:
                 # number the queries run and print the error
                 answer.write("Error found. Skipping to the next file...\n")
@@ -153,7 +154,7 @@ else:
                 answer.write("-------RESULTS-------\n")
                 break
             output = mycursor.fetchall()
-            mydb.commit()
+            
             # print(output)
 
             # if the output is empty, no error was found and 
