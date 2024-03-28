@@ -140,11 +140,13 @@ total_queries = 5
 # open the test folder and read the files inside
 os_name = platform.system()
 if os_name == 'Windows':
+    print("Windows OS Detected")
     directory = os.getcwd()
     grading_directory = os.getcwd() + '\\tempgrades'
     answer = open(f"{directory}\\week08answers.txt", "w")
 
 elif os_name == 'Linux' or os_name == 'Darwin':
+    print("Linux/MacOS Detected")
     directory = os.getcwd() + '/v3'
     grading_directory = os.getcwd() + '/v3/tempgrades'
     answer = open(f"{directory}/week08answers.txt", "w")
@@ -173,6 +175,7 @@ else:
         file_contents = edit_file.read()
         # Make changes to file_contents as needed
         if not file_contents.__contains__('-- ~'):
+            print("Formatting File...")
             file_contents = file_contents.replace("USE", "-- ~\nUSE")
             file_contents = file_contents.replace("SELECT", "-- ~\nSELECT")
             file_contents = file_contents.replace("(-- ~\nSELECT", "(SELECT")
@@ -183,9 +186,10 @@ else:
             edit_file.close()
         else:
             edit_file.close()
+            print("File already formatted")
             
         f = open(f"{grading_directory}/{filename}", "r")
-            
+        print(f"Grading {filename}...")
         answer.write("***********************************\n")
         answer.write(f"File: {filename}\n")
         # print("---------------------")

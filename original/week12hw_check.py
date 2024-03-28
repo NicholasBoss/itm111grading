@@ -76,11 +76,13 @@ correct_answer_list = [[['Preston', 'Larsen', 'September 22, 1996'], # 1
 # open the test folder and read the files inside
 os_name = platform.system()
 if os_name == 'Windows':
+    print("Windows OS Detected")
     directory = os.getcwd()
     grading_directory = os.getcwd() + '\\tempgrades'
     answer = open(f"{directory}\\week12answers.txt", "w")
 
 elif os_name == 'Linux' or os_name == 'Darwin':
+    print("Linux/MacOS Detected")
     directory = os.getcwd() + '/original'
     grading_directory = os.getcwd() + '/original/tempgrades'
     answer = open(f"{directory}/week12answers.txt", "w")
@@ -109,6 +111,7 @@ else:
         file_contents = edit_file.read()
         # check to see if delimiter exists
         if not file_contents.__contains__('-- ~'):
+            print("Formatting File...")
             file_contents = file_contents.replace("SET", "-- ~\nSET")
             file_contents = file_contents.replace("USE", "-- ~\nUSE")
             file_contents = file_contents.replace("DROP", "-- ~\nDROP")
@@ -122,11 +125,11 @@ else:
             edit_file.truncate()
             edit_file.close()
         else:
-            # print("Delimiter Found")
-            pass
+            edit_file.close()
+            print("File already formatted")
 
         f = open(f"{grading_directory}/{filename}", "r")
-            
+        print(f"Grading {filename}...")
         answer.write("***********************************\n")
         answer.write(f"File: {filename}\n")
         # print(f"File: {filename}\n")
