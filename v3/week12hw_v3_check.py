@@ -94,7 +94,17 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                          ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20 - yrs, 347 - days'], 
                          ['Shah', 'Kerri', '2003-04-05', 20, 164, '20 - yrs, 164 - days'], 
                          ['Meyers', 'Isabel', '2003-05-15', 20, 124, '20 - yrs, 124 - days'], 
-                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18 - yrs, 364 - days']]],
+                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18 - yrs, 364 - days']],
+                        [['Woodward', 'Erick', '1998-08-05', 25, 43, '25-Yrs, 43-Days'], 
+                         ['Rollins', 'Josh', '1998-11-28', 24, 293, '24-Yrs, 293-Days'], 
+                         ['Summers', 'Lillie', '1999-11-05', 23, 316, '23-Yrs, 316-Days'], 
+                         ['Spence', 'Marshall', '2000-06-23', 23, 85, '23-Yrs, 85-Days'], 
+                         ['Marquez', 'Nellie', '2001-06-25', 22, 83, '22-Yrs, 83-Days'], 
+                         ['Clark', 'Maria', '2002-01-25', 21, 234, '21-Yrs, 234-Days'], 
+                         ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20-Yrs, 347-Days'], 
+                         ['Shah', 'Kerri', '2003-04-05', 20, 164, '20-Yrs, 164-Days'], 
+                         ['Meyers', 'Isabel', '2003-05-15', 20, 124, '20-Yrs, 124-Days'], 
+                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18-Yrs, 364-Days']]],
                        [[['Marshall', 'Spence', 'Student'], # 3
                          ['Nellie', 'Marquez', 'Student'], 
                          ['Allen', 'Stokes', 'Student'], 
@@ -640,7 +650,6 @@ else:
 
             try:
                 mycursor.execute(command)
-                # mydb.commit()
             except mysql.connector.Error as e:
                 # number the queries run and print the error
                 answer.write("Error found. Skipping to the next file...\n")
@@ -830,6 +839,7 @@ else:
     # ask if user wants to delete files in the tempgrades folder
     # if yes, delete the files
 
+    f.close()
     # if no, keep the files
     delete_files = input("Would you like to delete the files in the tempgrades folder? (yes/no): ")
     if delete_files.lower() == "yes":
