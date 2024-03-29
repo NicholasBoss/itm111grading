@@ -185,7 +185,11 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                         [['Shah', 'Kerri', '3.0'], 
                          ['Marquez', 'Nellie', '3.0'], 
                          ['Rollins', 'Josh', '2.0'], 
-                         ['Meyers', 'Isabel', '2.0']]]
+                         ['Meyers', 'Isabel', '2.0']],
+                        [['Nellie', 'Marquez', '3'], 
+                         ['Kerri', 'Shah', '3'],
+                         ['Josh', 'Rollins', '2'], 
+                         ['Isabel', 'Meyers', '2']]]
                       ]
 
 
@@ -241,6 +245,7 @@ else:
             file_contents = file_contents.replace("SELECT", "-- ~\nSELECT")
             file_contents = file_contents.replace("(-- ~\nSELECT", "(SELECT")
             file_contents = file_contents.replace("INSERT", "-- ~\nINSERT")
+            file_contents = file_contents.replace("-- --~\nSELECT", "-- SELECT")
             file_contents = file_contents.replace(";", ";\n-- ~")
             edit_file.seek(0)
             edit_file.write(file_contents)
@@ -639,7 +644,7 @@ else:
             new_query10f_list = format_list(query10_function_list)
 
             
-
+            output = ''
             try:
                 mycursor.execute(command)
             except mysql.connector.Error as e:
@@ -653,8 +658,8 @@ else:
                 answer.write("---------------------\n")
                 
                 break
-            
-            output = mycursor.fetchall()
+            if a_number != 1:
+                output = mycursor.fetchall()
 
             if len(output) == 0 and command.lower().__contains__('select'):
                 answer.write(f"Query {number + 1}. No results returned\n")

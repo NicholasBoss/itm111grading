@@ -509,7 +509,7 @@ else:
             new_query10f_list = format_list(query10_function_list)
 
             
-
+            output = ''
             try:
                 mycursor.execute(command)
             except mysql.connector.Error as e:
@@ -523,8 +523,8 @@ else:
                 answer.write("---------------------\n")
                 
                 break
-            
-            output = mycursor.fetchall()
+            if a_number != 1:
+                output = mycursor.fetchall()
 
             if len(output) == 0 and command.lower().__contains__('select'):
                 answer.write(f"Query {number + 1}. No results returned\n")
