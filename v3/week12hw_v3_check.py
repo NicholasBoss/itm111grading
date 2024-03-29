@@ -97,7 +97,17 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                          ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20-Yrs, 347-Days'], 
                          ['Shah', 'Kerri', '2003-04-05', 20, 164, '20-Yrs, 164-Days'], 
                          ['Meyers', 'Isabel', '2003-05-15', 20, 124, '20-Yrs, 124-Days'], 
-                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18-Yrs, 364-Days']]],
+                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18-Yrs, 364-Days']],
+                        [['Woodward', 'Erick', '1998-08-05', 25, 43, '25 - Yrs, 43 - Days'], 
+                         ['Rollins', 'Josh', '1998-11-28', 24, 293, '24 - Yrs, 293 - Days'], 
+                         ['Summers', 'Lillie', '1999-11-05', 23, 316, '23 - Yrs, 316 - Days'], 
+                         ['Spence', 'Marshall', '2000-06-23', 23, 85, '23 - Yrs, 85 - Days'], 
+                         ['Marquez', 'Nellie', '2001-06-25', 22, 83, '22 - Yrs, 83 - Days'], 
+                         ['Clark', 'Maria', '2002-01-25', 21, 234, '21 - Yrs, 234 - Days'], 
+                         ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20 - Yrs, 347 - Days'], 
+                         ['Shah', 'Kerri', '2003-04-05', 20, 164, '20 - Yrs, 164 - Days'], 
+                         ['Meyers', 'Isabel', '2003-05-15', 20, 124, '20 - Yrs, 124 - Days'], 
+                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18 - Yrs, 364 - Days']]],
                        [[['Marshall', 'Spence', 'Student'], # 3
                          ['Nellie', 'Marquez', 'Student'], 
                          ['Allen', 'Stokes', 'Student'], 
@@ -135,7 +145,9 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                         [['Erick', 'Woodward', 'Musicianship 4'], 
                          ['Allen', 'Stokes', 'Musicianship 4']],
                         [['Erick', 'Woodward', 'Fall'], 
-                         ['Allen', 'Stokes', 'Winter']]],
+                         ['Allen', 'Stokes', 'Winter']],
+                        [['Allen', 'Stokes', 'Student', 'Winter'], 
+                         ['Erick', 'Woodward', 'Student', 'Fall']]],
                        [[['CSE', 251, 'Parallelism and Concurrency', 1, 'Fall'], # 6
                          ['CSE', 251, 'Parallelism and Concurrency', 2, 'Winter']],
                         [['CSE', 251, 'Parallelism and Concurrency', '1', 'Fall'], 
@@ -403,13 +415,13 @@ else:
         query2_clause_list = []
         query2_function_list = []
         query3_clause_list = []
-
+        query3_function_list = []
         query4_clause_list = []
-
+        query4_function_list = []
         query5_clause_list = []
-
+        query5_function_list = []
         query6_clause_list = []
-
+        query6_function_list = []
         query7_clause_list = []
         query7_function_list = []
         query8_clause_list = []
@@ -628,12 +640,13 @@ else:
             new_query2c_list = format_list(query2_clause_list)
             new_query2f_list = format_list(query2_function_list)
             new_query3c_list = format_list(query3_clause_list)
-            
+            new_query3f_list = format_list(query3_function_list)
             new_query4c_list = format_list(query4_clause_list)
-            
+            newquery4f_list = format_list(query4_function_list)
             new_query5c_list = format_list(query5_clause_list)
-            
+            new_query5f_list = format_list(query5_function_list)
             new_query6c_list = format_list(query6_clause_list)
+            new_query6f_list = format_list(query6_function_list)
             new_query7c_list = format_list(query7_clause_list)
             new_query7f_list = format_list(query7_function_list)
             new_query8c_list = format_list(query8_clause_list)
@@ -781,6 +794,24 @@ else:
                             answer.write(f"All Functions accounted for\n")
                         else:
                             answer.write(f"{new_query2f_list}\n")
+                    elif a_number == 4:
+                        # debug.write(new_query3f_list)
+                        if len(new_query3f_list) == 0:
+                            answer.write(f"All Functions accounted for\n")
+                        else:
+                            answer.write(f"{new_query3f_list}\n")
+                    elif a_number == 5:
+                        # debug.write(new_query4f_list)
+                        if len(newquery4f_list) == 0:
+                            answer.write(f"All Functions accounted for\n")
+                        else:
+                            answer.write(f"{newquery4f_list}\n")
+                    elif a_number == 6:
+                        # debug.write(new_query5f_list)
+                        if len(new_query5f_list) == 0:
+                            answer.write(f"All Functions accounted for\n")
+                        else:
+                            answer.write(f"{new_query5f_list}\n")
                     elif a_number == 7:
                         # debug.write(new_query6f_list)
                         if len(new_query7f_list) == 0:
