@@ -167,7 +167,7 @@ else:
                 answer.write("-------DROP SCHEMA UNIVERSITY-------\n")
                 answer.write("DROP SCHEMA university not found\n")
                 answer.write("Please add DROP SCHEMA university\n")
-                answer.write("Executing DROP statement...")
+                answer.write("Executing DROP statement...\n")
                 mycursor.execute("DROP SCHEMA IF EXISTS university")
 
             if command.lower().startswith('drop schema if exists `university`'):
@@ -528,7 +528,7 @@ else:
                 break
             if a_number != 1:
                 output = mycursor.fetchall()
-                
+
             if len(output) == 0 and command.lower().__contains__('select'):
                 answer.write(f"Query {number + 1}. No results returned\n")
                 number += 1
