@@ -294,7 +294,7 @@ else:
                                 date_format_counter += 1
                     if date_format_counter < 2:
                         query3_function_list.append(f"2 DATE_FORMAT Functions are needed. {2 - date_format_counter} missing")
-                    if not command.lower().__contains__('DATE_FORMAT(subscriptionStartDate,\'%m %d, %y\')'):
+                    if not command.__contains__('DATE_FORMAT(subscriptionStartDate,\'%m %d, %y\')'):
                         query3_function_list.append(f"DATE_FORMAT Function NOT used on first column")
                     if not command.lower().__contains__('date_format'):
                         query3_function_list.append(f"DATE_FORMAT Function NOT used")

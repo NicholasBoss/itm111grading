@@ -233,6 +233,8 @@ else:
                         query3_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query3_clause_list.append(f"FROM Clause NOT used")
+                    if not command.__contains__('DATE_FORMAT(subscriptionStartDate,\'%m %d, %y\')'):
+                        query3_function_list.append(f"DATE_FORMAT Function NOT used on first column")
                     if not command.lower().__contains__('date_format'):
                         query3_function_list.append(f"DATE_FORMAT Function NOT used")
                     if not command.lower().__contains__('date_add'):
