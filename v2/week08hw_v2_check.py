@@ -193,7 +193,7 @@ else:
         for command in sqlCommands:
             a_number += 1
             
-            answer.write(f"Query {a_number}. {command}\n")            
+            # debug.write(f"Query {a_number}. {command}\n")            
             if a_number == 1 and not command.lower().__contains__('use'):
                 answer.write(f"USE magazine; Statement NOT FOUND\n")
 
