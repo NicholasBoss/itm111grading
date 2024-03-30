@@ -43,17 +43,17 @@ correct_answer_list = [[['Fishing in the Mojave', '12.97'], # 1
                         [4, '12'], 
                         [3, '12'], 
                         [3, '12']],
-                       [['March 1st, 2011', 12, 'March, 1st, 2012'], # 3
-                        ['March 1st, 2011', 14, 'May, 1st, 2012'], 
-                        ['February 1st, 2012', 12, 'February, 1st, 2013'], 
-                        ['February 1st, 2012', 12, 'February, 1st, 2013'], 
-                        ['September 1st, 2011', 12, 'September, 1st, 2012'], 
-                        ['July 1st, 2012', 24, 'July, 1st, 2014'], 
-                        ['August 1st, 2012', 12, 'August, 1st, 2013'], 
-                        ['May 1st, 2011', 12, 'May, 1st, 2012'], 
-                        ['September 1st, 2011', 12, 'September, 1st, 2012'], 
-                        ['December 1st, 2011', 12, 'December, 1st, 2012'], 
-                        ['May 1st, 2011', 18, 'November, 1st, 2012']],
+                       [['March 1st, 2011', 12, 'March 1st, 2012'], # 3
+                        ['March 1st, 2011', 14, 'May 1st, 2012'], 
+                        ['February 1st, 2012', 12, 'February 1st, 2013'], 
+                        ['February 1st, 2012', 12, 'February 1st, 2013'], 
+                        ['September 1st, 2011', 12, 'September 1st, 2012'], 
+                        ['July 1st, 2012', 24, 'July 1st, 2014'], 
+                        ['August 1st, 2012', 12, 'August 1st, 2013'], 
+                        ['May 1st, 2011', 12, 'May 1st, 2012'], 
+                        ['September 1st, 2011', 12, 'September 1st, 2012'], 
+                        ['December 1st, 2011', 12, 'December 1st, 2012'], 
+                        ['May 1st, 2011', 18, 'November 1st, 2012']],
                        [['Trek Checkpoint ALR Frameset'], # 4
                         ['Trek Checkpoint SL 6'], 
                         ["Trek Checkpoint SL 5 Women's"], 
@@ -193,7 +193,7 @@ else:
         for command in sqlCommands:
             a_number += 1
             
-            # debug.write(f"Query {a_number}. {command}\n")            
+            answer.write(f"Query {a_number}. {command}\n")            
             if a_number == 1 and not command.lower().__contains__('use'):
                 answer.write(f"USE magazine; Statement NOT FOUND\n")
 
@@ -237,7 +237,7 @@ else:
                         query3_function_list.append(f"DATE_FORMAT Function NOT used")
                     if not command.lower().__contains__('date_add'):
                         query3_function_list.append(f"DATE_ADD Function NOT used")
-                    if not command.lower().__contains__("'%M %D, %Y'"):
+                    if not command.__contains__("'%M %D, %Y'"):
                         query3_function_list.append(f"Date format NOT correct")
                     if not command.lower().__contains__('subscriptionLength MONTH'):
                         query3_function_list.append(f"MONTH timeunit NOT used")
