@@ -77,7 +77,7 @@ correct_answer_list = [[['Fishing in the Mojave', '12.97'], # 1
                       ]
 
 alias_counter = 0
-total_aliases = 5
+total_aliases = 8
 total_queries = 5
 
 # open the test folder and read the files inside
@@ -228,7 +228,12 @@ else:
             if a_number == 4: # Query 3
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
-                        alias_counter += 1
+                        for word in command.split():
+                            if word.lower() == 'as':
+                                alias_counter += 1
+                                query3_alias_counter += 1
+                    if query3_alias_counter < 2:
+                        query3_clause_list.append(f"2 Aliases are needed. {2 - query3_alias_counter} missing")
                     if not command.lower().__contains__(' as '):
                         query3_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
@@ -266,7 +271,12 @@ else:
             if a_number == 7: # Query 5
                 if command.lower().__contains__('select'):
                     if command.lower().__contains__(') as ') or command.lower().__contains__(' as ') or command.lower().__contains__(') \''):
-                        alias_counter += 1
+                        for word in command.split():
+                            if word.lower() == 'as':
+                                alias_counter += 1
+                                query5_alias_counter += 1
+                    if query5_alias_counter < 3:
+                        query5_clause_list.append(f"3 Aliases are needed. {3 - query5_alias_counter} missing")
                     if not command.lower().__contains__(' as '):
                         query5_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
