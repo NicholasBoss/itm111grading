@@ -300,9 +300,9 @@ else:
                         query3_function_list.append(f"DATE_FORMAT Function NOT used")
                     if not command.lower().__contains__('date_add'):
                         query3_function_list.append(f"DATE_ADD Function NOT used")
-                    if not command.lower().__contains__('\'%m %d, %y\''):
+                    if not command.__contains__('\'%m %d, %y\''):
                         query3_function_list.append(f"Date format NOT correct")
-                    if not command.lower().__contains__('subscriptionLength MONTH'):
+                    if not command.__contains__('subscriptionLength MONTH'):
                         query2_function_list.append(f"MONTH timeunit NOT used")
             
             if a_number == 5 and not command.lower().__contains__('use'):
