@@ -42,6 +42,7 @@ If everything has been successfully installed, the application will run.
 # How to Use the Application
 
 
+**video coming soon**
 <!-- [How to Use the Application](https://youtu.be/1Q6J9Q1Z9Zo) -->
 
 Depending on the week, you will need to use the correct file. The versions are separated into folders by their version. Each file is a different week. 
