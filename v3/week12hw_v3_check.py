@@ -866,8 +866,9 @@ else:
     # ask if user wants to delete files in the tempgrades folder
     # if yes, delete the files
 
-    f.close()
     # if no, keep the files
+    f.close()
+    mydb.close()
     delete_files = input("Would you like to delete the files in the tempgrades folder? (yes/no): ")
     if delete_files.lower() == "yes":
         f.close()
