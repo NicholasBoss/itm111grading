@@ -22,7 +22,7 @@ A student user and database access:
 
 This can be created from the files in the `setup` folder
 
-On line 9 in root.py, you may need to replace the password with your root password if you are on a local machine. If you are using AWS to grade, you can ignore this.
+On line 9 in `root.py`, you may need to replace the password with your root password if you are on a local machine. If you are using AWS to grade, you can ignore this.
 
 
 # How to Access the Application
