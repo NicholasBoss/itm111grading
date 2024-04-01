@@ -18,23 +18,9 @@ MySQL Server
 
 (Use the 8.0.34 versions on Windows, MAC users: Workbench does not work normally but you can try using the 8.0.36 versions)
 
-A student user with access to the following databases:
+A student user and database access:
 
-bike
-
-employees
-
-magazine
-
-v_art
-
-world
-
-film
-
-university
-
-The student user and database access can be created from the files in the `setup` folder
+This can be created from the files in the `setup` folder
 
 On line 9 in root.py, you may need to replace the password with your root password if you are on a local machine. If you are using AWS to grade, you can ignore this.
 
@@ -52,3 +38,17 @@ pip install mysql-connector-python
 To run the application, choose the particular week you are grading and click the play button
 
 If everything has been successfully installed, the application will run.
+
+# How to Use the Application
+
+
+<!-- [How to Use the Application](https://youtu.be/1Q6J9Q1Z9Zo) -->
+
+Depending on the week, you will need to use the correct file. The versions are separated into folders by their version. Each file is a different week. 
+
+When you first run a file, it will create a folder called `tempgrades` in the same directory as the file. This is where the files you are grading will be placed.
+
+To use the hw check files, you must have a file in the `tempgrades` folder.
+
+Without a file, the program will state that there are `No Files to Grade`.
+
