@@ -2,7 +2,7 @@
 
 This is for use for any graders of the ITM 111 (Intro to Databases) course at BYU-Idaho
 
-# System Requirements
+## System Requirements
 
 Access to the AWS instance that hosts MySQL Workbench
 
@@ -25,7 +25,7 @@ This can be created from the files in the `setup` folder
 On line 9 in `root.py`, you may need to replace the password with your root password if you are on a local machine. If you are using AWS to grade, you can ignore this.
 
 
-# How to Access the Application
+## How to Access the Application
 
 If you are on the AWS instance, the mysql.connector library is already installed.
 
@@ -39,13 +39,14 @@ To run the application, choose the particular week you are grading and click the
 
 If everything has been successfully installed, the application will run.
 
-# How to Use the Application
-
+## How to Use the Application
 
 **video coming soon**
 <!-- [How to Use the Application](https://youtu.be/1Q6J9Q1Z9Zo) -->
 
-Depending on the week, you will need to use the correct file. The versions are separated into folders by their version. Each file is a different week. 
+Depending on the week, you will need to use the correct file.  
+The versions are separated into folders by their version.  
+Each file is a different week. 
 
 When you first run a file, it will create a folder called `tempgrades` in the same directory as the file. This is where the files you are grading will be placed.
 
