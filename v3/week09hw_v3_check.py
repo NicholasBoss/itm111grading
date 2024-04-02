@@ -67,9 +67,15 @@ correct_answer_list = [[[['van Rijn', 'Rembrandt', 'Night Watch'], # 1
                        [[['Beautiful Birds'], # 5
                          ['Corn Shucking for Fun and Profit']],
                         [['Beautiful Birds', 'Lucy', 'Lamont'], 
-                         ['Corn Shucking for Fun and Profit', 'Lucy', 'Lamont']]],
-                       [['Ebru', 'Alpin'], # 6
+                         ['Corn Shucking for Fun and Profit', 'Lucy', 'Lamont']],
+                        [['Lucy', 'Lamont', 'Beautiful Birds'], 
+                         ['Lucy', 'Lamont', 'Corn Shucking for Fun and Profit']]],
+                       [[['Ebru', 'Alpin'], # 6
                         ['Isamu', 'Legleitner']],
+                        [['Finance', 'Ebru', 'Alpin'], 
+                         ['Finance', 'Isamu', 'Legleitner']],
+                        [['Ebru', 'Alpin', 'Finance'],
+                         ['Isamu', 'Legleitner', 'Finance']]],
                        [[['Hisao', 'Lipner', 'Human Resources', '$53,315']], # 7 
                          [['Hisao', 'Lipner', 'Human Resources', '$53,315.00']],
                          [['Hisao', 'Lipner', '$53,315', 'Human Resources']],
