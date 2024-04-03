@@ -43,7 +43,7 @@ If everything has been successfully installed, the application will run.
 
 ## How to Use the Application
 
-DISCLAIMER: These files grade using a preset list of correct answers. You may have to manually check some answers if students add in more columns than necessary. All keywords (INSERT, SELECT, UPDATE, DELETE, USE, and SET) must be all uppercase. The file cannot add the splitting delimiter without this. If students comment using uppercase lettering, the program may break and may require some manual editing on part of the grader.
+DISCLAIMER: These files grade using a preset list of correct answers. You may have to manually check some answers if students add in more columns than necessary. All keywords (INSERT, SELECT, UPDATE, DELETE, USE, and SET) must be all uppercase. The file cannot add the splitting delimiter without this. If students use uppercase lettering in their comments, the program may break, and may require some manual editing on part of the grader.
 
 Depending on the week, you will need to use the correct version and week of the file.  
 The versions are separated into folders by their version.  
