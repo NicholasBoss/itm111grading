@@ -453,8 +453,8 @@ else:
                         query1_clause_list.append(f"Alias NOT used")
                     if not command.lower().__contains__('from'):
                         query1_clause_list.append(f"FROM Clause NOT used")
-                    if command.lower().__contains__('where'):
-                        query1_clause_list.append(f"WHERE Clause used")
+                    if not command.lower().__contains__('where'):
+                        query1_clause_list.append(f"WHERE Clause NOT used")
                     if not command.lower().__contains__('date_format'):
                         query1_function_list.append(f"DATE_FORMAT Function NOT used")
                     if not command.lower().__contains__('\'%M %d, %Y\'') :
