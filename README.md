@@ -43,10 +43,7 @@ If everything has been successfully installed, the application will run.
 
 ## How to Use the Application
 
-***Video Coming Soon***
-<!-- [How to Use the Application](https://youtu.be/1Q6J9Q1Z9Zo) -->
-
-Depending on the week, you will need to use the correct file.  
+Depending on the week, you will need to use the correct version and week of the file.  
 The versions are separated into folders by their version.  
 Each file is a different week. 
 
@@ -55,4 +52,7 @@ When you first run a file, it will create a folder called `tempgrades` in the sa
 To use the hw check files, you must have a file in the `tempgrades` folder.
 
 Without a file, the program will state that there are `No Files to Grade`.
+
+***Video Coming Soon***
+<!-- [How to Use the Application](https://youtu.be/1Q6J9Q1Z9Zo) -->
 
