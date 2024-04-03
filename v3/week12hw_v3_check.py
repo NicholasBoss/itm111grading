@@ -107,7 +107,17 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                          ['Woodward', 'Tracy', '2002-10-04', 20, 347, '20 - Yrs, 347 - Days'], 
                          ['Shah', 'Kerri', '2003-04-05', 20, 164, '20 - Yrs, 164 - Days'], 
                          ['Meyers', 'Isabel', '2003-05-15', 20, 124, '20 - Yrs, 124 - Days'], 
-                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18 - Yrs, 364 - Days']]],
+                         ['Stokes', 'Allen', '2004-09-16', 18, 364, '18 - Yrs, 364 - Days']],
+                        [['Erick', 'Woodward', '1998-08-05', 25, 43, '25 - Yrs, 43 - Days'], 
+                         ['Josh', 'Rollins', '1998-11-28', 24, 293, '24 - Yrs, 293 - Days'], 
+                         ['Marshall', 'Spence', '2000-06-23', 23, 85, '23 - Yrs, 85 - Days'], 
+                         ['Lillie', 'Summers', '1999-11-05', 23, 316, '23 - Yrs, 316 - Days'], 
+                         ['Nellie', 'Marquez', '2001-06-25', 22, 83, '22 - Yrs, 83 - Days'], 
+                         ['Maria', 'Clark', '2002-01-25', 21, 234, '21 - Yrs, 234 - Days'], 
+                         ['Tracy', 'Woodward', '2002-10-04', 20, 347, '20 - Yrs, 347 - Days'], 
+                         ['Isabel', 'Meyers', '2003-05-15', 20, 124, '20 - Yrs, 124 - Days'], 
+                         ['Kerri', 'Shah', '2003-04-05', 20, 164, '20 - Yrs, 164 - Days'], 
+                         ['Allen', 'Stokes', '2004-09-16', 18, 364, '18 - Yrs, 364 - Days']]],
                        [[['Marshall', 'Spence', 'Student'], # 3
                          ['Nellie', 'Marquez', 'Student'], 
                          ['Allen', 'Stokes', 'Student'], 
@@ -135,7 +145,9 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                        [[['Lillie', 'Summers', 'TA', 'Musicianship 4'], # 4
                          ['Allen', 'Stokes', 'TA', 'Web Frontend Development I']],
                         [['Allen', 'Stokes', 'TA', 'Web Frontend Development I'], 
-                         ['Lillie', 'Summers', 'TA', 'Musicianship 4']]],
+                         ['Lillie', 'Summers', 'TA', 'Musicianship 4']],
+                        [['Lillie', 'Summers', 'TA', 'Musicianship 4'], 
+                         ['Allen', 'Stokes', 'TA', 'Web Frontend Development 1']]],
                        [[['Allen', 'Stokes', 'Winter'], # 5
                          ['Erick', 'Woodward', 'Fall']],
                         [['Stokes', 'Allen', 'Winter'], 
@@ -201,7 +213,11 @@ correct_answer_list = [[[['Lillie', 'Summers', 'November 05, 1999'], # 1
                         [['Nellie', 'Marquez', '3'], 
                          ['Kerri', 'Shah', '3'],
                          ['Josh', 'Rollins', '2'], 
-                         ['Isabel', 'Meyers', '2']]]
+                         ['Isabel', 'Meyers', '2']],
+                        [['Marquez', 'Nellie', '3'], 
+                         ['Shah', 'Kerri', '3'], 
+                         ['Meyers', 'Isabel', '2'], 
+                         ['Rollins', 'Josh', '2']]]
                       ]
 
 
