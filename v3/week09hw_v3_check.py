@@ -39,13 +39,14 @@ correct_answer_list = [[[['van Rijn', 'Rembrandt', 'Night Watch'], # 1
                           ['Rembrandt','Storm on the Sea of Galilee']],
                          [['van Rijn','nightwatch.jpg'],
                           ['van Rijn','stormgalilee.jpg']],
-                          [['Night Watch', 'Storm on the Sea of Galilee']],
-                          [['nightwatch.jpg'], ['stormgalilee.jpg']]],
+                        [['Night Watch'], ['Storm on the Sea of Galilee']],
+                        [['nightwatch.jpg'], ['stormgalilee.jpg']]],
                         [[['nightwatch.jpg']], # 2
                          [['battle', 'Night Watch']], 
                          [['battle', 'nightwatch.jpg']],
                          [['nightwatch.jpg', 'battle']],
-                         [['Night Watch', 'battle']]], 
+                         [['Night Watch', 'battle']],
+                         [['Night Watch']]], 
                        [[['Leonardo', 'da Vinci', 'Head of a Woman'], # 3
                          ['Leonardo', 'da Vinci', 'Last Supper'], 
                          ['Leonardo', 'da Vinci', 'Mona Lisa'], 
