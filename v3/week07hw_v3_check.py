@@ -2,6 +2,7 @@ import mysql.connector
 import decimal
 import os
 import platform
+import regex as re
 
 
 def format_list(list):
@@ -97,8 +98,10 @@ total_queries = 10
 os_name = platform.system()
 if os_name == 'Windows':
     print("Windows OS Detected")
-    directory = os.getcwd()
-    grading_directory = os.getcwd() + '\\tempgrades'
+    directory = os.getcwd() + '\\v3'
+    print(directory)
+    grading_directory = os.getcwd() + '\\v3\\tempgrades'
+    print(grading_directory)
     answer = open(f"{directory}\\week07answers.txt", "w")
 
 elif os_name == 'Linux' or os_name == 'Darwin':
@@ -219,12 +222,12 @@ else:
 
             if a_number == 3: # Query 2
                 if command.lower().__contains__('select'):
-                    if not command.lower().__contains__('from'):
+                    if not re.search(r'(select).*fname.*\,.*mname.*\,.*lname.*\,.*dob.*\,.*dod.*\,.*country.*\,.*local', command, re.I | re.S):
+                        query2_clause_list.append(f"Invalid SELECT Statement.")
+                    if not re.search(r'^.*from.*artist',command, re.I | re.S):
                         query2_clause_list.append(f"FROM Clause NOT used")
                     if command.lower().__contains__('*'):
                         query2_clause_list.append(f"SELECT * used. Use column names instead")
-                    if not command.lower().__contains__('fname, mname, lname, dob, dod, country, local'):
-                        query2_clause_list.append(f"Column names NOT used. 7 column should be selected. {7 - len(command.split())} missing")
                     if not command.lower().__contains__('order by'):
                         query2_clause_list.append(f"ORDER BY Clause NOT used")
                     
