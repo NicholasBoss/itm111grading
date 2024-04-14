@@ -1,8 +1,15 @@
+
 import mysql.connector
 import decimal
 import os
 import platform
-import regex as re
+try:
+    import regex as re
+except ImportError:
+    print("REGEX module not found. Installing...")
+    os.system("pip install regex")
+    import regex as re
+    print("REGEX module installed") 
 
 
 def format_list(list):
@@ -99,9 +106,7 @@ os_name = platform.system()
 if os_name == 'Windows':
     print("Windows OS Detected")
     directory = os.getcwd() + '\\v3'
-    print(directory)
     grading_directory = os.getcwd() + '\\v3\\tempgrades'
-    print(grading_directory)
     answer = open(f"{directory}\\week07answers.txt", "w")
 
 elif os_name == 'Linux' or os_name == 'Darwin':
