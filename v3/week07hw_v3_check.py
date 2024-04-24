@@ -1,5 +1,11 @@
 
-import mysql.connector
+try: 
+    import mysql.connector
+except ImportError:
+    print("MYSQL module not found. Installing...")
+    os.system("pip install mysql-connector-python")
+    import mysql.connector
+    print("MYSQL module installed")
 import decimal
 import os
 import platform
