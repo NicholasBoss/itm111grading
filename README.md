@@ -29,14 +29,6 @@ On line 9 in `root.py`, you may need to replace the password with your root pass
 
 Clone this repo onto the AWS instance or your local machine.
 
-If you are on the AWS instance, the mysql.connector library is already installed.
-
-If you are on a local machine, you must install the mysql.connector library:
-
-```
-pip install mysql-connector-python
-```
-
 To run the application, choose the particular week you are grading and click the play button
 
 If everything has been successfully installed, the application will run.
