@@ -21,6 +21,20 @@ if name == 'Linux' or name == 'Darwin':
 elif name == 'Windows':
     filename = f"{directory}\\root.sql"
 
+mycursor = mydb.cursor()
+mycursor.execute('SHOW DATABASES')
+test_output = mycursor.fetchall()
+
+for x in test_output:
+# test for the bike database
+    if x[0] == 'bike':
+        break
+    else:
+        print('Required databases missing. Creating...')
+        mycursor.execute('source itm111_databases.sql')
+        mydb.commit()
+        print('Database creation successful.')
+
 with open(filename, 'r+') as file:
     sqlFile = file.read()
     commands = sqlFile.split('-- ~')
