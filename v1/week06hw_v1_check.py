@@ -32,8 +32,8 @@ if os_name == 'Windows':
 
 elif os_name == 'Linux' or os_name == 'Darwin':
     print("Linux/MacOS Detected")
-    directory = os.getcwd() + '/v1'
-    grading_directory = os.getcwd() + '/v1/tempgrades'
+    directory = os.getcwd()
+    grading_directory = os.getcwd() + '/tempgrades'
     answer = open(f"{directory}/week06answers.txt", "w")
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(grading_directory):
@@ -167,8 +167,8 @@ else:
             
         # answer.write("--------RESULTS-------\n")
         answer.write("---------ERD----------\n")
-        answer.write(f"{drop_schema_count}/{1} DROP SCHEMA UNIVERSITY Statement Written\n")
-        answer.write(f"{create_schema_count}/{1} CREATE SCHEMA UNIVERSITY Statement Written\n")
+        answer.write(f"{drop_schema_count}/{1} DROP SCHEMA FILM Statement Written\n")
+        answer.write(f"{create_schema_count}/{1} CREATE SCHEMA FILM Statement Written\n")
         answer.write(f"{drop_count}/{total_drop_count} of 14 total possible DROP TABLE Statements Written\n")
         answer.write(f"{create_count}/{total_create_count} of 10 total possible CREATE TABLE Statements Written\n")
         answer.write("-------INSERTS--------\n")
