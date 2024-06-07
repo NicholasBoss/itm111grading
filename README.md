@@ -10,7 +10,7 @@ OR
 
 VS Code
 
-Python (Make sure you add it to the path/environment variables when installing)
+Python version 3.11.7 (Make sure you add it to the path/environment variables when installing)
 
 MySQL Workbench 
 
