@@ -1,5 +1,11 @@
-import mysql.connector
 import os
+try:
+    import mysql.connector
+except ImportError:
+    print("MySQL Module not found. Installing Library...")
+    os.system("pip install mysql-connector-python")
+    print("Library Installed")
+    import mysql.connector
 import platform
 
 # connect to root user
