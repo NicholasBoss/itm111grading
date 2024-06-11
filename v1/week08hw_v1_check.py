@@ -77,12 +77,12 @@ correct_answer_list = [[['Fishing in the Mojave', '13.53'], # 1
                         ['Electra Townie Original 21D'], 
                         ['Electra Cruiser 1 (24-Inch)'], 
                         ["Electra Girl's Hawaii 1 (16-inch)"]],
-                       [["Trek Checkpoint ALR 4 Women's - 2019", '$566.66'], 
-                        ['Trek Checkpoint ALR 5 - 2019', '$666.66'], 
-                        ["Trek Checkpoint ALR 5 Women's - 2019", '$666.66'], 
-                        ["Trek Checkpoint SL 5 Women's - 2019", '$933.33'], 
-                        ['Trek Checkpoint SL 6 - 2019', '$1,266.66'], 
-                        ['Trek Checkpoint ALR Frameset - 2019', '$1,066.66']]
+                       [["Trek Checkpoint ALR 4 Women's - 2019", '$1,699.99', '$170.00', '$382.50'], 
+                        ['Trek Checkpoint ALR 5 - 2019', '$1,999.99', '$200.00', '$450.00'], 
+                        ["Trek Checkpoint ALR 5 Women's - 2019", '$1,999.99', '$200.00', '$450.00'], 
+                        ["Trek Checkpoint SL 5 Women's - 2019", '$2,799.99', '$280.00', '$630.00'], 
+                        ['Trek Checkpoint SL 6 - 2019', '$3,799.99', '$380.00', '$855.00'], 
+                        ['Trek Checkpoint ALR Frameset - 2019', '$3,199.99', '$320.00', '$720.00']]
                       ]
 
 alias_counter = 0
