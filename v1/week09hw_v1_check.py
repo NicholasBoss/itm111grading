@@ -72,7 +72,8 @@ correct_answer_list = [[['irises.jpg'], # 1
                         ['Rajmohan', 'Aamodt'], 
                         ['Marla', 'Aamodt'], 
                         ['Arumugam', 'Aamodt']],
-                       [['Mayuko', 'Warwick', 'Sales', '$47,017.00']] # 7
+                       [[['Mayuko', 'Warwick', 'Production', '$47,017.00']], # 7
+                        [['Mayuko', 'Warwick', 'Production', '$47,017']]] 
                       ]
 
 alias_counter = 0
