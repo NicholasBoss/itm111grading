@@ -33,7 +33,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-correct_answer_list = [[['Fishing in the Mojave', '13.53'], # 1
+correct_answer_list = [[[['Fishing in the Mojave', '13.53'], # 1
                         ['Car Racing Made Easy', '14.99'], 
                         ['Pine Cone Computing', '16.98'], 
                         ['Cooking Like Mad', '17.46'], 
@@ -41,6 +41,7 @@ correct_answer_list = [[['Fishing in the Mojave', '13.53'], # 1
                         ['Beautiful Birds', '12.08'], 
                         ['Corn Shucking for Fun and Profit', '14.60'], 
                         ['MySQL Magic', '10.62']],
+                        [['Fishing in the Mojave', '$13.53'], ['Car Racing Made Easy', '$14.99'], ['Pine Cone Computing', '$16.98'], ['Cooking Like Mad', '$17.46'], ['If Only I Could Sing', '$12.08'], ['Beautiful Birds', '$12.08'], ['Corn Shucking for Fun and Profit', '$14.60'], ['MySQL Magic', '$10.62']]],
                        [[1, '10'], # 2
                         [2, '10'], 
                         [3, '9'], 
@@ -52,18 +53,19 @@ correct_answer_list = [[['Fishing in the Mojave', '13.53'], # 1
                         [4, '9'], 
                         [3, '9'], 
                         [3, '10']],
-                       [['2011-03-01', 12, 'March 1, 2012'], # 3
-                        ['2011-03-01', 14, 'May 1, 2012'], 
-                        ['2012-02-01', 12, 'February 1, 2013'], 
-                        ['2012-02-01', 12, 'February 1, 2013'], 
-                        ['2011-09-01', 12, 'September 1, 2012'], 
-                        ['2012-07-01', 24, 'July 1, 2014'], 
-                        ['2012-08-01', 12, 'August 1, 2013'], 
-                        ['2011-05-01', 12, 'May 1, 2012'], 
-                        ['2011-09-01', 12, 'September 1, 2012'], 
-                        ['2011-12-01', 12, 'December 1, 2012'], 
-                        ['2011-05-01', 18, 'November 1, 2012']],
-                       [['Trek 820'], 
+                       [[['2011-03-01', 12, 'March 1, 2012'], # 3
+                         ['2011-03-01', 14, 'May 1, 2012'], 
+                         ['2012-02-01', 12, 'February 1, 2013'], 
+                         ['2012-02-01', 12, 'February 1, 2013'], 
+                         ['2011-09-01', 12, 'September 1, 2012'], 
+                         ['2012-07-01', 24, 'July 1, 2014'], 
+                         ['2012-08-01', 12, 'August 1, 2013'], 
+                         ['2011-05-01', 12, 'May 1, 2012'], 
+                         ['2011-09-01', 12, 'September 1, 2012'], 
+                         ['2011-12-01', 12, 'December 1, 2012'], 
+                         ['2011-05-01', 18, 'November 1, 2012']],
+                        [['2011-03-01', 12, 'March 01, 2012'], ['2011-03-01', 14, 'May 01, 2012'], ['2012-02-01', 12, 'February 01, 2013'], ['2012-02-01', 12, 'February 01, 2013'], ['2011-09-01', 12, 'September 01, 2012'], ['2012-07-01', 24, 'July 01, 2014'], ['2012-08-01', 12, 'August 01, 2013'], ['2011-05-01', 12, 'May 01, 2012'], ['2011-09-01', 12, 'September 01, 2012'], ['2011-12-01', 12, 'December 01, 2012'], ['2011-05-01', 18, 'November 01, 2012']]],
+                       [[['Trek 820'], 
                         ['Ritchey Timberwolf Frameset'], 
                         ['Surly Wednesday Frameset'], 
                         ['Trek Fuel EX 8 29'], 
@@ -77,6 +79,7 @@ correct_answer_list = [[['Fishing in the Mojave', '13.53'], # 1
                         ['Electra Townie Original 21D'], 
                         ['Electra Cruiser 1 (24-Inch)'], 
                         ["Electra Girl's Hawaii 1 (16-inch)"]],
+                        [['Trek 820 '], ['Ritchey Timberwolf Frameset '], ['Surly Wednesday Frameset '], ['Trek Fuel EX 8 29 '], ['Heller Shagamaw Frame '], ['Surly Ice Cream Truck Frameset '], ['Trek Slash 8 27.5 '], ['Trek Remedy 29 Carbon Frameset '], ['Trek Conduit+ '], ['Surly Straggler '], ['Surly Straggler 650b '], ['Electra Townie Original 21D '], ['Electra Cruiser 1 (24-Inch) '], ["Electra Girl's Hawaii 1 (16-inch) "]]],
                        [["Trek Checkpoint ALR 4 Women's - 2019", '$1,699.99', '$170.00', '$382.50'], 
                         ['Trek Checkpoint ALR 5 - 2019', '$1,999.99', '$200.00', '$450.00'], 
                         ["Trek Checkpoint ALR 5 Women's - 2019", '$1,999.99', '$200.00', '$450.00'], 
