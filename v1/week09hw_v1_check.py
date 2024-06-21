@@ -51,7 +51,7 @@ correct_answer_list = [[['irises.jpg'], # 1
                         ['Claude', 'Monet', 'Woman in the Garden'], 
                         ['Pablo', 'Picasso', 'Old Guitartist'], 
                         ['Michelangelo', 'Simoni', None]],
-                       [['Beautiful Birds', 'Sanders', 'Samantha'], # 4
+                       [[['Beautiful Birds', 'Sanders', 'Samantha'], # 4
                         ['Beautiful Birds', 'Lamont', 'Lucy'], 
                         ['Car Racing Made Easy', 'Anderson', 'Albert'], 
                         ['Cooking Like Mad', 'Sanders', 'Samantha'], 
@@ -62,16 +62,19 @@ correct_answer_list = [[['irises.jpg'], # 1
                         ['Fishing in the Mojave', 'Jimenez', 'Jose'], 
                         ['If Only I Could Sing', 'Sanders', 'Samantha'], 
                         ['Pine Cone Computing', 'Sanders', 'Samantha']],
-                       [['Beautiful Birds'], # 5
+                        [['Beautiful Birds', 'Samantha', 'Sanders'], ['Beautiful Birds', 'Lucy', 'Lamont'], ['Car Racing Made Easy', 'Albert', 'Anderson'], ['Cooking Like Mad', 'Samantha', 'Sanders'], ['Corn Shucking for Fun and Profit', 'Lucy', 'Lamont'], ['Corn Shucking for Fun and Profit', 'Jose', 'Jimenez'], ['Fishing in the Mojave', 'Julie', 'Johnston'], ['Fishing in the Mojave', 'Samantha', 'Sanders'], ['Fishing in the Mojave', 'Jose', 'Jimenez'], ['If Only I Could Sing', 'Samantha', 'Sanders'], ['Pine Cone Computing', 'Samantha', 'Sanders']]],
+                       [[['Beautiful Birds'], # 5
                         ['Cooking Like Mad'], 
                         ['Fishing in the Mojave'], 
                         ['If Only I Could Sing'], 
                         ['Pine Cone Computing']],
-                       [['Youpyo', 'Aamodt'], # 6
+                        [['Beautiful Birds', 'Sanders', 'Samantha'], ['Cooking Like Mad', 'Sanders', 'Samantha'], ['Fishing in the Mojave', 'Sanders', 'Samantha'], ['If Only I Could Sing', 'Sanders', 'Samantha'], ['Pine Cone Computing', 'Sanders', 'Samantha']]],
+                       [[['Youpyo', 'Aamodt'], # 6
                         ['Basim', 'Aamodt'], 
                         ['Rajmohan', 'Aamodt'], 
                         ['Marla', 'Aamodt'], 
                         ['Arumugam', 'Aamodt']],
+                        [['Youpyo', 'Aamodt', 'Customer Service'], ['Basim', 'Aamodt', 'Customer Service'], ['Rajmohan', 'Aamodt', 'Customer Service'], ['Marla', 'Aamodt', 'Customer Service'], ['Arumugam', 'Aamodt', 'Customer Service']]],
                        [[['Mayuko', 'Warwick', 'Production', '$47,017.00']], # 7
                         [['Mayuko', 'Warwick', 'Production', '$47,017']]] 
                       ]
