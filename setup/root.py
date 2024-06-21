@@ -22,10 +22,12 @@ mydb = mysql.connector.connect(
 directory = os.getcwd()
 # check to see what system I'm using
 name = platform.system()
-if name == 'Linux' or name == 'Darwin':
-    filename = f"{directory}/root.sql"
+if name == 'Linux':
+    filename = f"/home/student/Desktop/itm111grading/setup/root.sql"
 elif name == 'Windows':
     filename = f"{directory}\\root.sql"
+elif name == 'Darwin':
+    filename = f"{directory}/root.sql"
 
 
 with open(filename, 'r+') as file:
