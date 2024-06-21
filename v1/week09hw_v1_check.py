@@ -1,3 +1,4 @@
+import os
 try: 
     import mysql.connector
 except ImportError:
@@ -6,7 +7,6 @@ except ImportError:
     import mysql.connector
     print("MYSQL module installed")
 import decimal
-import os
 import platform
 import time
 
