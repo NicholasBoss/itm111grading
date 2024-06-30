@@ -8,7 +8,17 @@ except ImportError:
 import decimal
 import os
 import platform
+import time
+try:
+    import regex as re
+except ImportError:
+    print("REGEX module not found. Installing...")
+    os.system("pip install regex")
+    import regex as re
+    print("REGEX module installed") 
 
+# start timer
+start_time = time.time()
 
 def format_list(list):
     list = [str(item) for item in list]
@@ -47,19 +57,34 @@ correct_answer_list = [[[1]],
                          ['Milo', None, 'Rambaldi', 1444, 1495, 'Italy', 'n'], 
                          ['Michelangelo', 'di Lodovico', 'Simoni', 1475, 1564, 'Italy', 'n'], 
                          ['Vincent', None, 'van Gogh', 1853, 1890, 'France', 'n'], 
-                         ['Rembrandt', 'Harmenszoon', 'van Rijn', 1606, 1669, 'Netherlands', 'n']]],
+                         ['Rembrandt', 'Harmenszoon', 'van Rijn', 1606, 1669, 'Netherlands', 'n']],
+                        [['Coy', 'Venture', 'Lonzo', 1965, None, 'United States', 'y'], ['da Vinci', 'Leonardo', None, 1452, 1519, 'Italy', 'n'], ['Gill', 'Deborah', None, 1970, None, 'United States', 'y'], ['Monet', 'Claude', None, 1840, 1926, 'France', 'n'], ['Picasso', 'Pablo', None, 1904, 1973, 'Spain', 'n'], ['Rambaldi', 'Milo', None, 1444, 1495, 'Italy', 'n'], ['Simoni', 'Michelangelo', 'di Lodovico', 1475, 1564, 'Italy', 'n'], ['van Gogh', 'Vincent', None, 1853, 1890, 'France', 'n'], ['van Rijn', 'Rembrandt', 'Harmenszoon', 1606, 1669, 'Netherlands', 'n']],
+                        [['Venture', 'Lonzo', 'Coy', 1965, None, 'United States', 'y'], ['Leonardo', None, 'da Vinci', 1452, 1519, 'Italy', 'n'], ['Deborah', None, 'Gill', 1970, None, 'United States', 'y'], ['Claude', None, 'Monet', 1840, 1926, 'France', 'n'], ['Pablo', None, 'Picasso', 1904, 1973, 'Spain', 'n'], ['Milo', None, 'Ramdaldi', 1444, 1495, 'Italy', 'n'], ['Michelangelo', 'di Lodovico', 'Simoni', 1475, 1564, 'Italy', 'n'], ['Vincent', None, 'van Gogh', 1853, 1890, 'France', 'n'], ['Rembrandt', 'Harmenszoon', 'van Rijn', 1606, 1669, 'Netherlands', 'n']],
+                        [['Venture', 'Coy', 'Lonzo', 1965, None, 'United States', 'y'], ['Leonardo', 'da Vinci', None, 1452, 1519, 'Italy', 'n'], ['Deborah', 'Gill', None, 1970, None, 'United States', 'y'], ['Claude', 'Monet', None, 1840, 1926, 'France', 'n'], ['Pablo', 'Picasso', None, 1904, 1973, 'Spain', 'n'], ['Milo', 'Rambaldi', None, 1444, 1495, 'Italy', 'n'], ['Michelangelo', 'Simoni', 'di Lodovico', 1475, 1564, 'Italy', 'n'], ['Vincent', 'van Gogh', None, 1853, 1890, 'France', 'n'], ['Rembrandt', 'van Rijn', 'Harmenszoon', 1606, 1669, 'Netherlands', 'n']],
+                        [['Venture', 'Lonzo', 'Coy', 'United States', 'y', 1965, None], ['Leonardo', None, 'da Vinci', 'Italy', 'n', 1452, 1519], ['Deborah', None, 'Gill', 'United States', 'y', 1970, None], ['Claude', None, 'Monet', 'France', 'n', 1840, 1926], ['Pablo', None, 'Picasso', 'Spain', 'n', 1904, 1973], ['Milo', None, 'Rambaldi', 'Italy', 'n', 1444, 1495], ['Michelangelo', 'di Lodovico', 'Simoni', 'Italy', 'n', 1475, 1564], ['Vincent', None, 'van Gogh', 'France', 'n', 1853, 1890], ['Rembrandt', 'Harmenszoon', 'van Rijn', 'Netherlands', 'n', 1606, 1669]]],
                        [[3]],
                        [[4]],
-                       [['Mozelle', 'Carter', '(281) 489-9656'], 
-                        ['Lolita', 'Mosley', '(281) 363-3309'], 
-                        ['Dorthey', 'Jackson', '(281) 926-8010'], 
-                        ['Minerva', 'Decker', '(281) 271-6390'], 
-                        ['Van', 'Peters', '(281) 658-7772'], 
-                        ['Ladawn', 'Downs', '(281) 165-2090'], 
-                        ['Ivelisse', 'Nixon', '(281) 941-4933'], 
-                        ['Crysta', 'Velez', '(281) 529-3469'], 
-                        ['Nestor', 'Haynes', '(281) 969-4579']],
-                        [['Trek Domane SLR 9 Disc - 2018', '11999.99', '11499.99'], 
+                       [[['Williemae', 'Holloway', '(510) 246-8375'], 
+                         ['Kanesha', 'Hudson', '(510) 788-7298'], 
+                         ['Tammera', 'Fischer', '(510) 534-8845'], 
+                         ['Stacie', 'Sims', '(510) 194-5117'], 
+                         ['Cira', 'Downs', '(510) 788-4456'], 
+                         ['Philip', 'Bryan', '(510) 533-4262'], 
+                         ['Donovan', 'Cantrell', '(510) 624-3824'], 
+                         ['Zulema', 'Clemons', '(510) 565-8496']],
+                        [['Mozelle', 'Carter', '(281) 489-9656'], 
+                         ['Lolita', 'Mosley', '(281) 363-3309'], 
+                         ['Dorthey', 'Jackson', '(281) 926-8010'], 
+                         ['Minerva', 'Decker', '(281) 271-6390'], 
+                         ['Van', 'Peters', '(281) 658-7772'], 
+                         ['Ladawn', 'Downs', '(281) 165-2090'], 
+                         ['Ivelisse', 'Nixon', '(281) 941-4933'], 
+                         ['Crysta', 'Velez', '(281) 529-3469'], 
+                         ['Nestor', 'Haynes', '(281) 969-4579']],
+                        [['Holloway', 'Williemae', '(510) 246-8375'], ['Hudson', 'Kanesha', '(510) 788-7298'], ['Fischer', 'Tammera', '(510) 534-8845'], ['Sims', 'Stacie', '(510) 194-5117'], ['Downs', 'Cira', '(510) 788-4456'], ['Bryan', 'Philip', '(510) 533-4262'], ['Cantrell', 'Donovan', '(510) 624-3824'], ['Clemons', 'Zulema', '(510) 565-8496']],
+                        [['Williemae', 'Holloway', '(510) 246-8375', 'Oakland'], ['Kanesha', 'Hudson', '(510) 788-7298', 'Oakland'], ['Tammera', 'Fischer', '(510) 534-8845', 'Oakland'], ['Stacie', 'Sims', '(510) 194-5117', 'Oakland'], ['Cira', 'Downs', '(510) 788-4456', 'Oakland'], ['Philip', 'Bryan', '(510) 533-4262', 'Oakland'], ['Donovan', 'Cantrell', '(510) 624-3824', 'Oakland'], ['Zulema', 'Clemons', '(510) 565-8496', 'Oakland']],
+                        [['Williemae', 'Holloway', '(510) 246-8375', 'Oakland', 'CA'], ['Kanesha', 'Hudson', '(510) 788-7298', 'Oakland', 'CA'], ['Tammera', 'Fischer', '(510) 534-8845', 'Oakland', 'CA'], ['Stacie', 'Sims', '(510) 194-5117', 'Oakland', 'CA'], ['Cira', 'Downs', '(510) 788-4456', 'Oakland', 'CA'], ['Philip', 'Bryan', '(510) 533-4262', 'Oakland', 'CA'], ['Donovan', 'Cantrell', '(510) 624-3824', 'Oakland', 'CA'], ['Zulema', 'Clemons', '(510) 565-8496', 'Oakland', 'CA']]],
+                        [[['Trek Domane SLR 9 Disc - 2018', '11999.99', '11499.99'], 
                          ['Trek Domane SLR 8 Disc - 2018', '7499.99', '6999.99'], 
                          ["Trek Silque SLR 8 Women's - 2017", '6499.99', '5999.99'], 
                          ['Trek Domane SL Frameset - 2018', '6499.99', '5999.99'], 
@@ -72,14 +97,20 @@ correct_answer_list = [[[1]],
                          ['Trek Domane SLR 6 Disc - 2018', '5499.99', '4999.99'], 
                          ['Trek Fuel EX 9.8 27.5 Plus - 2017', '5299.99', '4799.99'], 
                          ['Trek Remedy 9.8 - 2017', '5299.99', '4799.99']],
-                        [['Jannette', 'David', 'jannette.david@bikes.shop'], 
+                         [['11999.99', 'Trek Domane SLR 9 Disc - 2018', '11499.99'], ['7499.99', 'Trek Domane SLR 8 Disc - 2018', '6999.99'], ['6499.99', "Trek Silque SLR 8 Women's - 2017", '5999.99'], ['6499.99', 'Trek Domane SL Frameset - 2018', '5999.99'], ['6499.99', "Trek Domane SL Frameset Women's - 2018", '5999.99'], ['6499.99', 'Trek Emonda SLR 8 - 2018', '5999.99'], ['5999.99', "Trek Silque SLR 7 Women's - 2017", '5499.99'], ['5499.99', 'Trek Domane SLR 6 Disc - 2017', '4999.99'], ['5499.99', 'Trek Domane SL 8 Disc - 2018', '4999.99'], ['5499.99', "Trek Domane SLR 6 Disc Women's - 2018", '4999.99'], ['5499.99', 'Trek Domane SLR 6 Disc - 2018', '4999.99'], ['5299.99', 'Trek Fuel EX 9.8 27.5 Plus - 2017', '4799.99'], ['5299.99', 'Trek Remedy 9.8 - 2017', '4799.99']]],
+                        [[['Jannette', 'David', 'jannette.david@bikes.shop'], 
                          ['Marcelene', 'Boyer', 'marcelene.boyer@bikes.shop'], 
                          ['Venita', 'Daniel', 'venita.daniel@bikes.shop'], 
                          ['Kali', 'Vargas', 'kali.vargas@bikes.shop'], 
                          ['Layla', 'Terrell', 'layla.terrell@bikes.shop'], 
                          ['Bernardine', 'Houston', 'bernardine.houston@bikes.shop']],
+                         [['Fabiola', 'Jackson', 'fabiola.jackson@bikes.shop'], 
+                          ['Mireya', 'Copeland', 'mireya.copeland@bikes.shop'], 
+                          ['Genna', 'Serrano', 'genna.serrano@bikes.shop'], 
+                          ['Virgie', 'Wiggins', 'virgie.wiggins@bikes.shop']],
+                        [['David', 'Jannette', 'jannette.david@bikes.shop'], ['Boyer', 'Marcelene', 'marcelene.boyer@bikes.shop'], ['Daniel', 'Venita', 'venita.daniel@bikes.shop'], ['Vargas', 'Kali', 'kali.vargas@bikes.shop'], ['Terrell', 'Layla', 'layla.terrell@bikes.shop'], ['Houston', 'Bernardine', 'bernardine.houston@bikes.shop']]],
                         [['Sun Bicycles Spider 3i - 2017', 2017, '832.99']],
-                        [['Electra Moto 1 - 2016', '529.99'], 
+                        [[['Electra Moto 1 - 2016', '529.99'], 
                          ['Electra Cruiser Lux 3i - 2018', '529.99'], 
                          ["Electra Cruiser Lux 3i Ladies' - 2018", '529.99'], 
                          ['Sun Bicycles Streamway 7 - 2017', '533.99'], 
@@ -87,6 +118,7 @@ correct_answer_list = [[[1]],
                          ['Electra Townie Original 21D - 2016', '549.99'], 
                          ['Electra Townie Original 21D - 2016', '549.99'], 
                          ['Haro Flightline Two 26 Plus - 2017', '549.99']],
+                         [['529.99', 'Electra Moto 1 - 2016'], ['529.99', 'Electra Cruiser Lux 3i - 2018'], ['529.99', "Electra Cruiser Lux 3i Ladies' - 2018"], ['533.99', 'Sun Bicycles Streamway 7 - 2017'], ['539.99', 'Haro SR 1.1 - 2017'], ['549.99', 'Electra Townie Original 21D - 2016'], ['549.99', 'Electra Townie Original 21D - 2016'], ['549.99', 'Haro Flightline Two 26 Plus - 2017']]],
                         [['Theo', 'Reese', '(562) 215-2907', '8755 W. Wild Horse St. ', 'Long Beach', 'NY', '11561'], 
                          ['Dacia', 'William', None, '62 Cypress Drive ', 'Sugar Land', 'TX', '77478'], 
                          ['Toya', 'Pratt', '(562) 218-6405', '485 San Pablo Drive ', 'Long Beach', 'NY', '11561'], 
@@ -109,8 +141,8 @@ if os_name == 'Windows':
 
 elif os_name == 'Linux' or os_name == 'Darwin':
     print("Linux/MacOS Detected")
-    directory = os.getcwd() + '/v1'
-    grading_directory = os.getcwd() + '/v1/tempgrades'
+    directory = '/home/student/Desktop/itm111grading/v1'
+    grading_directory = '/home/student/Desktop/itm111grading/v1/tempgrades'
     answer = open(f"{directory}/week07answers.txt", "w")
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(grading_directory):
@@ -140,8 +172,10 @@ else:
             print("Formatting File...")
             file_contents = file_contents.replace("USE", "-- ~\nUSE")
             file_contents = file_contents.replace("SELECT", "-- ~\nSELECT")
+            file_contents = file_contents.replace("(-- ~\nSELECT", "(SELECT")
             file_contents = file_contents.replace("INSERT", "-- ~\nINSERT")
             file_contents = file_contents.replace("UPDATE", "-- ~\nUPDATE")
+            file_contents = file_contents.replace("The -- ~\nUPDATE", "The UPDATE")
             file_contents = file_contents.replace("DELETE", "-- ~\nDELETE")
             file_contents = file_contents.replace(";", ";\n-- ~")
             edit_file.seek(0)
@@ -224,7 +258,9 @@ else:
 
             if a_number == 3: # Query 2
                 if command.lower().__contains__('select'):
-                    if not command.lower().__contains__('from'):
+                    if not re.search(r'(select).*fname.*\,.*mname.*\,.*lname.*\,.*dob.*\,.*dod.*\,.*country.*\,.*local', command, re.I | re.S):
+                        query2_clause_list.append(f"Invalid SELECT Statement. 7 Column names should exist.")
+                    if not re.search(r'^.*from.*artist',command, re.I | re.S):
                         query2_clause_list.append(f"FROM Clause NOT used")
                     if command.lower().__contains__('*'):
                         query2_clause_list.append(f"SELECT * used. Use column names instead")
@@ -260,7 +296,7 @@ else:
                     if not command.lower().__contains__('where'):
                         query5_clause_list.append(f"WHERE Clause NOT used")
                     if not command.lower().__contains__('city ='):
-                        query5_clause_list.append(f"Wrong filter used. Use city = 'Anaheim'")
+                        query5_clause_list.append(f"Wrong filter used. Use city = 'Houston' or 'Oakland'")
 
                     
             if a_number == 8: # Query 6
@@ -491,7 +527,8 @@ else:
                     answer.write(f"Student Answer: {student_answers}\n")
                     answer.write(f"Correct Answer: {correct_answer_list[number-1]}\n")
                     answer.write("---------------------\n")
-
+        # end timer
+        end_time = time.time()
         answer.write(f"{alias_counter}/{total_aliases} Aliases Used\n")
         answer.write(f"{number}/{total_queries} Queries Written\n")
         answer.write(f"{correct_answer_count}/{total_queries} Queries Correct\n")
@@ -499,8 +536,10 @@ else:
         
         alias_counter = 0
         answer.write("***********************************\n\n")
+    
     answer.write("***********************************\n")
     answer.write(f"Total Files Graded: {file_count}\n")
+    answer.write(f"Total Time Elapsed: {end_time - start_time:.2f} seconds\n")
     answer.write("***********************************\n")
 
     print("Grading Complete")

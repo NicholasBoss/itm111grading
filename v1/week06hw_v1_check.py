@@ -7,8 +7,10 @@ except ImportError:
     print("MYSQL module installed")
 import os
 import platform
+import time
 
-
+# start timer
+start_time = time.time()
 # Connect to the database
 mydb = mysql.connector.connect(
     host="localhost",
@@ -20,7 +22,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-total_queries = 41
+total_queries = 43
 
 # open the test folder and read the files inside
 os_name = platform.system()
@@ -32,8 +34,8 @@ if os_name == 'Windows':
 
 elif os_name == 'Linux' or os_name == 'Darwin':
     print("Linux/MacOS Detected")
-    directory = os.getcwd() + '/v1'
-    grading_directory = os.getcwd() + '/v1/tempgrades'
+    directory = '/home/student/Desktop/itm111grading/v1'
+    grading_directory =  '/home/student/Desktop/itm111grading/v1/tempgrades'
     answer = open(f"{directory}/week06answers.txt", "w")
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(grading_directory):
@@ -93,9 +95,9 @@ else:
         erd_count = 0
         total_erd_count = 28
         drop_count = 0
-        total_drop_count = 14
+        total_drop_count = 13
         create_count = 0
-        total_create_count = 14
+        total_create_count = 13
         insert_count = 0
         total_insert_count = 13
         mydb_count = 0
@@ -165,24 +167,27 @@ else:
             
             
             
+        # end timer
+        end_time = time.time()
         # answer.write("--------RESULTS-------\n")
         answer.write("---------ERD----------\n")
-        answer.write(f"{drop_schema_count}/{1} DROP SCHEMA UNIVERSITY Statement Written\n")
-        answer.write(f"{create_schema_count}/{1} CREATE SCHEMA UNIVERSITY Statement Written\n")
-        answer.write(f"{drop_count}/{total_drop_count} of 14 total possible DROP TABLE Statements Written\n")
-        answer.write(f"{create_count}/{total_create_count} of 10 total possible CREATE TABLE Statements Written\n")
+        answer.write(f"{drop_schema_count}/{1} DROP SCHEMA FILM Statement Written\n")
+        answer.write(f"{create_schema_count}/{1} CREATE SCHEMA FILM Statement Written\n")
+        answer.write(f"{drop_count}/{total_drop_count} of 13 total possible DROP TABLE Statements Written\n")
+        answer.write(f"{create_count}/{total_create_count} of 13 total possible CREATE TABLE Statements Written\n")
         answer.write("-------INSERTS--------\n")
         answer.write(f"{insert_count}/{total_insert_count} of 13 total possible INSERT Statements Written\n")
         answer.write("-----FINAL TOTALS-----\n")
         answer.write(f"{erd_count}/{total_erd_count} of 28 total possible ERD Statements Written\n")
-        answer.write(f"{number}/{total_queries} of 41 total possible Statements Written\n")
-        answer.write(f"{correct_answer_count}/{total_queries} of 41 total possible Statements Correct\n")
+        answer.write(f"{number}/{total_queries} of 43 total possible Statements Written\n")
+        answer.write(f"{correct_answer_count}/{total_queries} of 43 total possible Statements Correct\n")
 
         
         alias_counter = 0
         answer.write("***********************************\n\n")
     answer.write("***********************************\n")
     answer.write(f"Total Files Graded: {file_count}\n")
+    answer.write(f"Total Time Elapsed: {end_time - start_time:.2f} seconds\n")
     answer.write("***********************************\n")
 
     print("Grading Complete")

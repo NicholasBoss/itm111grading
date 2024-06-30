@@ -7,7 +7,10 @@ except ImportError:
     print("MYSQL module installed")
 import os
 import platform
+import time
 
+# start timer
+start_time = time.time()
 
 
 # Connect to the database
@@ -35,8 +38,8 @@ if os_name == 'Windows':
 
 elif os_name == 'Linux' or os_name == 'Darwin':
     print("Linux/MacOS Detected")
-    directory = os.getcwd() + '/v3'
-    grading_directory = os.getcwd() + '/v3/tempgrades'
+    directory = '/home/student/Desktop/itm111grading/v1'
+    grading_directory = '/home/student/Desktop/itm111grading/v1/tempgrades'
     answer = open(f"{directory}/week11answers.txt", "w")
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(grading_directory):
@@ -184,7 +187,8 @@ else:
                 break
             
             
-            
+        # end timer
+        end_time = time.time()
         # answer.write("--------RESULTS-------\n")
         answer.write("---------ERD----------\n")
         answer.write("ERD statements can be between 8 and 10\n")
@@ -205,6 +209,7 @@ else:
         answer.write("***********************************\n\n")
     answer.write("***********************************\n")
     answer.write(f"Total Files Graded: {file_count}\n")
+    answer.write(f"Total Time Elapsed: {end_time - start_time:.2f} seconds\n")
     answer.write("***********************************\n")
 
     print("Grading Complete")

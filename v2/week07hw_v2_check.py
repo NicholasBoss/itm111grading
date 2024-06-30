@@ -8,6 +8,13 @@ except ImportError:
 import decimal
 import os
 import platform
+try:
+    import regex as re
+except ImportError:
+    print("REGEX module not found. Installing...")
+    os.system("pip install regex")
+    import regex as re
+    print("REGEX module installed") 
 
 
 def format_list(list):
@@ -115,8 +122,8 @@ if os_name == 'Windows':
 
 elif os_name == 'Linux' or os_name == 'Darwin':
     print("Linux/MacOS Detected")
-    directory = os.getcwd() + '/v1'
-    grading_directory = os.getcwd() + '/v1/tempgrades'
+    directory = '/home/student/Desktop/itm111grading'
+    grading_directory = '/home/student/Desktop/itm111grading/tempgrades'
     answer = open(f"{directory}/week07answers.txt", "w")
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(grading_directory):
@@ -230,7 +237,9 @@ else:
 
             if a_number == 3: # Query 2
                 if command.lower().__contains__('select'):
-                    if not command.lower().__contains__('from'):
+                    if not re.search(r'(select).*fname.*\,.*mname.*\,.*lname.*\,.*dob.*\,.*dod.*\,.*country.*\,.*local', command, re.I | re.S):
+                        query2_clause_list.append(f"Invalid SELECT Statement. 7 Column names should exist.")
+                    if not re.search(r'^.*from.*artist',command, re.I | re.S):
                         query2_clause_list.append(f"FROM Clause NOT used")
                     if command.lower().__contains__('*'):
                         query2_clause_list.append(f"SELECT * used. Use column names instead")
