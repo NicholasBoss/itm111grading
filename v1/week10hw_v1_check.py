@@ -32,46 +32,56 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-correct_answer_list = [[['14']], # 1
-                       [['Surly Wednesday Frameset - 2016'], # 2
-                        ['Surly Ice Cream Truck Frameset - 2016'], 
-                        ['Trek Remedy 29 Carbon Frameset - 2016'], 
+correct_answer_list = [[[['14']], # 1
+                        [[14]]], 
+                       [[['Electra Amsterdam Royal 8i Ladies - 2018'], #2
+                        ["Electra Cruiser 1 Ladies' - 2018"], 
                         ["Electra Girl's Hawaii 1 (16-inch) - 2015/2016"], 
-                        ['Trek Farley Alloy Frameset - 2017'], 
-                        ['Trek Fuel EX 5 27.5 Plus - 2017'], 
-                        ['Trek Remedy 9.8 - 2017'], 
-                        ['Trek Domane S 5 Disc - 2017'], 
-                        ['Trek Precaliber 24 (21-Speed) - Girls - 2017'], 
+                        ['Electra Townie Commute Go! - 2018'], 
+                        ['Electra Townie Go! 8i - 2017/2018'], 
+                        ['Electra Townie Original 1 - 2018'], 
+                        ["Electra Townie Original 1 Ladies' - 2018"], 
+                        ['Electra Townie Original 21D - 2018'], 
+                        ["Electra Townie Original 3i EQ Ladies' - 2018"], 
                         ['Haro Shredder 20 - 2017'], 
-                        ['Trek CrossRip 1 - 2018'], 
-                        ['Trek Emonda SLR 6 - 2018'], 
+                        ['Surly Ice Cream Truck Frameset - 2016'], 
                         ['Surly Pack Rat - 2018'], 
                         ['Surly Straggler - 2018'], 
-                        ['Trek Domane SLR Frameset - 2018'], 
+                        ['Surly Wednesday Frameset - 2016'], 
+                        ['Trek CrossRip 1 - 2018'], 
+                        ['Trek Domane S 5 Disc - 2017'], 
                         ['Trek Domane SL 6 Disc - 2018'], 
-                        ['Electra Townie Go! 8i - 2017/2018'], 
-                        ['Electra Townie Commute Go! - 2018'], 
-                        ["Electra Cruiser 1 Ladies' - 2018"], 
-                        ["Electra Townie Original 3i EQ Ladies' - 2018"], 
-                        ['Electra Amsterdam Royal 8i Ladies - 2018'], 
-                        ['Electra Townie Original 21D - 2018'], 
-                        ['Electra Townie Original 1 - 2018'], 
-                        ["Electra Townie Original 1 Ladies' - 2018"]],
-                       [['Cyclocross Bicycles', '159'], # 3
+                        ['Trek Domane SLR Frameset - 2018'], 
+                        ['Trek Emonda SLR 6 - 2018'], 
+                        ['Trek Farley Alloy Frameset - 2017'], 
+                        ['Trek Fuel EX 5 27.5 Plus - 2017'], 
+                        ['Trek Precaliber 24 (21-Speed) - Girls - 2017'], 
+                        ['Trek Remedy 29 Carbon Frameset - 2016'], 
+                        ['Trek Remedy 9.8 - 2017']],
+                        [['Surly Wednesday Frameset - 2016'], ['Surly Ice Cream Truck Frameset - 2016'], ['Trek Remedy 29 Carbon Frameset - 2016'], ["Electra Girl's Hawaii 1 (16-inch) - 2015/2016"], ['Trek Farley Alloy Frameset - 2017'], ['Trek Fuel EX 5 27.5 Plus - 2017'], ['Trek Remedy 9.8 - 2017'], ['Trek Domane S 5 Disc - 2017'], ['Trek Precaliber 24 (21-Speed) - Girls - 2017'], ['Haro Shredder 20 - 2017'], ['Trek CrossRip 1 - 2018'], ['Trek Emonda SLR 6 - 2018'], ['Surly Pack Rat - 2018'], ['Surly Straggler - 2018'], ['Trek Domane SLR Frameset - 2018'], ['Trek Domane SL 6 Disc - 2018'], ['Electra Townie Go! 8i - 2017/2018'], ['Electra Townie Commute Go! - 2018'], ["Electra Cruiser 1 Ladies' - 2018"], ["Electra Townie Original 3i EQ Ladies' - 2018"], ['Electra Amsterdam Royal 8i Ladies - 2018'], ['Electra Townie Original 21D - 2018'], ['Electra Townie Original 1 - 2018'], ["Electra Townie Original 1 Ladies' - 2018"]]],
+                       [[['Cyclocross Bicycles', '159'], # 3
                         ['Electric Bikes', '412'], 
                         ['Comfort Bicycles', '440'], 
                         ['Road Bikes', '646'], 
                         ['Children Bicycles', '887'], 
                         ['Mountain Bikes', '928'], 
                         ['Cruisers Bicycles', '1148']],
-                       [[300024]], # 4
-                       [['Customer Service', '$58,755.44'], # 5
+                        [['Cyclocross Bicycles', 'Rowlett Bikes', '159'], ['Electric Bikes', 'Rowlett Bikes', '412'], ['Comfort Bicycles', 'Rowlett Bikes', '440'], ['Road Bikes', 'Rowlett Bikes', '646'], ['Children Bicycles', 'Rowlett Bikes', '887'], ['Mountain Bikes', 'Rowlett Bikes', '928'], ['Cruisers Bicycles', 'Rowlett Bikes', '1148']]],
+                       [[[300024]], # 4
+                        [['300,024']]], 
+                       [[['Customer Service', '$58,755.44'], # 5
                         ['Development', '$59,503.57'], 
                         ['Human Resources', '$55,353.52'], 
                         ['Production', '$59,539.79'], 
                         ['Quality Management', '$57,294.66'], 
                         ['Research', '$59,866.24']],
-                       [['Customer Service', '14,132'], # 6
+                        [['Human Resources', '$55,353.52'], ['Production', '$59,539.79'], ['Development', '$59,503.57'], ['Quality Management', '$57,294.66'], ['Research', '$59,866.24'], ['Customer Service', '$58,755.44']],
+                        [['Development', '$59,503.57'], ['Production', '$59,539.79'], ['Human Resources', '$55,353.52'], ['Research', '$59,866.24'], ['Quality Management', '$57,294.66'], ['Customer Service', '$58,755.44']],
+                        [['Human Resources', '$55,353.52'], ['Quality Management', '$57,294.66'], ['Customer Service', '$58,755.44'], ['Development', '$59,503.58'], ['Production', '$59,539.79'], ['Research', '$59,866.24']],
+                        [['Development', '59,503.57'], ['Production', '59,539.79'], ['Human Resources', '55,353.52'], ['Research', '59,866.24'], ['Quality Management', '57,294.66'], ['Customer Service', '58,755.44']],
+                        [['Human Resources', '$55,353.52'], ['Production', '$59,539.79'], ['Development', '$59,503.58'], ['Quality Management', '$57,294.66'], ['Research', '$59,866.24'], ['Customer Service', '$58,755.44']],
+                        [['$59,503.57', 'Development'], ['$59,539.79', 'Production'], ['$55,353.52', 'Human Resources'], ['$59,866.24', 'Research'], ['$57,294.66', 'Quality Management'], ['$58,755.44', 'Customer Service']]],
+                       [[['Customer Service', '14,132'], # 6
                         ['Development', '51,449'], 
                         ['Finance', '10,331'], 
                         ['Human Resources', '10,711'], 
@@ -79,7 +89,9 @@ correct_answer_list = [[['14']], # 1
                         ['Production', '43,936'], 
                         ['Quality Management', '12,039'], 
                         ['Research', '12,687'], 
-                        ['Sales', '31,391']]
+                        ['Sales', '31,391']],
+                        [['Development', '51,449'], ['Production', '43,936'], ['Sales', '31,391'], ['Customer Service', '14,132'], ['Research', '12,687'], ['Marketing', '12,174'], ['Quality Management', '12,039'], ['Human Resources', '10,711'], ['Finance', '10,331']],
+                        [['Development', 51449], ['Production', 43936], ['Sales', 31391], ['Customer Service', 14132], ['Research', 12687], ['Marketing', 12174], ['Quality Management', 12039], ['Human Resources', 10711], ['Finance', 10331]]]
                       ]
 
 alias_counter = 0
@@ -465,6 +477,7 @@ else:
                     answer.write("-----ANSWERS-----\n")
                     
                     answer.write(f"Student Answer: {student_answers}\n")
+                    answer.write(f"Record Length: {len(student_answers)}\n")
                     answer.write(f"Correct Answer: {correct_answer_list[number-1]}\n")
                     answer.write("---------------------\n")
         # end timer

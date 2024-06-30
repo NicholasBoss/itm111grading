@@ -32,11 +32,16 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-correct_answer_list = [[['irises.jpg'], # 1
+correct_answer_list = [[[['irises.jpg'], # 1
                         ['womengarden.jpg']],
-                       [['irises.jpg'], # 2
+                        [['Irises', 'irises.jpg'], ['Woman in the Garden', 'womengarden.jpg']],
+                        [['Irises'], ['Woman in the Garden']]],
+                       [[['irises.jpg'], # 2
                         ['sunflowers.jpg'], 
                         ['womengarden.jpg']],
+                        [['irises.jpg', 'flowers'], ['sunflowers.jpg', 'flowers'], ['womengarden.jpg', 'flowers']],
+                        [['Irises'], ['Sunflowers'], ['Woman in the Garden']],
+                        [['Irises', 'flowers'], ['Sunflowers', 'flowers'], ['Woman in the Garden', 'flowers']]],
                        [['Vincent', 'van Gogh', 'Irises'], # 3
                         ['Vincent', 'van Gogh', 'Starry Night'], 
                         ['Vincent', 'van Gogh', 'Sunflowers'], 
@@ -62,7 +67,8 @@ correct_answer_list = [[['irises.jpg'], # 1
                         ['Fishing in the Mojave', 'Jimenez', 'Jose'], 
                         ['If Only I Could Sing', 'Sanders', 'Samantha'], 
                         ['Pine Cone Computing', 'Sanders', 'Samantha']],
-                        [['Beautiful Birds', 'Samantha', 'Sanders'], ['Beautiful Birds', 'Lucy', 'Lamont'], ['Car Racing Made Easy', 'Albert', 'Anderson'], ['Cooking Like Mad', 'Samantha', 'Sanders'], ['Corn Shucking for Fun and Profit', 'Lucy', 'Lamont'], ['Corn Shucking for Fun and Profit', 'Jose', 'Jimenez'], ['Fishing in the Mojave', 'Julie', 'Johnston'], ['Fishing in the Mojave', 'Samantha', 'Sanders'], ['Fishing in the Mojave', 'Jose', 'Jimenez'], ['If Only I Could Sing', 'Samantha', 'Sanders'], ['Pine Cone Computing', 'Samantha', 'Sanders']]],
+                        [['Beautiful Birds', 'Samantha', 'Sanders'], ['Beautiful Birds', 'Lucy', 'Lamont'], ['Car Racing Made Easy', 'Albert', 'Anderson'], ['Cooking Like Mad', 'Samantha', 'Sanders'], ['Corn Shucking for Fun and Profit', 'Lucy', 'Lamont'], ['Corn Shucking for Fun and Profit', 'Jose', 'Jimenez'], ['Fishing in the Mojave', 'Julie', 'Johnston'], ['Fishing in the Mojave', 'Samantha', 'Sanders'], ['Fishing in the Mojave', 'Jose', 'Jimenez'], ['If Only I Could Sing', 'Samantha', 'Sanders'], ['Pine Cone Computing', 'Samantha', 'Sanders']],
+                        [['Sanders', 'Samantha', 'Beautiful Birds'], ['Lamont', 'Lucy', 'Beautiful Birds'], ['Anderson', 'Albert', 'Car Racing Made Easy'], ['Sanders', 'Samantha', 'Cooking Like Mad'], ['Lamont', 'Lucy', 'Corn Shucking for Fun and Profit'], ['Jimenez', 'Jose', 'Corn Shucking for Fun and Profit'], ['Johnston', 'Julie', 'Fishing in the Mojave'], ['Sanders', 'Samantha', 'Fishing in the Mojave'], ['Jimenez', 'Jose', 'Fishing in the Mojave'], ['Sanders', 'Samantha', 'If Only I Could Sing'], ['Sanders', 'Samantha', 'Pine Cone Computing']]],
                        [[['Beautiful Birds'], # 5
                         ['Cooking Like Mad'], 
                         ['Fishing in the Mojave'], 
@@ -74,9 +80,11 @@ correct_answer_list = [[['irises.jpg'], # 1
                         ['Rajmohan', 'Aamodt'], 
                         ['Marla', 'Aamodt'], 
                         ['Arumugam', 'Aamodt']],
-                        [['Youpyo', 'Aamodt', 'Customer Service'], ['Basim', 'Aamodt', 'Customer Service'], ['Rajmohan', 'Aamodt', 'Customer Service'], ['Marla', 'Aamodt', 'Customer Service'], ['Arumugam', 'Aamodt', 'Customer Service']]],
+                        [['Youpyo', 'Aamodt', 'Customer Service'], ['Basim', 'Aamodt', 'Customer Service'], ['Rajmohan', 'Aamodt', 'Customer Service'], ['Marla', 'Aamodt', 'Customer Service'], ['Arumugam', 'Aamodt', 'Customer Service']],
+                        [['Aamodt', 'Youpyo'], ['Aamodt', 'Basim'], ['Aamodt', 'Rajmohan'], ['Aamodt', 'Marla'], ['Aamodt', 'Arumugam']]],
                        [[['Mayuko', 'Warwick', 'Production', '$47,017.00']], # 7
-                        [['Mayuko', 'Warwick', 'Production', '$47,017']]] 
+                        [['Mayuko', 'Warwick', 'Production', '$47,017']],
+                        [['Mayuko', 'Warwick', '$47,017', 'Production']]] 
                       ]
 
 alias_counter = 0
