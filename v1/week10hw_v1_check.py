@@ -80,7 +80,8 @@ correct_answer_list = [[[['14']], # 1
                         [['Human Resources', '$55,353.52'], ['Quality Management', '$57,294.66'], ['Customer Service', '$58,755.44'], ['Development', '$59,503.58'], ['Production', '$59,539.79'], ['Research', '$59,866.24']],
                         [['Development', '59,503.57'], ['Production', '59,539.79'], ['Human Resources', '55,353.52'], ['Research', '59,866.24'], ['Quality Management', '57,294.66'], ['Customer Service', '58,755.44']],
                         [['Human Resources', '$55,353.52'], ['Production', '$59,539.79'], ['Development', '$59,503.58'], ['Quality Management', '$57,294.66'], ['Research', '$59,866.24'], ['Customer Service', '$58,755.44']],
-                        [['$59,503.57', 'Development'], ['$59,539.79', 'Production'], ['$55,353.52', 'Human Resources'], ['$59,866.24', 'Research'], ['$57,294.66', 'Quality Management'], ['$58,755.44', 'Customer Service']]],
+                        [['$59,503.57', 'Development'], ['$59,539.79', 'Production'], ['$55,353.52', 'Human Resources'], ['$59,866.24', 'Research'], ['$57,294.66', 'Quality Management'], ['$58,755.44', 'Customer Service']],
+                        [['Research', '$59,866.24'], ['Production', '$59,539.79'], ['Development', '$59,503.58'], ['Customer Service', '$58,755.44'], ['Quality Management', '$57,294.66'], ['Human Resources', '$55,353.52']]],
                        [[['Customer Service', '14,132'], # 6
                         ['Development', '51,449'], 
                         ['Finance', '10,331'], 
