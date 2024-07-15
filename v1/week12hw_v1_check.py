@@ -33,9 +33,11 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-correct_answer_list = [[['Preston', 'Larsen', 'September 22, 1996'], # 1 
+correct_answer_list = [[[['Preston', 'Larsen', 'September 22, 1996'], # 1 
                         ['Julia', 'Madsen', 'September 22, 1998']],
-                       [['Smith', 'Katie', '1995-07-22', 21, 173, '21 - Yrs, 173 - Days'], # 2
+                        [['Preston', 'Larsen', 'September 22nd, 1996'], ['Julia', 'Madsen', 'September 22nd, 1998']],
+                        [['Preston Larsen', 'September 22, 1996'], ['Julia Madsen', 'September 22, 1998']]],
+                       [[['Smith', 'Katie', '1995-07-22', 21, 173, '21 - Yrs, 173 - Days'], # 2
                         ['Miller', 'Paul', '1996-02-22', 20, 323, '20 - Yrs, 323 - Days'], 
                         ['Larsen', 'Preston', '1996-09-22', 20, 110, '20 - Yrs, 110 - Days'], 
                         ['Murdock', 'Mandy', '1996-11-22', 20, 49, '20 - Yrs, 49 - Days'], 
@@ -44,28 +46,40 @@ correct_answer_list = [[['Preston', 'Larsen', 'September 22, 1996'], # 1
                         ['Sorensen', 'Susan', '1998-08-09', 18, 154, '18 - Yrs, 154 - Days'], 
                         ['Madsen', 'Julia', '1998-09-22', 18, 110, '18 - Yrs, 110 - Days'], 
                         ['Merrill', 'Devon', '2000-07-22', 16, 171, '16 - Yrs, 171 - Days']],
-                       [['Devon', 'Merrill', 'Student'], # 3
+                        [['Smith', 'Katie', '1995-07-22', 21, 173, '21-Yrs, 173-Days'], ['Miller', 'Paul', '1996-02-22', 20, 323, '20-Yrs, 323-Days'], ['Larsen', 'Preston', '1996-09-22', 20, 110, '20-Yrs, 110-Days'], ['Murdock', 'Mandy', '1996-11-22', 20, 49, '20-Yrs, 49-Days'], ['Carlson', 'Bryce', '1997-11-22', 19, 49, '19-Yrs, 49-Days'], ['Jones', 'Kelly', '1998-06-22', 18, 202, '18-Yrs, 202-Days'], ['Sorensen', 'Susan', '1998-08-09', 18, 154, '18-Yrs, 154-Days'], ['Madsen', 'Julia', '1998-09-22', 18, 110, '18-Yrs, 110-Days'], ['Merrill', 'Devon', '2000-07-22', 16, 171, '16-Yrs, 171-Days']]],
+                       [[['Devon', 'Merrill', 'Student'], # 3
                         ['Mandy', 'Murdock', 'Student'], 
                         ['Bryce', 'Carlson', 'Student'], 
                         ['John', 'Jensen', 'Teacher']],
-                       [['Alece', 'Pauls', 'TA', 'Algorithmic Thinking'], # 4
+                        [['Merrill', 'Devon', 'Student'], ['Murdock', 'Mandy', 'Student'], ['Carlson', 'Bryce', 'Student'], ['Jensen', 'John', 'Teacher']],
+                        [['Mandy', 'Murdock', 'Student'], ['Devon', 'Merrill', 'Student'], ['Bryce', 'Carlson', 'Student'], ['John', 'Jensen', 'Teacher']]],
+                       [[['Alece', 'Adams', 'TA', 'Algorithmic Thinking'], # 4
                         ['Bryce', 'Carlson', 'TA', 'Intro to Programming']],
-                       [['Kelly', 'Jones'], # 5
+                        [['Adams', 'Alece', 'TA', 'Algorithmic Thinking'], ['Carlson', 'Bryce', 'TA', 'Intro to Programming']]],
+                       [[['Kelly', 'Jones'], # 5
                         ['Mandy', 'Murdock'], 
                         ['Katie', 'Smith']],
-                       [['CSE', '180', 'Algorithmic Thinking'], # 6
+                        [['Katie', 'Smith'], ['Mandy', 'Murdock'], ['Kelly', 'Jones']]],
+                       [[['CSE', '180', 'Algorithmic Thinking'], # 6
                         ['CSE', '110', 'Intro to Programming'], 
                         ['MUSIC', '160B', 'Organ Lessons I']],
-                       [['Fall', 2024, 5]], # 7
-                       [['Computer Science and Engineering', 2], # 8
+                        [['CSE', '180', 'Algorithmic Thinking'], ['CSE', '110', 'Intro to Programming'], ['MUSIC', '160B', 'Organ Lessons 1']],
+                        [['CSE', '180', 'Algorithmic Thinking'], ['CSE', '110', 'Intro to Programming'], ['Music', '160B', 'Organ Lessons I']]],
+                       [[['Fall', 2024, 5]],
+                        [['Fall', '2024', 5]]], # 7
+                       [[['Computer Science and Engineering', 2], # 8
                         ['Mathematics', 1], 
                         ['Music', 1]],
-                       [['Marty', 'Morring', '30'], # 9
+                        [['Computer Science AND Engineering', 2], ['Mathematics', 1], ['Music', 1]]],
+                       [[['Marty', 'Morring', '30'], # 9
                         ['John', 'Jensen', '30'], 
                         ['Bill', 'Barney', '35'], 
                         ['Nate', 'Norris', '100']],
-                       [['Miller', 'Paul', '5'], # 10
-                        ['Murdock', 'Mandy', '4']]
+                        [['Marty', 'Morring', '30'], ['John', 'Jensen', '30'], ['Bill', 'Bareny', '35'], ['Nate', 'Norris', '100']],
+                        [['John', 'Jensen', '30'], ['Marty', 'Morring', '30'], ['Bill', 'Barney', '35'], ['Nate', 'Norris', '100']]],
+                       [[['Miller', 'Paul', '5'], # 10
+                        ['Murdock', 'Mandy', '4']],
+                        [['Paul', 'Miller', '5'], ['Mandy', 'Murdock', '4']]]
                       ]
 
 alias_counter = 0
