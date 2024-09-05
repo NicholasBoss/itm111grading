@@ -1,9 +1,9 @@
 import os
 try:
     import mysql.connector
-except ImportError:
+except ImportError or ModuleNotFoundError:
     print("MySQL Module not found. Installing Library...")
-    os.system("pip install mysql-connector-python")
+    os.system("pip3 install mysql-connector-python")
     print("Library Installed")
     import mysql.connector
 import platform
@@ -21,12 +21,14 @@ mydb = mysql.connector.connect(
 # execute the root commands to grant access to the new user
 directory = os.getcwd()
 # check to see what system I'm using
+print(directory)
 name = platform.system()
 if name == 'Linux':
     filename = f"/home/student/Desktop/itm111grading/setup/root.sql"
 elif name == 'Windows':
     filename = f"{directory}\\root.sql"
 elif name == 'Darwin':
+    print("MacOS")
     filename = f"{directory}/root.sql"
 
 

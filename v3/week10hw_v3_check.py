@@ -1,13 +1,17 @@
+import os
+import platform
+os_name = platform.system()
 try: 
     import mysql.connector
-except ImportError:
+except ImportError or ModuleNotFoundError:
     print("MYSQL module not found. Installing...")
-    os.system("pip install mysql-connector-python")
+    if os_name == 'Windows':
+        os.system("pip install mysql-connector-python")
+    elif os_name == 'Linux' or os_name == 'Darwin':
+        os.system("pip3 install mysql-connector-python")
     import mysql.connector
     print("MYSQL module installed")
 import decimal
-import os
-import platform
 
 
 def format_list(list):
@@ -155,17 +159,22 @@ total_aliases = 5
 total_queries = 6
 
 # open the test folder and read the files inside
-os_name = platform.system()
 if os_name == 'Windows':
     print("Windows OS Detected")
     directory = os.getcwd()
     grading_directory = os.getcwd() + '\\tempgrades'
     answer = open(f"{directory}\\week10answers.txt", "w")
 
-elif os_name == 'Linux' or os_name == 'Darwin':
-    print("Linux/MacOS Detected")
+elif os_name == 'Linux':
+    print("Linux Detected")
     directory = '/home/student/Desktop/itm111grading'
     grading_directory = '/home/student/Desktop/itm111grading/tempgrades'
+    answer = open(f"{directory}/week10answers.txt", "w")
+
+elif os_name == 'Darwin':
+    print("MacOS Detected")
+    directory = os.getcwd()
+    grading_directory = os.getcwd() + '/tempgrades'
     answer = open(f"{directory}/week10answers.txt", "w")
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(grading_directory):
