@@ -1,12 +1,17 @@
 import os
-try:
+import platform
+os_name = platform.system()
+try: 
     import mysql.connector
 except ImportError or ModuleNotFoundError:
-    print("MySQL Module not found. Installing Library...")
-    os.system("pip3 install mysql-connector-python")
-    print("Library Installed")
+    print("MYSQL module not found. Installing...")
+    if os_name == 'Windows':
+        os.system("pip install mysql-connector-python")
+    elif os_name == 'Linux' or os_name == 'Darwin':
+        os.system("pip3 install mysql-connector-python")
     import mysql.connector
-import platform
+    print("MYSQL module installed")
+
 
 # connect to root user
 mydb = mysql.connector.connect(
