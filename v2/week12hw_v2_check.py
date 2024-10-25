@@ -89,8 +89,8 @@ if os_name == 'Windows':
 
 elif os_name == 'Linux':
     print("Linux Detected")
-    directory = '/home/student/Desktop/itm111grading'
-    grading_directory = '/home/student/Desktop/itm111grading/tempgrades'
+    directory = '/home/student/Desktop/itm111grading/v2'
+    grading_directory = '/home/student/Desktop/itm111grading//v2tempgrades'
     answer = open(f"{directory}/week12answers.txt", "w")
 
 elif os_name == 'Darwin':
