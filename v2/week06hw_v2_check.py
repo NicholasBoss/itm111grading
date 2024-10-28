@@ -174,8 +174,8 @@ else:
             
         # answer.write("--------RESULTS-------\n")
         answer.write("---------ERD----------\n")
-        answer.write(f"{drop_schema_count}/{1} DROP SCHEMA UNIVERSITY Statement Written\n")
-        answer.write(f"{create_schema_count}/{1} CREATE SCHEMA UNIVERSITY Statement Written\n")
+        answer.write(f"{drop_schema_count}/{1} DROP SCHEMA FILM Statement Written\n")
+        answer.write(f"{create_schema_count}/{1} CREATE SCHEMA FILM Statement Written\n")
         answer.write(f"{drop_count}/{total_drop_count} of 14 total possible DROP TABLE Statements Written\n")
         answer.write(f"{create_count}/{total_create_count} of 10 total possible CREATE TABLE Statements Written\n")
         answer.write("-------INSERTS--------\n")
