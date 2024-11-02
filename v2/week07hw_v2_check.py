@@ -76,7 +76,7 @@ correct_answer_list = [[[1]],
                        [['Trek CrossRip 1 - 2018', 2018, '959.99'], # 8
                         ['Trek CrossRip 2 - 2018', 2018, '1299.99'], 
                         ['Trek CrossRip+ - 2018', 2018, '4499.99']],
-                       [['Sun Bicycles Biscayne Tandem 7 - 2017', '619.99'], # 9
+                       [[['Sun Bicycles Biscayne Tandem 7 - 2017', '619.99'], # 9
                         ['Electra Moto 3i - 2018', '639.99'], 
                         ['Electra Cruiser Lux Fat Tire 7D - 2018', '639.99'], 
                         ["Electra Townie Original 3i EQ Ladies' - 2018", '639.99'], 
@@ -108,6 +108,38 @@ correct_answer_list = [[[1]],
                         ['Electra Townie Balloon 8D EQ - 2016/2017/2018', '749.99'], 
                         ["Electra Townie Balloon 8D EQ Ladies' - 2016/2017/2018", '749.99'], 
                         ['Electra Townie Commute 8D - 2018', '749.99']],
+                        [['Sun Bicycles Biscayne Tandem 7 - 2017', '619.99'], 
+                         ["Electra Townie Original 3i EQ Ladies' - 2018", '639.99'], 
+                         ['Electra Cruiser Lux Fat Tire 7D - 2018', '639.99'], 
+                         ['Electra Moto 3i - 2018', '639.99'], 
+                         ['Sun Bicycles Biscayne Tandem CB - 2017', '647.99'], 
+                         ['Electra Amsterdam Original 3i - 2015/2017', '659.99'], 
+                         ['Electra Townie Original 3i EQ - 2017/2018', '659.99'], 
+                         ["Electra Amsterdam Original 3i Ladies' - 2017", '659.99'], 
+                         ["Electra Townie Original 21D EQ Ladies' - 2018", '679.99'], 
+                         ["Electra Townie Original 21D EQ Ladies' - 2018", '679.99'], 
+                         ['Electra Townie Original 21D EQ - 2017/2018', '679.99'], 
+                         ['Electra Townie Original 21D EQ - 2017/2018', '679.99'], 
+                         ["Electra Townie Commute 8D Ladies' - 2018", '699.99'], 
+                         ["Electra Townie Commute 8D Ladies' - 2018", '699.99'], 
+                         ['Electra Townie Balloon 3i EQ - 2017/2018', '749.99'], 
+                         ['Electra Townie Balloon 8D EQ - 2016/2017/2018', '749.99'], 
+                         ["Electra Townie Balloon 8D EQ Ladies' - 2016/2017/2018", '749.99'], 
+                         ['Electra Townie Balloon 3i EQ - 2017/2018', '749.99'], 
+                         ['Electra White Water 3i - 2018', '749.99'], 
+                         ['Electra Townie Commute 8D - 2018', '749.99'], 
+                         ['Electra Townie Balloon 8D EQ - 2016/2017/2018', '749.99'], 
+                         ['Electra Townie Commute 8D - 2018', '749.99'], 
+                         ["Electra Townie Balloon 8D EQ Ladies' - 2016/2017/2018", '749.99'], 
+                         ['Ritchey Timberwolf Frameset - 2016', '749.99'], 
+                         ["Electra Morningstar 3i Ladies' - 2018", '749.99'], 
+                         ['Electra Queen of Hearts 3i - 2018', '749.99'], 
+                         ['Trek Domane AL 2 - 2018', '749.99'], 
+                         ['Surly ECR Frameset - 2018', '749.99'], 
+                         ["Trek Domane AL 2 Women's - 2018", '749.99'], 
+                         ['Trek Marlin 7 - 2017/2018', '749.99'], 
+                         ['Sun Bicycles Brickell Tandem 7 - 2017', '749.99'], 
+                         ['Surly Ogre Frameset - 2017', '749.99']]],
                        [['Williemae', 'Holloway', '(510) 246-8375', '69 Cypress St. ', 'Oakland', 'CA', '94603'], # 10
                         ['Janetta', 'Aguirre', '(717) 670-2634', '214 Second Court ', 'Lancaster', 'NY', '14086'], 
                         ['Bennett', 'Armstrong', None, '688 Walnut Street ', 'Bethpage', 'NY', '11714'], 
@@ -287,7 +319,7 @@ else:
                     if not command.lower().__contains__('where'):
                         query5_clause_list.append(f"WHERE Clause NOT used")
                     if not command.lower().__contains__('city ='):
-                        query5_clause_list.append(f"Wrong filter used. Use city = 'Anaheim'")
+                        query5_clause_list.append(f"Wrong filter used. Use city = 'Buffalo'")
 
                     
             if a_number == 8: # Query 6
