@@ -33,14 +33,14 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-correct_answer_list = [[['guitarist.jpg']], # 1
+correct_answer_list = [[[['Picasso', 'guitarist.jpg']],[['guitarist.jpg']]], # 1
                        [['starrynight.jpg'], # 2
                         ['hillsidestream.jpg'], 
                         ['oldbarn.jpg'], 
                         ['womengarden.jpg']],
                        [['Michelangelo', 'Simoni', None]], # 3
                        [['MySQL Magic', None, None]], # 4
-                       [['Car Racing Made Easy']], # 5
+                       [[['Albert', 'Anderson', 'Car Racing Made Easy']], [['Car Racing Made Easy']]], # 5
                        [['Salvador', 'Aamodt'], 
                         ['Phuoc', 'Aamodt'], # 6
                         ['Roddy', 'Aamodt'], 
