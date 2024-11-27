@@ -16,8 +16,6 @@ MySQL Workbench
 
 MySQL Server
 
-(Use the 8.0.34 versions on Windows, MAC users: Workbench does not work normally but you can try using the 8.0.36 versions)
-
 A student user and database access:
 
 This can be created from the files in the `setup` folder
@@ -35,7 +33,7 @@ If everything has been successfully installed, the application will run.
 
 ## How to Use the Application
 
-DISCLAIMER: These files grade using a preset list of correct answers. You may have to manually check some answers if students add in more columns than necessary. All keywords (INSERT, SELECT, UPDATE, DELETE, USE, and SET) must be all uppercase. The file cannot add the splitting delimiter without this. If students use uppercase lettering in their comments or include a SELECT * query, the program may break, and may require some manual editing on part of the grader. Also, if the file seems to continue to break, you may need to manually check the file through MySQL Workbench.
+DISCLAIMER: These files grade using a preset list of correct answers. You may have to manually check some answers if students add in more or less columns than necessary. All keywords (INSERT, SELECT, UPDATE, DELETE, USE, and SET) must be all uppercase. The file cannot add the splitting delimiter without this. If students use uppercase lettering in their comments or include a SELECT * query, the program may break, and may require some manual editing on part of the grader. Also, if the file seems to continue to break, you may need to manually check the file through MySQL Workbench.
 
 Depending on the week, you will need to use the correct version and week of the file.  
 The versions are separated into folders by their version.  
