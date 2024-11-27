@@ -28,10 +28,16 @@ if os_name == 'Windows':
     grading_directory = os.getcwd() + '\\tempgrades'
     answer = open(f"{directory}\\week05answers.txt", "w")
 
-elif os_name == 'Linux' or os_name == 'Darwin':
-    print("Linux/MacOS Detected")
+elif os_name == 'Linux':
+    print("Linux Detected")
     directory = '/home/student/Desktop/itm111grading/original'
     grading_directory = '/home/student/Desktop/itm111grading/original/tempgrades'
+    answer = open(f"{directory}/week05answers.txt", "w")
+
+elif os_name == 'Darwin':
+    print("MacOS Detected")
+    directory = os.getcwd()
+    grading_directory = os.getcwd() + '/tempgrades'
     answer = open(f"{directory}/week05answers.txt", "w")
 # if directory doesn't exist, write no files to grade
 if not os.path.exists(grading_directory):
