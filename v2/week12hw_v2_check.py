@@ -47,27 +47,40 @@ correct_answer_list = [[['Marshall', 'Spence', 'June 23, 2000'], # 1
                         ['Shah', 'Kerri', '2003-04-05', 15, 343, '15 - Yrs, 343 - Days'], 
                         ['Bowers', 'Janine', '2004-06-23', 14, 263, '14 - Yrs, 263 - Days'], 
                         ['Stokes', 'Allen', '2004-09-16', 14, 178, '14 - Yrs, 178 - Days']],
-                       [['Marshall', 'Spence', 'Student'], # 3
+                       [[['Marshall', 'Spence', 'Student'], # 3
                         ['Josh', 'Rollins', 'Student'], 
                         ['Janine', 'Bowers', 'Student'], 
                         ['Allen', 'Stokes', 'TA'], 
                         ['Reed', 'Nielsen', 'Teacher']],
+                        [['Marshall', 'Spence', 'Student'], 
+                         ['Josh', 'Rollins', 'Student'], 
+                         ['Janine', 'Bowers', 'Student'], 
+                         ['Allen', 'Stokes', 'TA'], 
+                         ['Reed', 'Nielson', 'Teacher']]],
                        [['Lillie', 'Summers', 'TA', 'Applied Calculus for Data Analysis'], # 4
                         ['Allen', 'Stokes', 'TA', 'Web Fundamentals']],
                        [['Nellie', 'Marquez'], # 5
                         ['Kerri', 'Shah'], 
                         ['Allen', 'Stokes']],
-                       [['WDD', '130', 'Web Fundamentals', 1, 'Fall'], # 6
+                       [[['WDD', '130', 'Web Fundamentals', 1, 'Fall'], # 6
                         ['WDD', '130', 'Web Fundamentals', 2, 'Fall'], 
                         ['WDD', '130', 'Web Fundamentals', 1, 'Winter'], 
                         ['WDD', '130', 'Web Fundamentals', 2, 'Winter']],
+                        [['WDD 130', 'Web Fundamentals', 1, 'Fall'], 
+                         ['WDD 130', 'Web Fundamentals', 2, 'Fall'], 
+                         ['WDD 130', 'Web Fundamentals', 1, 'Winter'], 
+                         ['WDD 130', 'Web Fundamentals', 2, 'Winter']]],
                        [['Fall', 2024, 5]], # 7
                        [['Computer Science and Engineering', 2], # 8
                         ['Mathematics', 2]],
-                       [['George', 'Martin', '35'], # 9
-                        ['Michael', 'Duncan', '60'], 
-                        ['John', 'Parker', '95'], 
-                        ['Reed', 'Nielsen', '200']],
+                       [[['George', 'Martin', '40'], 
+                        ['Michael', 'Duncan', '80'], 
+                        ['John', 'Parker', '105'], 
+                        ['Reed', 'Nielson', '120']],
+                        [['George', 'Martin', '40'], 
+                         ['Michael', 'Duncan', '80'], 
+                         ['John', 'Parker', '105'], 
+                         ['Reed', 'Nielsen', '120']]],
                        [['Woodward', 'Erick', '4'], # 10
                         ['Spence', 'Marshall', '3'], 
                         ['Clark', 'Maria', '3'], 
