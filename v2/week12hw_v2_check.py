@@ -81,11 +81,16 @@ correct_answer_list = [[['Marshall', 'Spence', 'June 23, 2000'], # 1
                          ['Michael', 'Duncan', '80'], 
                          ['John', 'Parker', '105'], 
                          ['Reed', 'Nielsen', '120']]],
-                       [['Woodward', 'Erick', '4'], # 10
+                       [[['Woodward', 'Erick', '4'], # 10
                         ['Spence', 'Marshall', '3'], 
                         ['Clark', 'Maria', '3'], 
                         ['Woodward', 'Tracy', '3'], 
-                        ['Summers', 'Lillie', '3']]
+                        ['Summers', 'Lillie', '3']],
+                        [['Erick', 'Woodward', '4'], 
+                         ['Marshall', 'Spence', '3'], 
+                         ['Maria', 'Clark', '3'], 
+                         ['Tracy', 'Woodward', '3'], 
+                         ['Lillie', 'Summers', '3']]]
                       ]
 
 alias_counter = 0

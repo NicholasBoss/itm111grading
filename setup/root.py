@@ -34,7 +34,7 @@ elif name == 'Windows':
     filename = f"{directory}\\root.sql"
 elif name == 'Darwin':
     print("MacOS")
-    filename = f"{directory}/root.sql"
+    filename = f"{directory}/setup/root.sql"
 
 
 with open(filename, 'r+') as file:
