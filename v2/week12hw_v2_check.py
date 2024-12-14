@@ -34,9 +34,10 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-correct_answer_list = [[['Marshall', 'Spence', 'June 23, 2000'], # 1 
+correct_answer_list = [[[['Marshall', 'Spence', 'June 23, 2000'], # 1 
                         ['Nellie', 'Marquez', 'June 25, 2001'], 
                         ['Janine', 'Bowers', 'June 23, 2004']],
+                        [['Marshall', 'Spence', 'June 23rd, 2000'], ['Nellie', 'Marquez', 'June 25th, 2001'], ['Janine', 'Bowers', 'June 23rd, 2004']]],
                        [['Woodward', 'Erick', '1998-08-05', 20, 222, '20 - Yrs, 222 - Days'], # 2
                         ['Rollins', 'Josh', '1998-11-28', 20, 107, '20 - Yrs, 107 - Days'], 
                         ['Summers', 'Lillie', '1999-11-05', 19, 130, '19 - Yrs, 130 - Days'], 
@@ -260,7 +261,7 @@ else:
         for command in sqlCommands:
             erd_number += 1
             
-            # debug.write(f"ERD QUERY: {erd_number}. {command}\n")
+            # print(f"ERD QUERY: {erd_number}. {command}\n")
         
 
             try:
